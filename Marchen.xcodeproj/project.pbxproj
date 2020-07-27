@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E30C029D24CEE80B00EBEEB1 /* MyRepoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C029C24CEE80B00EBEEB1 /* MyRepoTableViewController.swift */; };
+		E30C02A124CEE8FE00EBEEB1 /* LyricModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02A024CEE8FE00EBEEB1 /* LyricModel.swift */; };
+		E30C02A424CEEC3300EBEEB1 /* LyricViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02A324CEEC3300EBEEB1 /* LyricViewController.swift */; };
+		E30C02A924CEF16200EBEEB1 /* LyricTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02A724CEF16200EBEEB1 /* LyricTableViewController.swift */; };
+		E30C02AD24CEF27A00EBEEB1 /* LyricLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02AB24CEF27A00EBEEB1 /* LyricLineTableViewCell.swift */; };
+		E30C02AE24CEF27A00EBEEB1 /* LyricLineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E30C02AC24CEF27A00EBEEB1 /* LyricLineTableViewCell.xib */; };
+		E30C02B024CEF89D00EBEEB1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02AF24CEF89D00EBEEB1 /* Constants.swift */; };
 		E355808324C5A24400DCA763 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355808224C5A24400DCA763 /* AppDelegate.swift */; };
 		E355808524C5A24400DCA763 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355808424C5A24400DCA763 /* SceneDelegate.swift */; };
-		E355808724C5A24400DCA763 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355808624C5A24400DCA763 /* ViewController.swift */; };
 		E355808A24C5A24400DCA763 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E355808824C5A24400DCA763 /* Main.storyboard */; };
 		E355808C24C5A24400DCA763 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E355808B24C5A24400DCA763 /* Assets.xcassets */; };
 		E355808F24C5A24400DCA763 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E355808D24C5A24400DCA763 /* LaunchScreen.storyboard */; };
@@ -35,10 +41,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E30C029C24CEE80B00EBEEB1 /* MyRepoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRepoTableViewController.swift; sourceTree = "<group>"; };
+		E30C02A024CEE8FE00EBEEB1 /* LyricModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricModel.swift; sourceTree = "<group>"; };
+		E30C02A324CEEC3300EBEEB1 /* LyricViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricViewController.swift; sourceTree = "<group>"; };
+		E30C02A724CEF16200EBEEB1 /* LyricTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricTableViewController.swift; sourceTree = "<group>"; };
+		E30C02AB24CEF27A00EBEEB1 /* LyricLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricLineTableViewCell.swift; sourceTree = "<group>"; };
+		E30C02AC24CEF27A00EBEEB1 /* LyricLineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LyricLineTableViewCell.xib; sourceTree = "<group>"; };
+		E30C02AF24CEF89D00EBEEB1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E355807F24C5A24400DCA763 /* Marchen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marchen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E355808224C5A24400DCA763 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E355808424C5A24400DCA763 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E355808624C5A24400DCA763 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E355808924C5A24400DCA763 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E355808B24C5A24400DCA763 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E355808E24C5A24400DCA763 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -76,6 +88,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E30C029E24CEE81000EBEEB1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E30C029C24CEE80B00EBEEB1 /* MyRepoTableViewController.swift */,
+				E30C02A324CEEC3300EBEEB1 /* LyricViewController.swift */,
+				E30C02A724CEF16200EBEEB1 /* LyricTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E30C029F24CEE81A00EBEEB1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E355808824C5A24400DCA763 /* Main.storyboard */,
+				E30C02AB24CEF27A00EBEEB1 /* LyricLineTableViewCell.swift */,
+				E30C02AC24CEF27A00EBEEB1 /* LyricLineTableViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E30C02A224CEE92D00EBEEB1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E30C02A024CEE8FE00EBEEB1 /* LyricModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		E355807624C5A24400DCA763 = {
 			isa = PBXGroup;
 			children = (
@@ -101,11 +141,13 @@
 			children = (
 				E355808224C5A24400DCA763 /* AppDelegate.swift */,
 				E355808424C5A24400DCA763 /* SceneDelegate.swift */,
-				E355808624C5A24400DCA763 /* ViewController.swift */,
-				E355808824C5A24400DCA763 /* Main.storyboard */,
+				E30C02A224CEE92D00EBEEB1 /* Models */,
+				E30C029F24CEE81A00EBEEB1 /* Views */,
+				E30C029E24CEE81000EBEEB1 /* Controllers */,
 				E355808B24C5A24400DCA763 /* Assets.xcassets */,
 				E355808D24C5A24400DCA763 /* LaunchScreen.storyboard */,
 				E355809024C5A24400DCA763 /* Info.plist */,
+				E30C02AF24CEF89D00EBEEB1 /* Constants.swift */,
 			);
 			path = Marchen;
 			sourceTree = "<group>";
@@ -235,6 +277,7 @@
 				E355808F24C5A24400DCA763 /* LaunchScreen.storyboard in Resources */,
 				E355808C24C5A24400DCA763 /* Assets.xcassets in Resources */,
 				E355808A24C5A24400DCA763 /* Main.storyboard in Resources */,
+				E30C02AE24CEF27A00EBEEB1 /* LyricLineTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,9 +302,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E355808724C5A24400DCA763 /* ViewController.swift in Sources */,
+				E30C02A424CEEC3300EBEEB1 /* LyricViewController.swift in Sources */,
+				E30C029D24CEE80B00EBEEB1 /* MyRepoTableViewController.swift in Sources */,
 				E355808324C5A24400DCA763 /* AppDelegate.swift in Sources */,
 				E355808524C5A24400DCA763 /* SceneDelegate.swift in Sources */,
+				E30C02A124CEE8FE00EBEEB1 /* LyricModel.swift in Sources */,
+				E30C02AD24CEF27A00EBEEB1 /* LyricLineTableViewCell.swift in Sources */,
+				E30C02A924CEF16200EBEEB1 /* LyricTableViewController.swift in Sources */,
+				E30C02B024CEF89D00EBEEB1 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
