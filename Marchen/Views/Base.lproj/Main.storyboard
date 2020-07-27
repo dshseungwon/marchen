@@ -86,9 +86,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New Lyric" id="kj8-G4-bYN">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="dOw-QG-NsY">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="oYz-6a-gfE">
                             <connections>
-                                <action selector="saveButtonClicked:" destination="Ujp-Yt-C3b" id="E7J-sF-aFH"/>
+                                <action selector="addButtonClicked:" destination="Ujp-Yt-C3b" id="LA4-cH-Hxr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -62,7 +62,6 @@ class MyRepoTableViewController: UITableViewController {
     }
     
     func loadLyrics() {
-        print("loadLyrics")
         lyrics = realm.objects(LyricModel.self)
         
         self.tableView.reloadData()

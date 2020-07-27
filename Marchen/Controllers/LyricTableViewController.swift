@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 class LyricTableViewController: UITableViewController {
+    
+    lazy var realm : Realm = {
+        return try! Realm()
+    }()
     
     var selectedLyric : LyricModel?
     {
@@ -39,11 +44,7 @@ class LyricTableViewController: UITableViewController {
         guard let numOfLines = selectedLyric?.lines.count else {
             fatalError("Error in counting selectedLyric.lines")
         }
-        if numOfLines < 10 {
-            return 10
-        } else {
-            return numOfLines
-        }
+        return numOfLines
     }
     
     
@@ -55,23 +56,37 @@ class LyricTableViewController: UITableViewController {
         }
         
         // 새로 생성된 Lyric 일 경우 Placeholder 표시
-        if numOfLines == 0 && indexPath.row == 0 {
+        if indexPath.row == 0 {
             cell.lyricTextField.placeholder = "숨가쁘게 살아가는 순간 속에도 "
         }
         
         // 이미 있어서 불러온 Lyric 일 경우
         if numOfLines != 0 {
             cell.lyricTextField.text = selectedLyric?.lines[indexPath.row]
+            cell.lyricTextField.tag = indexPath.row
         }
+        
+        
+        cell.lyricTextField.addTarget(self, action: #selector(didChangeText(textField:)), for: .editingChanged)
         
         return cell
     }
-    
     func loadLyric() {
         title = selectedLyric?.title
     }
     
-    @IBAction func saveButtonClicked(_ sender: UIBarButtonItem) {
-        
+    @IBAction func addButtonClicked(_ sender: UIBarButtonItem) {
+        try! realm.write {
+            selectedLyric?.lines.append("")
+        }
+        tableView.reloadData()
+    }
+    
+    @objc func didChangeText(textField: UITextField) {
+        try! realm.write {
+            if let safeText = textField.text {
+                selectedLyric?.lines[textField.tag] = safeText
+            }
+        }
     }
 }
