@@ -34,6 +34,11 @@ class LyricTableViewController: UITableViewController {
         tableView.register(UINib(nibName: K.LyricLineCellNibName, bundle: nil), forCellReuseIdentifier: K.LyricLineCellIdentifier)
         
         tableView.rowHeight = 80.0
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        scrollToTop()
     }
     
     // MARK: - Table view data source
@@ -73,6 +78,22 @@ class LyricTableViewController: UITableViewController {
     }
     func loadLyric() {
         title = selectedLyric?.title
+    }
+    
+    func scrollToTop() {
+        var offset = CGPoint(
+            x: -tableView.contentInset.left,
+            y: -tableView.contentInset.top
+        )
+        
+        if #available(iOS 11.0, *) {
+            offset = CGPoint(
+                x: -tableView.adjustedContentInset.left,
+                // I don't know why this magic number works... lol.
+                y: -(tableView.adjustedContentInset.top + 0.1667))
+        }
+        
+        tableView.setContentOffset(offset, animated: true)
     }
     
     @IBAction func addButtonClicked(_ sender: UIBarButtonItem) {
