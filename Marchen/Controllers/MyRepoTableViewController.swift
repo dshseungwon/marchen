@@ -29,20 +29,43 @@ class MyRepoTableViewController: UITableViewController {
         
         let alert = UIAlertController(title: "Add New Lyric", message: "", preferredStyle: .alert)
         
-        alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "그대에게"
-            textField = alertTextField
-        }
         
-        let action = UIAlertAction(title: "Go", style: .default) {
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default) {
             (action) in
             
             let newLyric = LyricModel()
             newLyric.title = textField!.text!
             self.saveLyric(lyric: newLyric)
         }
+        // No Title, No OK.
+        okAction.isEnabled = false
         
-        alert.addAction(action)
+        
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        
+        
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "그대에게"
+            textField = alertTextField
+            
+            
+            
+            // Observe the UITextFieldTextDidChange notification to be notified in the below block when text is changed
+            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main) { _ in
+                // Being in this block means that something fired the UITextFieldTextDidChange notification.
+                
+                // Access the textField object from alertController.addTextField(configurationHandler:) above and get the character count of its non whitespace characters
+                let textCount = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
+                let textIsNotEmpty = textCount > 0
+                
+                // If the text contains non whitespace characters, enable the OK Button
+                okAction.isEnabled = textIsNotEmpty
+            }
+        }
         
         present(alert, animated: true, completion: nil)
         
