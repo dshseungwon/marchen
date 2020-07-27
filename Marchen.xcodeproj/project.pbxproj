@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,7 +12,6 @@
 		C4BA142DA7CD41230E4AFD64 /* Pods_Marchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 115306C7598C6B75F3B55117 /* Pods_Marchen.framework */; };
 		E30C029D24CEE80B00EBEEB1 /* MyRepoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C029C24CEE80B00EBEEB1 /* MyRepoTableViewController.swift */; };
 		E30C02A124CEE8FE00EBEEB1 /* LyricModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02A024CEE8FE00EBEEB1 /* LyricModel.swift */; };
-		E30C02A424CEEC3300EBEEB1 /* LyricViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02A324CEEC3300EBEEB1 /* LyricViewController.swift */; };
 		E30C02A924CEF16200EBEEB1 /* LyricTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02A724CEF16200EBEEB1 /* LyricTableViewController.swift */; };
 		E30C02AD24CEF27A00EBEEB1 /* LyricLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02AB24CEF27A00EBEEB1 /* LyricLineTableViewCell.swift */; };
 		E30C02AE24CEF27A00EBEEB1 /* LyricLineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E30C02AC24CEF27A00EBEEB1 /* LyricLineTableViewCell.xib */; };
@@ -54,7 +53,6 @@
 		D60685C7211C8A9AC270E0D2 /* Pods-MarchenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarchenTests.release.xcconfig"; path = "Target Support Files/Pods-MarchenTests/Pods-MarchenTests.release.xcconfig"; sourceTree = "<group>"; };
 		E30C029C24CEE80B00EBEEB1 /* MyRepoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRepoTableViewController.swift; sourceTree = "<group>"; };
 		E30C02A024CEE8FE00EBEEB1 /* LyricModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricModel.swift; sourceTree = "<group>"; };
-		E30C02A324CEEC3300EBEEB1 /* LyricViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricViewController.swift; sourceTree = "<group>"; };
 		E30C02A724CEF16200EBEEB1 /* LyricTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricTableViewController.swift; sourceTree = "<group>"; };
 		E30C02AB24CEF27A00EBEEB1 /* LyricLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricLineTableViewCell.swift; sourceTree = "<group>"; };
 		E30C02AC24CEF27A00EBEEB1 /* LyricLineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LyricLineTableViewCell.xib; sourceTree = "<group>"; };
@@ -123,7 +121,6 @@
 				E3C58BD1F71E32FC0AE9A2C5 /* Pods-MarchenTests.debug.xcconfig */,
 				D60685C7211C8A9AC270E0D2 /* Pods-MarchenTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -131,7 +128,6 @@
 			isa = PBXGroup;
 			children = (
 				E30C029C24CEE80B00EBEEB1 /* MyRepoTableViewController.swift */,
-				E30C02A324CEEC3300EBEEB1 /* LyricViewController.swift */,
 				E30C02A724CEF16200EBEEB1 /* LyricTableViewController.swift */,
 			);
 			path = Controllers;
@@ -451,7 +447,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E30C02A424CEEC3300EBEEB1 /* LyricViewController.swift in Sources */,
 				E30C029D24CEE80B00EBEEB1 /* MyRepoTableViewController.swift in Sources */,
 				E355808324C5A24400DCA763 /* AppDelegate.swift in Sources */,
 				E355808524C5A24400DCA763 /* SceneDelegate.swift in Sources */,

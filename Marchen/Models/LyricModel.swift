@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct LyricModel {
-    var title : String
-    var Lines : [String]
+class LyricModel: Object {
+    @objc dynamic var title : String = ""
+    let lines = List<String>()
 
 }

@@ -7,89 +7,97 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MyRepoTableViewController: UITableViewController {
-
     
-//    var lyricList : [LyricModel]
+    lazy var realm : Realm = {
+        return try! Realm()
+    }()
     
-    
-    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        
-        performSegue(withIdentifier: "MyRepoToLyric", sender: self)
-        
-    }
+    var lyrics : Results<LyricModel>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        loadLyrics()
     }
-
+    
+    //MARK: - Add Button Pressed
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        var textField: UITextField!
+        
+        let alert = UIAlertController(title: "Add New Lyric", message: "", preferredStyle: .alert)
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "그대에게"
+            textField = alertTextField
+        }
+        
+        let action = UIAlertAction(title: "Go", style: .default) {
+            (action) in
+            
+            let newLyric = LyricModel()
+            newLyric.title = textField!.text!
+            self.saveLyric(lyric: newLyric)
+        }
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    //MARK: - Access Realm Database
+    func saveLyric(lyric: LyricModel) {
+        do {
+            try realm.write {
+                realm.add(lyric)
+            }
+        } catch {
+            print("Error saving lyric \(error)")
+        }
+        
+        self.tableView.reloadData()
+    }
+    
+    func loadLyrics() {
+        print("loadLyrics")
+        lyrics = realm.objects(LyricModel.self)
+        
+        self.tableView.reloadData()
+    }
+    
+    
+    
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 2
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return lyrics?.count ?? 0
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        if let lyric = lyrics?[indexPath.row] {
+            cell.textLabel?.text = lyric.title
+        }
+        
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "MyRepoToLyric", sender: self)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        let destinationVC = segue.destination as! LyricTableViewController
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedLyric = lyrics?[indexPath.row]
+        }
     }
-
+    
 }

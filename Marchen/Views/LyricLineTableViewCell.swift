@@ -10,6 +10,8 @@ import UIKit
 
 class LyricLineTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var lyricTextField: UITextField!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
