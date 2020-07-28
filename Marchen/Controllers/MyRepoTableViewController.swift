@@ -8,8 +8,10 @@
 
 import UIKit
 import RealmSwift
+import SwipeCellKit
 
-class MyRepoTableViewController: UITableViewController {
+class MyRepoTableViewController: UITableViewController, SwipeTableViewCellDelegate {
+    
     
     lazy var realm : Realm = {
         return try! Realm()
@@ -81,7 +83,7 @@ class MyRepoTableViewController: UITableViewController {
         
     }
     
-    //MARK: - Access Realm Database
+    //MARK: - Database Access Functions
     func saveLyric(lyric: LyricModel) {
         do {
             try realm.write {
@@ -97,13 +99,25 @@ class MyRepoTableViewController: UITableViewController {
     func loadLyrics() {
         lyrics = realm.objects(LyricModel.self).sorted(byKeyPath: "dateOfRecentEdit", ascending: false)
         
-//        self.tableView.reloadData()
+        //        self.tableView.reloadData()
+    }
+    
+    
+    func deleteLyric(at indexPath: IndexPath) {
+        if let lyricForDeletion = self.lyrics?[indexPath.row] {
+            do {
+                try self.realm.write {
+                    self.realm.delete(lyricForDeletion)
+                }
+            } catch {
+                print("Error in deleting the lyric \(error)")
+            }
+        }
     }
     
     
     
-    // MARK: - Table view data source
-    
+    // MARK: - Tableview Functions
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -127,7 +141,9 @@ class MyRepoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SwipeTableViewCell
+        
+        cell.delegate = self
         
         if let lyric = lyrics?[indexPath.row] {
             cell.textLabel?.text = lyric.title
@@ -136,10 +152,34 @@ class MyRepoTableViewController: UITableViewController {
         return cell
     }
     
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "MyRepoToLyric", sender: self)
     }
     
+    //MARK: - Swipe Cell Functions
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        
+        guard orientation == .left || orientation == .right else { return nil }
+        
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            self.deleteLyric(at:  indexPath)
+        }
+        
+        deleteAction.image = UIImage(systemName: "trash")
+        return [deleteAction]
+    }
+    
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        var options = SwipeTableOptions()
+        options.expansionStyle = .destructive
+        
+        return options
+    }
+    
+    
+    //MARK: - Prepare Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let destinationVC = segue.destination as! LyricTableViewController
