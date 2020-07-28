@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "UnderlineImage.png",
+      "filename" : "textFieldUnderline_black.png",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "textFieldUnderline_black-1.png",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "textFieldUnderline_white.png",
       "idiom" : "universal"
     }
   ],

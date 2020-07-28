@@ -20,7 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="210" height="39"/>
                     </imageView>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LVj-E7-2xy">
-                        <rect key="frame" x="20" y="0.0" width="170" height="39"/>
+                        <rect key="frame" x="20" y="20" width="170" height="19"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <textInputTraits key="textInputTraits"/>
                         <connections>
@@ -30,7 +30,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="LVj-E7-2xy" secondAttribute="trailing" constant="20" id="5DX-5i-1RI"/>
-                    <constraint firstItem="LVj-E7-2xy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="5aB-Wg-6ct"/>
+                    <constraint firstItem="LVj-E7-2xy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="5aB-Wg-6ct"/>
                     <constraint firstItem="Pf0-EH-dG0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="L6b-d4-AC2"/>
                     <constraint firstAttribute="bottom" secondItem="Pf0-EH-dG0" secondAttribute="bottom" id="Mmh-1e-hsw"/>
                     <constraint firstAttribute="trailing" secondItem="Pf0-EH-dG0" secondAttribute="trailing" id="NmL-AG-HOW"/>
@@ -47,6 +47,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="UnderlineImage" width="500" height="100"/>
+        <image name="UnderlineImage" width="1125" height="245"/>
     </resources>
 </document>
