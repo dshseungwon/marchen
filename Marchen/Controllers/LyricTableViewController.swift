@@ -49,7 +49,11 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
         guard let numOfLines = selectedLyric?.lines.count else {
             fatalError("Error in counting selectedLyric.lines")
         }
-        return numOfLines
+        if numOfLines == 0 {
+            return 1
+        } else {
+            return numOfLines
+        }
     }
     
     
@@ -60,9 +64,17 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
             fatalError("Error in counting selectedLyric.lines")
         }
         
-        // 새로 생성된 Lyric 일 경우 Placeholder 표시
-        if indexPath.row == 0 {
+        
+        // 아직 Lyric line이 추가되지 않은 경우 Guide 표시
+        if  indexPath.row == 0 && numOfLines == 0 {
+            cell.lyricTextField.text = "'+' 버튼을 눌러 가사를 추가하세요."
+            cell.lyricTextField.isEnabled = false
+        }
+        
+        // 처음으로 생성된 Lyric line 일 경우 Placeholder 표시
+        if  indexPath.row == 0 && numOfLines != 0 {
             cell.lyricTextField.placeholder = "숨가쁘게 살아가는 순간 속에도 "
+            cell.lyricTextField.isEnabled = true
         }
         
         // 이미 있어서 불러온 Lyric 일 경우
@@ -71,7 +83,6 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
             cell.lyricTextField.tag = indexPath.row
         }
         
-        
         cell.lyricTextField.addTarget(self, action: #selector(didChangeText(textField:)), for: .editingChanged)
         
         cell.lyricTextField.delegate = self
@@ -79,10 +90,12 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
         return cell
     }
     
+    //MARK: - Load Lyric Function
     func loadLyric() {
         title = selectedLyric?.title
     }
     
+    //MARK: - Add Button Clicked
     @IBAction func addButtonClicked(_ sender: UIBarButtonItem) {
         try! realm.write {
             if let editingLineNum = currentEditingLine {
