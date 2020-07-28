@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class LyricTableViewController: UITableViewController {
+class LyricTableViewController: UITableViewController, UITextFieldDelegate {
     
     lazy var realm : Realm = {
         return try! Realm()
@@ -21,6 +21,8 @@ class LyricTableViewController: UITableViewController {
             loadLyric()
         }
     }
+    
+    var currentEditingLine: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,10 +37,12 @@ class LyricTableViewController: UITableViewController {
         
         tableView.rowHeight = 80.0
         
+        tableView.keyboardDismissMode = .onDrag
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        scrollToTop()
+        //        scrollToTop()
     }
     
     // MARK: - Table view data source
@@ -74,12 +78,43 @@ class LyricTableViewController: UITableViewController {
         
         cell.lyricTextField.addTarget(self, action: #selector(didChangeText(textField:)), for: .editingChanged)
         
+        cell.lyricTextField.delegate = self
+        
         return cell
     }
     func loadLyric() {
         title = selectedLyric?.title
     }
     
+    @IBAction func addButtonClicked(_ sender: UIBarButtonItem) {
+        try! realm.write {
+            if let editingLineNum = currentEditingLine {
+                selectedLyric?.lines.insert("", at: editingLineNum + 1)
+            } else {
+                selectedLyric?.lines.append("")
+            }
+            
+        }
+        tableView.reloadData()
+    }
+    
+    
+    //MARK: - Textfield Functions
+    @objc func didChangeText(textField: UITextField) {
+        try! realm.write {
+            if let safeText = textField.text {
+                // text
+                selectedLyric?.lines[textField.tag] = safeText
+            }
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        currentEditingLine = textField.tag
+        
+    }
+    
+    //MARK: - View Functions
     func scrollToTop() {
         var offset = CGPoint(
             x: -tableView.contentInset.left,
@@ -96,18 +131,4 @@ class LyricTableViewController: UITableViewController {
         tableView.setContentOffset(offset, animated: true)
     }
     
-    @IBAction func addButtonClicked(_ sender: UIBarButtonItem) {
-        try! realm.write {
-            selectedLyric?.lines.append("")
-        }
-        tableView.reloadData()
-    }
-    
-    @objc func didChangeText(textField: UITextField) {
-        try! realm.write {
-            if let safeText = textField.text {
-                selectedLyric?.lines[textField.tag] = safeText
-            }
-        }
-    }
 }
