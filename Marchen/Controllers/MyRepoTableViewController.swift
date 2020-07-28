@@ -37,7 +37,6 @@ class MyRepoTableViewController: UITableViewController, SwipeTableViewCellDelega
         
         let alert = UIAlertController(title: "Add New Lyric", message: "", preferredStyle: .alert)
         
-        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         let okAction = UIAlertAction(title: "OK", style: .default) {
@@ -59,12 +58,9 @@ class MyRepoTableViewController: UITableViewController, SwipeTableViewCellDelega
         alert.addAction(okAction)
         
         
-        
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "그대에게"
             textField = alertTextField
-            
-            
             
             // Observe the UITextFieldTextDidChange notification to be notified in the below block when text is changed
             NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main) { _ in
@@ -105,13 +101,82 @@ class MyRepoTableViewController: UITableViewController, SwipeTableViewCellDelega
     
     func deleteLyric(at indexPath: IndexPath) {
         if let lyricForDeletion = self.lyrics?[indexPath.row] {
-            do {
-                try self.realm.write {
-                    self.realm.delete(lyricForDeletion)
+            let alert = UIAlertController(title: "Delete Lyric", message: "Are you sure want to delete \'\(lyricForDeletion.title)\'?", preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            let okAction = UIAlertAction(title: "OK", style: .default) {
+                (action) in
+                // Code here for updating the lyric title
+                do {
+                    try self.realm.write {
+                        self.realm.delete(lyricForDeletion)
+                    }
+                } catch {
+                    print("Error in deleting the lyric \(error)")
                 }
-            } catch {
-                print("Error in deleting the lyric \(error)")
+                
+                self.tableView.reloadData()
             }
+            
+            alert.addAction(cancelAction)
+            alert.addAction(okAction)
+            
+            present(alert, animated: true, completion: nil)
+            
+        }
+    }
+    
+    func editLyricTitle(at indexPath: IndexPath) {
+        if let lyricForEdition = self.lyrics?[indexPath.row] {
+            var textField: UITextField!
+            
+            let alert = UIAlertController(title: "Edit Lyric Title", message: "", preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            let okAction = UIAlertAction(title: "OK", style: .default) {
+                (action) in
+                // Code here for updating the lyric title
+                do {
+                    try self.realm.write {
+                        lyricForEdition.title = textField.text!
+                    }
+                } catch {
+                    print("Error in editing lyric title \(error)")
+                    
+                }
+                
+                self.tableView.reloadData()
+                
+            }
+            // No Title, No OK.
+            okAction.isEnabled = false
+            
+            alert.addAction(cancelAction)
+            alert.addAction(okAction)
+            
+            alert.addTextField { (alertTextField) in
+                let previousTitle = lyricForEdition.title
+                alertTextField.text = previousTitle
+                
+                textField = alertTextField
+                
+                // Observe the UITextFieldTextDidChange notification to be notified in the below block when text is changed
+                NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main) { _ in
+                    // Being in this block means that something fired the UITextFieldTextDidChange notification.
+                    
+                    // Access the textField object from alertController.addTextField(configurationHandler:) above and get the character count of its non whitespace characters
+                    let textCount = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
+                    let textIsNotEmpty = textCount > 0 && textField.text != previousTitle
+                    
+                    // If the text contains non whitespace characters, enable the OK Button
+                    okAction.isEnabled = textIsNotEmpty
+                }
+            }
+            
+            present(alert, animated: true, completion: nil)
+            
         }
     }
     
@@ -160,23 +225,36 @@ class MyRepoTableViewController: UITableViewController, SwipeTableViewCellDelega
     //MARK: - Swipe Cell Functions
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         
-        guard orientation == .left || orientation == .right else { return nil }
-        
-        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            self.deleteLyric(at:  indexPath)
+        if orientation == .right {
+            let deleteAction = SwipeAction(style: .destructive, title: "Delete") { (action, indexPath) in
+                self.deleteLyric(at: indexPath)
+            }
+            
+            deleteAction.image = UIImage(systemName: "trash")
+            
+            return [deleteAction]
+            
+        } else if orientation == .left {
+            let editAction = SwipeAction(style: .default, title: "Edit Title") { (action, indexPath) in
+                self.editLyricTitle(at: indexPath)
+            }
+            
+            editAction.image = UIImage(systemName: "pencil")
+            return [editAction]
+            
+        } else {
+            return nil
         }
         
-        deleteAction.image = UIImage(systemName: "trash")
-        return [deleteAction]
     }
     
     
-    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
-        var options = SwipeTableOptions()
-        options.expansionStyle = .destructive
-        
-        return options
-    }
+    //    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+    //        var options = SwipeTableOptions()
+    //        options.expansionStyle = .destructive
+    //
+    //        return options
+    //    }
     
     
     //MARK: - Prepare Segue
