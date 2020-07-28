@@ -23,6 +23,12 @@ class MyRepoTableViewController: UITableViewController {
         loadLyrics()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        tableView.reloadData()
+    }
+    
     //MARK: - Add Button Pressed
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         var textField: UITextField!
@@ -36,7 +42,11 @@ class MyRepoTableViewController: UITableViewController {
             (action) in
             
             let newLyric = LyricModel()
+            
             newLyric.title = textField!.text!
+            newLyric.dateOfCreation = Date()
+            newLyric.dateOfRecentEdit = Date()
+            
             self.saveLyric(lyric: newLyric)
         }
         // No Title, No OK.
@@ -85,9 +95,9 @@ class MyRepoTableViewController: UITableViewController {
     }
     
     func loadLyrics() {
-        lyrics = realm.objects(LyricModel.self)
+        lyrics = realm.objects(LyricModel.self).sorted(byKeyPath: "dateOfRecentEdit", ascending: false)
         
-        self.tableView.reloadData()
+//        self.tableView.reloadData()
     }
     
     
@@ -100,9 +110,9 @@ class MyRepoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == K.LyricSectionNumber {
-            return "Lyrics"
+            return "Recent Lyrics"
         } else {
-            return "Songs"
+            return "Recent Songs"
         }
     }
     

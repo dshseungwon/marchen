@@ -11,6 +11,9 @@ import RealmSwift
 
 class LyricModel: Object {
     @objc dynamic var title : String = ""
+    @objc dynamic var dateOfCreation : Date?
+    @objc dynamic var dateOfRecentEdit : Date?
+    
     let lines = List<String>()
-
+    
 }

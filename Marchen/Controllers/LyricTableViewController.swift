@@ -41,12 +41,8 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        //        scrollToTop()
-    }
     
     // MARK: - Table view data source
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
@@ -82,6 +78,7 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
         
         return cell
     }
+    
     func loadLyric() {
         title = selectedLyric?.title
     }
@@ -105,6 +102,7 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
             if let safeText = textField.text {
                 // text
                 selectedLyric?.lines[textField.tag] = safeText
+                selectedLyric?.dateOfRecentEdit = Date()
             }
         }
     }
@@ -114,7 +112,13 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
         
     }
     
+    
     //MARK: - View Functions
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //        scrollToTop()
+    }
+    
     func scrollToTop() {
         var offset = CGPoint(
             x: -tableView.contentInset.left,
