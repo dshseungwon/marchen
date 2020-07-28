@@ -93,9 +93,26 @@ class MyRepoTableViewController: UITableViewController {
     
     
     // MARK: - Table view data source
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == K.LyricSectionNumber {
+            return "Lyrics"
+        } else {
+            return "Songs"
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return lyrics?.count ?? 0
+        if section == K.LyricSectionNumber {
+            return lyrics?.count ?? 0
+        } else {
+            return 0
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

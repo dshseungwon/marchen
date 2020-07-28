@@ -11,4 +11,6 @@ import Foundation
 class K {
     static let LyricLineCellNibName = "LyricLineTableViewCell"
     static let LyricLineCellIdentifier = "LyricLineCell"
+    static let LyricSectionNumber = 0
+    static let SongSectionNumber = 1
 }
