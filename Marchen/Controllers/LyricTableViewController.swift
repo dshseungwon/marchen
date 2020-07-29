@@ -33,10 +33,17 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
         
         tableView.rowHeight = 80.0
         
-        tableView.keyboardDismissMode = .onDrag
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dissmissKeyboard))
         
+        tapGesture.cancelsTouchesInView = true
+        
+        tableView.keyboardDismissMode = .onDrag
+       
     }
     
+    @objc func dissmissKeyboard() {
+        tableView.endEditing(true)
+    }
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,6 +81,7 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
         
         // 이미 있어서 불러온 Lyric 일 경우
         if numOfLines != 0 {
+            cell.lyricTextField.placeholder = nil
             cell.lyricTextField.text = selectedLyric?.lines[indexPath.row]
             cell.lyricTextField.tag = indexPath.row
         }
@@ -136,6 +144,10 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         currentEditingLine = textField.tag
         
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        currentEditingLine = nil
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
