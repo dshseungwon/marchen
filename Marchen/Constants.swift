@@ -13,4 +13,7 @@ class K {
     static let LyricLineCellIdentifier = "LyricLineCell"
     static let LyricSectionNumber = 0
     static let SongSectionNumber = 1
+    static let ChordCellNibName = "ChordTableViewCell"
+    static let ChordCellIdentifier = "ChordCell"
+    
 }

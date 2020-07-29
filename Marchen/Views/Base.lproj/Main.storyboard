@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -86,16 +87,91 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New Lyric" id="kj8-G4-bYN">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="oYz-6a-gfE">
-                            <connections>
-                                <action selector="addButtonClicked:" destination="Ujp-Yt-C3b" id="LA4-cH-Hxr"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="oYz-6a-gfE">
+                                <connections>
+                                    <action selector="addButtonClicked:" destination="Ujp-Yt-C3b" id="LA4-cH-Hxr"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="play" id="oE5-ss-wne">
+                                <connections>
+                                    <action selector="newSongButtonClicked:" destination="Ujp-Yt-C3b" id="eER-HH-73r"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <segue destination="qgr-fc-OV2" kind="show" identifier="NewLyricToNewSong" id="JVS-G0-zfW"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZcV-cp-WEZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2578" y="155"/>
+        </scene>
+        <!--New Song-->
+        <scene sceneID="VFf-Pm-cV1">
+            <objects>
+                <viewController id="qgr-fc-OV2" customClass="NewSongViewController" customModule="Marchen" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TaV-rl-1vS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Key" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gS-YH-OSe">
+                                <rect key="frame" x="20" y="150" width="394" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chord" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QxM-GP-DWE">
+                                <rect key="frame" x="20" y="416" width="394" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yRR-X5-4ao">
+                                <rect key="frame" x="0.0" y="190" width="414" height="216"/>
+                            </pickerView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0EP-gU-kIi">
+                                <rect key="frame" x="0.0" y="456" width="414" height="406"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChordCell" id="r1R-Kd-kdP" customClass="ChordTableViewCell" customModule="Marchen" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r1R-Kd-kdP" id="Ksw-Ir-b4y">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="BRP-xe-77q" firstAttribute="trailing" secondItem="0EP-gU-kIi" secondAttribute="trailing" id="4yA-nd-aIm"/>
+                            <constraint firstItem="QxM-GP-DWE" firstAttribute="leading" secondItem="BRP-xe-77q" secondAttribute="leading" constant="20" id="7Bh-fD-Lgl"/>
+                            <constraint firstItem="yRR-X5-4ao" firstAttribute="top" secondItem="0gS-YH-OSe" secondAttribute="bottom" constant="10" id="GyR-mh-gFs"/>
+                            <constraint firstItem="QxM-GP-DWE" firstAttribute="top" secondItem="yRR-X5-4ao" secondAttribute="bottom" constant="10" id="H0o-QK-yDr"/>
+                            <constraint firstItem="0gS-YH-OSe" firstAttribute="top" secondItem="BRP-xe-77q" secondAttribute="top" constant="10" id="IfA-lg-ouB"/>
+                            <constraint firstItem="0EP-gU-kIi" firstAttribute="leading" secondItem="BRP-xe-77q" secondAttribute="leading" id="OvY-YD-drC"/>
+                            <constraint firstItem="BRP-xe-77q" firstAttribute="trailing" secondItem="QxM-GP-DWE" secondAttribute="trailing" id="PVx-KF-xMl"/>
+                            <constraint firstItem="BRP-xe-77q" firstAttribute="trailing" secondItem="0gS-YH-OSe" secondAttribute="trailing" id="Qzo-eV-McQ"/>
+                            <constraint firstItem="yRR-X5-4ao" firstAttribute="leading" secondItem="BRP-xe-77q" secondAttribute="leading" id="Ssz-zO-2LA"/>
+                            <constraint firstItem="0gS-YH-OSe" firstAttribute="leading" secondItem="BRP-xe-77q" secondAttribute="leading" constant="20" id="a69-l4-Kro"/>
+                            <constraint firstItem="BRP-xe-77q" firstAttribute="trailing" secondItem="yRR-X5-4ao" secondAttribute="trailing" id="ePD-vC-QAv"/>
+                            <constraint firstItem="0EP-gU-kIi" firstAttribute="top" secondItem="QxM-GP-DWE" secondAttribute="bottom" constant="10" id="j2w-uM-fzo"/>
+                            <constraint firstItem="0EP-gU-kIi" firstAttribute="bottom" secondItem="BRP-xe-77q" secondAttribute="bottom" id="ji2-KT-TTv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BRP-xe-77q"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Song" id="vRy-eP-GAi"/>
+                    <connections>
+                        <outlet property="tableView" destination="0EP-gU-kIi" id="7p5-FB-RuY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="upU-ym-kfC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3384.057971014493" y="154.6875"/>
         </scene>
     </scenes>
 </document>

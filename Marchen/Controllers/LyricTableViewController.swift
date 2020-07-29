@@ -96,7 +96,6 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let idx = indexOfLineToFocus {
             if indexPath.row == idx {
-                print("Focusing: \(idx)")
                 (cell as! LyricLineTableViewCell).lyricTextField.becomeFirstResponder()
             }
         }
@@ -154,6 +153,22 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
+    //MARK: - New Song Button Clicked
+    @IBAction func newSongButtonClicked(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "NewLyricToNewSong", sender: self)
+    }
+    
+    //MARK: - Prepare Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let destinationVC = segue.destination as! NewSongViewController
+        
+        destinationVC.selectedLyric = selectedLyric
+
+    }
+    
+    
     
     //MARK: - View Functions
     

@@ -16,6 +16,9 @@
 		E30C02AD24CEF27A00EBEEB1 /* LyricLineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02AB24CEF27A00EBEEB1 /* LyricLineTableViewCell.swift */; };
 		E30C02AE24CEF27A00EBEEB1 /* LyricLineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E30C02AC24CEF27A00EBEEB1 /* LyricLineTableViewCell.xib */; };
 		E30C02B024CEF89D00EBEEB1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02AF24CEF89D00EBEEB1 /* Constants.swift */; };
+		E30C02B424D1703D00EBEEB1 /* NewSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02B324D1703D00EBEEB1 /* NewSongViewController.swift */; };
+		E30C02B724D1729C00EBEEB1 /* ChordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02B524D1729C00EBEEB1 /* ChordTableViewCell.swift */; };
+		E30C02B824D1729C00EBEEB1 /* ChordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E30C02B624D1729C00EBEEB1 /* ChordTableViewCell.xib */; };
 		E355808324C5A24400DCA763 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355808224C5A24400DCA763 /* AppDelegate.swift */; };
 		E355808524C5A24400DCA763 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355808424C5A24400DCA763 /* SceneDelegate.swift */; };
 		E355808A24C5A24400DCA763 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E355808824C5A24400DCA763 /* Main.storyboard */; };
@@ -57,6 +60,9 @@
 		E30C02AB24CEF27A00EBEEB1 /* LyricLineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricLineTableViewCell.swift; sourceTree = "<group>"; };
 		E30C02AC24CEF27A00EBEEB1 /* LyricLineTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LyricLineTableViewCell.xib; sourceTree = "<group>"; };
 		E30C02AF24CEF89D00EBEEB1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E30C02B324D1703D00EBEEB1 /* NewSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSongViewController.swift; sourceTree = "<group>"; };
+		E30C02B524D1729C00EBEEB1 /* ChordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordTableViewCell.swift; sourceTree = "<group>"; };
+		E30C02B624D1729C00EBEEB1 /* ChordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChordTableViewCell.xib; sourceTree = "<group>"; };
 		E355807F24C5A24400DCA763 /* Marchen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marchen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E355808224C5A24400DCA763 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E355808424C5A24400DCA763 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +135,7 @@
 			children = (
 				E30C029C24CEE80B00EBEEB1 /* MyRepoTableViewController.swift */,
 				E30C02A724CEF16200EBEEB1 /* LyricTableViewController.swift */,
+				E30C02B324D1703D00EBEEB1 /* NewSongViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -139,6 +146,8 @@
 				E355808824C5A24400DCA763 /* Main.storyboard */,
 				E30C02AB24CEF27A00EBEEB1 /* LyricLineTableViewCell.swift */,
 				E30C02AC24CEF27A00EBEEB1 /* LyricLineTableViewCell.xib */,
+				E30C02B524D1729C00EBEEB1 /* ChordTableViewCell.swift */,
+				E30C02B624D1729C00EBEEB1 /* ChordTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -318,6 +327,7 @@
 			files = (
 				E355808F24C5A24400DCA763 /* LaunchScreen.storyboard in Resources */,
 				E355808C24C5A24400DCA763 /* Assets.xcassets in Resources */,
+				E30C02B824D1729C00EBEEB1 /* ChordTableViewCell.xib in Resources */,
 				E355808A24C5A24400DCA763 /* Main.storyboard in Resources */,
 				E30C02AE24CEF27A00EBEEB1 /* LyricLineTableViewCell.xib in Resources */,
 			);
@@ -448,11 +458,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E30C029D24CEE80B00EBEEB1 /* MyRepoTableViewController.swift in Sources */,
+				E30C02B724D1729C00EBEEB1 /* ChordTableViewCell.swift in Sources */,
 				E355808324C5A24400DCA763 /* AppDelegate.swift in Sources */,
 				E355808524C5A24400DCA763 /* SceneDelegate.swift in Sources */,
 				E30C02A124CEE8FE00EBEEB1 /* LyricModel.swift in Sources */,
 				E30C02AD24CEF27A00EBEEB1 /* LyricLineTableViewCell.swift in Sources */,
 				E30C02A924CEF16200EBEEB1 /* LyricTableViewController.swift in Sources */,
+				E30C02B424D1703D00EBEEB1 /* NewSongViewController.swift in Sources */,
 				E30C02B024CEF89D00EBEEB1 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
