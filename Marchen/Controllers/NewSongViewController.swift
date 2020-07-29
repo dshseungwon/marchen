@@ -35,6 +35,42 @@ class NewSongViewController: UIViewController {
         case VII = 6
     }
     
+   
+    // Key(Diatonic Chord Progression) -> Chords
+    // C(I - V - VI - IV) -> C - G - AM - F
+    
+    // Needs to define
+    // Chord DS
+    // Chord: Set of keys
+    
+    
+    // Diatonic Chord Progression DS
+    // -> List of Diatonic chords
+    
+    
+    // Chord Progression DS
+    // -> List of Chords
+    
+    
+    // getChord(Key, Diatonic Chord)
+    // getChord(Key.C, DiatonicChords.I) -> C
+    
+    /*
+     Diatonic Chord Progression:
+     
+     1) I - V - VI - IV
+     2) I - VI - II - V
+     3) II - V - I - VI
+     4) IV - V - III - VI
+     5) I - II - III - IV
+     6) IV - V - VI - III
+     
+     Ref) https://m.post.naver.com/viewer/postView.nhn?volumeNo=26918722&memberNo=16273960
+     
+     */
+    
+    // Scale 의 1 / 3 / 5 음 출력?
+    
     var selectedLyric : LyricModel?
      {
          didSet {
