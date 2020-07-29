@@ -24,14 +24,10 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
     
     var currentEditingLine: Int?
     
+    var indexOfLineToFocus: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         tableView.register(UINib(nibName: K.LyricLineCellNibName, bundle: nil), forCellReuseIdentifier: K.LyricLineCellIdentifier)
         
@@ -64,7 +60,6 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
             fatalError("Error in counting selectedLyric.lines")
         }
         
-        
         // 아직 Lyric line이 추가되지 않은 경우 Guide 표시
         if  indexPath.row == 0 && numOfLines == 0 {
             cell.lyricTextField.text = "'+' 버튼을 눌러 가사를 추가하세요."
@@ -90,6 +85,15 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let idx = indexOfLineToFocus {
+            if indexPath.row == idx {
+                print("Focusing: \(idx)")
+                (cell as! LyricLineTableViewCell).lyricTextField.becomeFirstResponder()
+            }
+        }
+    }
+    
     //MARK: - Load Lyric Function
     func loadLyric() {
         title = selectedLyric?.title
@@ -97,14 +101,23 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
     
     //MARK: - Add Button Clicked
     @IBAction func addButtonClicked(_ sender: UIBarButtonItem) {
+        
+        guard let lyric = selectedLyric else {
+            fatalError("addButtonClicked: selectedLyric doesn't exist.")
+        }
+        
         try! realm.write {
             if let editingLineNum = currentEditingLine {
-                selectedLyric?.lines.insert("", at: editingLineNum + 1)
+                lyric.lines.insert("", at: editingLineNum + 1)
+                
+                indexOfLineToFocus = editingLineNum + 1
             } else {
-                selectedLyric?.lines.append("")
+                lyric.lines.append("")
+                
+                indexOfLineToFocus = lyric.lines.count - 1
             }
-            
         }
+        
         tableView.reloadData()
     }
     
@@ -132,24 +145,24 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
     
     //MARK: - View Functions
     
-    override func viewDidAppear(_ animated: Bool) {
-        //        scrollToTop()
-    }
-    
-    func scrollToTop() {
-        var offset = CGPoint(
-            x: -tableView.contentInset.left,
-            y: -tableView.contentInset.top
-        )
-        
-        if #available(iOS 11.0, *) {
-            offset = CGPoint(
-                x: -tableView.adjustedContentInset.left,
-                // I don't know why this magic number works... lol.
-                y: -(tableView.adjustedContentInset.top + 0.1667))
-        }
-        
-        tableView.setContentOffset(offset, animated: true)
-    }
+    //    override func viewDidAppear(_ animated: Bool) {
+    //        //        scrollToTop()
+    //    }
+    //
+    //    func scrollToTop() {
+    //        var offset = CGPoint(
+    //            x: -tableView.contentInset.left,
+    //            y: -tableView.contentInset.top
+    //        )
+    //
+    //        if #available(iOS 11.0, *) {
+    //            offset = CGPoint(
+    //                x: -tableView.adjustedContentInset.left,
+    //                // I don't know why this magic number works... lol.
+    //                y: -(tableView.adjustedContentInset.top + 0.1667))
+    //        }
+    //
+    //        tableView.setContentOffset(offset, animated: true)
+    //    }
     
 }

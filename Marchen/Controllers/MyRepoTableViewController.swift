@@ -28,6 +28,8 @@ class MyRepoTableViewController: UITableViewController, SwipeTableViewCellDelega
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+//        tableView.rowHeight = 60.0
+        
         tableView.reloadData()
     }
     
@@ -226,7 +228,7 @@ class MyRepoTableViewController: UITableViewController, SwipeTableViewCellDelega
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         
         if orientation == .right {
-            let deleteAction = SwipeAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            let deleteAction = SwipeAction(style: .destructive, title: nil) { (action, indexPath) in
                 self.deleteLyric(at: indexPath)
             }
             
@@ -235,7 +237,7 @@ class MyRepoTableViewController: UITableViewController, SwipeTableViewCellDelega
             return [deleteAction]
             
         } else if orientation == .left {
-            let editAction = SwipeAction(style: .default, title: "Edit Title") { (action, indexPath) in
+            let editAction = SwipeAction(style: .default, title: nil) { (action, indexPath) in
                 self.editLyricTitle(at: indexPath)
             }
             

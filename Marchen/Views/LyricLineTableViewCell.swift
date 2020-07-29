@@ -11,7 +11,8 @@ import UIKit
 class LyricLineTableViewCell: UITableViewCell {
     
     @IBOutlet weak var lyricTextField: UITextField!
-    
+
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -41,4 +42,5 @@ class LyricLineTableViewCell: UITableViewCell {
 //        sender.deleteBackward()
         
     }
+
 }
