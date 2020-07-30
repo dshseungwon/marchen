@@ -34,32 +34,20 @@ enum Mode {
         }
     }
     
+    
     var diatonicTriad: [[Int]] {
         switch self {
         case .major:
-            var idx = 0
-            return Mode.major.triad.map({ (triad) -> [Int] in
-                var mutableTriad = triad
-                mutableTriad = mutableTriad.map { (offset) -> Int in
-                    var mutableOffset = offset
-                    mutableOffset += Mode.major.noteOffsets[idx]
-                    return mutableOffset
+            return Mode.major.triad.enumerated().map({ (idx, triad) -> [Int] in
+                return triad.map {
+                    return $0 + Mode.major.noteOffsets[idx]
                 }
-                idx += 1
-                return mutableTriad
             })
         case .minor:
-            var idx = 0
-            return Mode.minor.triad.map({ (triad) -> [Int] in
-                var mutableTriad = triad
-                mutableTriad = mutableTriad.map { (offset) -> Int in
-                    var mutableOffset = offset
-                    mutableOffset += Mode.minor.noteOffsets[idx]
-                    return mutableOffset
+            return Mode.minor.triad.enumerated().map({ (idx, triad) -> [Int] in
+                return triad.map {
+                    return $0 + Mode.minor.noteOffsets[idx]
                 }
-                idx += 1
-                return mutableTriad
-                
             })
         }
     }
