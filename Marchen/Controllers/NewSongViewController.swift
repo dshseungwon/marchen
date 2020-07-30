@@ -29,7 +29,7 @@ class NewSongViewController: UIViewController {
         }
     }
     
-    var selectedKey: Key?
+    var selectedKey: Key = Key.C
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +42,12 @@ class NewSongViewController: UIViewController {
         pickerView.dataSource = self
         pickerView.delegate = self
         
-        generateButton.isEnabled = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
+        generateButton.isEnabled = false
     }
     
     //MARK: - Load Lyric Function
@@ -65,7 +69,7 @@ extension NewSongViewController: UITableViewDataSource {
         
         let chordProgression = chordProgressions[indexPath.row]
        
-        let strArray = Utils.TransformChordProgressionToStringArray(chordProgression: chordProgression, key: selectedKey ?? Key.C)
+        let strArray = Utils.TransformChordProgressionToStringArray(chordProgression: chordProgression, key: selectedKey )
         
         let format = "%@ - %@ - %@ - %@"
         let formattedString = String(format: format, arguments: strArray)
@@ -107,7 +111,10 @@ extension NewSongViewController: UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedKey = Key(rawValue: row)
+        
+        guard let key = Key(rawValue: row) else { fatalError("Error in setting Key from the picker") }
+        selectedKey = key
+        
         tableView.reloadData()
     }
 }
