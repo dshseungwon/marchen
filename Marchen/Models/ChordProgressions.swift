@@ -8,7 +8,7 @@
 
 import Foundation
 
-var chordProgressions: [[Diatonic]] = [
+let chordProgressions: [[Diatonic]] = [
     [Diatonic.I, Diatonic.V, Diatonic.VI, Diatonic.IV],
     [Diatonic.I, Diatonic.VI, Diatonic.II, Diatonic.V],
     [Diatonic.II, Diatonic.V, Diatonic.I, Diatonic.VI],
