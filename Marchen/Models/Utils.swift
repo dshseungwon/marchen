@@ -46,8 +46,13 @@ class Utils {
 //        return strToKey(str: name)
 //    }
     
+
     static func getChordNameString (key: Key, diatonic: Diatonic) -> String {
-        return keyToStr(key: key) + Mode.major.triadPrefix[diatonic.rawValue]
+        let chordKey = (key.rawValue + Mode.major.noteOffsets[diatonic.rawValue]) % 12
+        let chordKeyStr = Utils.keyToStr(key: Key(rawValue: chordKey)!)
+        let prefixStr = Mode.major.triadPrefix[diatonic.rawValue]
+        
+        return chordKeyStr + prefixStr
     }
     
     static func TransformChordProgressionToStringArray(chordProgression: [Diatonic], key: Key) -> [String] {

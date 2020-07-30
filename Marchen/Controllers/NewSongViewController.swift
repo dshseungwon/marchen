@@ -53,9 +53,9 @@ extension NewSongViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.ChordCellIdentifier, for: indexPath) as! ChordTableViewCell
         
-        let chord = chordProgressions[indexPath.row]
+        let chordProgression = chordProgressions[indexPath.row]
        
-        let strArray = Utils.TransformChordProgressionToStringArray(chordProgression: chord, key: selectedKey ?? Key.C)
+        let strArray = Utils.TransformChordProgressionToStringArray(chordProgression: chordProgression, key: selectedKey ?? Key.C)
         
         let format = "%@ - %@ - %@ - %@"
         let formattedString = String(format: format, arguments: strArray)
