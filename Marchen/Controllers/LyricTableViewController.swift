@@ -15,8 +15,7 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
         return try! Realm()
     }()
     
-    var selectedLyric : LyricModel?
-    {
+    var selectedLyric : LyricModel? {
         didSet {
             loadLyric()
         }
@@ -39,6 +38,12 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
         
         tableView.keyboardDismissMode = .onDrag
        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        loadLyric()
     }
     
     @objc func dissmissKeyboard() {

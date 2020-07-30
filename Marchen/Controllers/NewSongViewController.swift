@@ -50,6 +50,7 @@ class NewSongViewController: UIViewController {
     func loadLyric() {
         title = selectedLyric?.title
     }
+
     
 }
 

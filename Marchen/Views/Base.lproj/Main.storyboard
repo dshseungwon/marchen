@@ -30,7 +30,7 @@
                             <outlet property="delegate" destination="tCq-5o-PXK" id="AgH-kD-bLW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Marchen" id="qn7-vi-LH1">
+                    <navigationItem key="navigationItem" title="Marchen" largeTitleDisplayMode="always" id="qn7-vi-LH1">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="aOo-ZT-p93">
                             <connections>
                                 <action selector="addButtonPressed:" destination="tCq-5o-PXK" id="PqN-4y-Uuf"/>
@@ -86,7 +86,8 @@
                             <outlet property="delegate" destination="Ujp-Yt-C3b" id="QZ3-Fl-xrQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="New Lyric" id="kj8-G4-bYN">
+                    <navigationItem key="navigationItem" title="New Lyric" largeTitleDisplayMode="always" id="kj8-G4-bYN">
+                        <barButtonItem key="backBarButtonItem" title="Edit Lyric" id="lkh-nP-u0j"/>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="oYz-6a-gfE">
                                 <connections>
@@ -164,7 +165,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BRP-xe-77q"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New Song" id="vRy-eP-GAi">
+                    <navigationItem key="navigationItem" title="New Song" largeTitleDisplayMode="always" id="vRy-eP-GAi">
                         <barButtonItem key="rightBarButtonItem" title="Go" id="HWK-gq-kpR">
                             <connections>
                                 <action selector="generateButtonClicked:" destination="qgr-fc-OV2" id="tzV-Bw-oYW"/>
