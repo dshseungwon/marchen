@@ -13,6 +13,7 @@ class NewSongViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pickerView: UIPickerView!
     
+    @IBOutlet weak var generateButton: UIBarButtonItem!
     
     var selectedLyric : LyricModel?
     {
@@ -22,6 +23,12 @@ class NewSongViewController: UIViewController {
     }
     
     var selectedChordProgression: [Diatonic]?
+    {
+        didSet {
+            generateButton.isEnabled = true
+        }
+    }
+    
     var selectedKey: Key?
     
     override func viewDidLoad() {
@@ -34,6 +41,8 @@ class NewSongViewController: UIViewController {
         
         pickerView.dataSource = self
         pickerView.delegate = self
+        
+        generateButton.isEnabled = false
         
     }
     
@@ -114,7 +123,7 @@ extension NewSongViewController {
         let destinationVC = segue.destination as! ChordPlayViewController
         
         destinationVC.selectedKey = selectedKey
-//        destinationVC.selectedChord = selectedChord
+        destinationVC.selectedChordProgression = selectedChordProgression
         
     }
 }

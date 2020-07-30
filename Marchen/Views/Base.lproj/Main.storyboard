@@ -172,6 +172,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="generateButton" destination="HWK-gq-kpR" id="afY-xI-uPi"/>
                         <outlet property="pickerView" destination="yRR-X5-4ao" id="Sk3-WH-qbn"/>
                         <outlet property="tableView" destination="0EP-gU-kIi" id="7p5-FB-RuY"/>
                         <segue destination="H7e-w4-wKg" kind="show" identifier="NewSongToChordPlay" id="9ei-XJ-yTf"/>

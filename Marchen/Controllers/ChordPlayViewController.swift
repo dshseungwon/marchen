@@ -11,7 +11,7 @@ import AudioKit
 
 class ChordPlayViewController: UIViewController {
     
-    var selectedChord: Diatonic?
+    var selectedChordProgression: [Diatonic]?
     var selectedKey: Key?
     
     
@@ -25,17 +25,15 @@ class ChordPlayViewController: UIViewController {
     
     @IBAction func playButtonClicked(_ sender: UIButton) {
         
-        guard let chord = selectedChord  else { fatalError("Error initializing Chord") }
+        guard let chordProgression = selectedChordProgression  else { fatalError("Error initializing Chord") }
         guard let key = selectedKey else { fatalError("Error initializing Key") }
         
-        let chrd = Utils.getChordNotesToPlay(key: key, diatonic: chord)
+        let chord = Utils.getChordNotesToPlay(key: key, diatonic: chordProgression[0])
   
         print(chord)
-        print(key)
-        print(chrd)
         
         var idx = 0
-        for note in chrd {
+        for note in chord {
             playNoteSound(oscillator: oscillatorArray[idx], note: MIDINoteNumber(note))
             idx += 1
         }
