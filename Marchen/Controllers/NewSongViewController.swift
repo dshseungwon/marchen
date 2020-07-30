@@ -13,25 +13,6 @@ class NewSongViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pickerView: UIPickerView!
     
-    // Key(Diatonic Chord Progression) -> Chords
-    // C(I - V - VI - IV) -> C - G - AM - F
-    
-    // Needs to define
-    // Chord DS
-    // Chord: Set of keys
-    
-    
-    // Diatonic Chord Progression DS
-    // -> List of Diatonic chords
-    
-    
-    // Chord Progression DS
-    // -> List of Chords
-    
-    
-    // getChord(Key, Diatonic Chord)
-    // getChord(Key.C, DiatonicChords.I) -> C
-    
     
     var selectedLyric : LyricModel?
     {
@@ -40,7 +21,7 @@ class NewSongViewController: UIViewController {
         }
     }
     
-    var selectedChord: Diatonic?
+    var selectedChordProgression: [Diatonic]?
     var selectedKey: Key?
     
     override func viewDidLoad() {
@@ -66,15 +47,20 @@ class NewSongViewController: UIViewController {
 //MARK: - TableView Datasource Methods
 extension NewSongViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Diatonic.allCases.count
+        return chordProgressions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.ChordCellIdentifier, for: indexPath) as! ChordTableViewCell
         
-        guard let chord = Diatonic(rawValue: indexPath.row) else { fatalError("No such chord exists") }
+        let chord = chordProgressions[indexPath.row]
+       
+        let strArray = Utils.TransformChordProgressionToStringArray(chordProgression: chord, key: selectedKey ?? Key.C)
         
-        cell.chordTextLabel.text = Utils.diatonicToStrDic[chord]
+        let format = "%@ - %@ - %@ - %@"
+        let formattedString = String(format: format, arguments: strArray)
+        
+        cell.chordTextLabel.text = formattedString
         
         return cell
     }
@@ -84,7 +70,7 @@ extension NewSongViewController: UITableViewDataSource {
 extension NewSongViewController: UITableViewDelegate {
     // Choose Chord to make song with.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedChord = Diatonic(rawValue: indexPath.row)
+        selectedChordProgression = chordProgressions[indexPath.row]
     }
     
 }
@@ -127,7 +113,27 @@ extension NewSongViewController {
         let destinationVC = segue.destination as! ChordPlayViewController
         
         destinationVC.selectedKey = selectedKey
-        destinationVC.selectedChord = selectedChord
+//        destinationVC.selectedChord = selectedChord
         
     }
 }
+
+
+// Key(Diatonic Chord Progression) -> Chords
+// C(I - V - VI - IV) -> C - G - AM - F
+
+// Needs to define
+// Chord DS
+// Chord: Set of keys
+
+
+// Diatonic Chord Progression DS
+// -> List of Diatonic chords
+
+
+// Chord Progression DS
+// -> List of Chords
+
+
+// getChord(Key, Diatonic Chord)
+// getChord(Key.C, DiatonicChords.I) -> C

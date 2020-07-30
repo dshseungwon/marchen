@@ -38,21 +38,29 @@ class Utils {
         }
     }
     
+//    Should not use this method. There could exist keys which do not match with the chord name.
+
+    
+//    static func getChordNameKey (key: Key, diatonic: Diatonic) -> Key {
+//        let name = getChordNameString(key: key, diatonic: diatonic)
+//        return strToKey(str: name)
+//    }
+    
     static func getChordNameString (key: Key, diatonic: Diatonic) -> String {
-        return Utils.keyToStr(key: key) + Mode.major.triadPrefix[diatonic.rawValue]
+        return keyToStr(key: key) + Mode.major.triadPrefix[diatonic.rawValue]
     }
     
-    static func getChordNameKey (key: Key, diatonic: Diatonic) -> Key {
-        let name = getChordNameString(key: key, diatonic: diatonic)
-        return strToKey(str: name)
-    }
-    
-    static func TransformChordProgressionToArrayOfKey(chordProgression: [Diatonic], key: Key) -> [Key] {
-        return chordProgression.map { (diatonic) -> Key in
-            Utils.getChordNameKey(key: key, diatonic: diatonic)
+    static func TransformChordProgressionToStringArray(chordProgression: [Diatonic], key: Key) -> [String] {
+        return chordProgression.map { (diatonic) -> String in
+            getChordNameString(key: key, diatonic: diatonic)
         }
     }
     
+    static func KeyArrayToStrArray(keyArray: [Key]) -> [String] {
+        return keyArray.map { (key) -> String in
+            keyToStr(key: key)
+        }
+    }
     
     static let keyToStrDic : [Key: String] = [
         Key.C: "C",
