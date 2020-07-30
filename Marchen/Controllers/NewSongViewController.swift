@@ -42,20 +42,23 @@ class NewSongViewController: UIViewController {
         pickerView.dataSource = self
         pickerView.delegate = self
         
+        generateButton.isEnabled = false
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        generateButton.isEnabled = false
+        // Do no do like this. Rather, just reset the tableview pick after changing the key.
+        //        generateButton.isEnabled = false
     }
     
     //MARK: - Load Lyric Function
     func loadLyric() {
         title = selectedLyric?.title
     }
-
     
+
 }
 
 //MARK: - TableView Datasource Methods
@@ -68,7 +71,7 @@ extension NewSongViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.ChordCellIdentifier, for: indexPath) as! ChordTableViewCell
         
         let chordProgression = chordProgressions[indexPath.row]
-       
+        
         let strArray = Utils.TransformChordProgressionToStringArray(chordProgression: chordProgression, key: selectedKey )
         
         let format = "%@ - %@ - %@ - %@"
@@ -114,6 +117,19 @@ extension NewSongViewController: UIPickerViewDelegate {
         
         guard let key = Key(rawValue: row) else { fatalError("Error in setting Key from the picker") }
         selectedKey = key
+        
+        changeTableViewSetting(tableView: tableView)
+        
+    }
+    
+    //MARK: - TableView Deselect The Selected Item
+    func changeTableViewSetting(tableView: UITableView) {
+        if let selectedTableViewItem = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedTableViewItem, animated: true)
+        } else {
+        }
+        
+        generateButton.isEnabled = false
         
         tableView.reloadData()
     }
