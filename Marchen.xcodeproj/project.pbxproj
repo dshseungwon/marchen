@@ -23,6 +23,7 @@
 		E30C02C524D2A18D00EBEEB1 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02C424D2A18D00EBEEB1 /* Key.swift */; };
 		E30C02C724D2A1AA00EBEEB1 /* Diatonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02C624D2A1AA00EBEEB1 /* Diatonic.swift */; };
 		E30C02C924D2A1FE00EBEEB1 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02C824D2A1FE00EBEEB1 /* Utils.swift */; };
+		E30C02CB24D2A48D00EBEEB1 /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02CA24D2A48D00EBEEB1 /* Mode.swift */; };
 		E355808324C5A24400DCA763 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355808224C5A24400DCA763 /* AppDelegate.swift */; };
 		E355808524C5A24400DCA763 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355808424C5A24400DCA763 /* SceneDelegate.swift */; };
 		E355808A24C5A24400DCA763 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E355808824C5A24400DCA763 /* Main.storyboard */; };
@@ -71,6 +72,7 @@
 		E30C02C424D2A18D00EBEEB1 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		E30C02C624D2A1AA00EBEEB1 /* Diatonic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diatonic.swift; sourceTree = "<group>"; };
 		E30C02C824D2A1FE00EBEEB1 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		E30C02CA24D2A48D00EBEEB1 /* Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
 		E355807F24C5A24400DCA763 /* Marchen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marchen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E355808224C5A24400DCA763 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E355808424C5A24400DCA763 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				E30C02C424D2A18D00EBEEB1 /* Key.swift */,
 				E30C02C624D2A1AA00EBEEB1 /* Diatonic.swift */,
 				E30C02C824D2A1FE00EBEEB1 /* Utils.swift */,
+				E30C02CA24D2A48D00EBEEB1 /* Mode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				E355808324C5A24400DCA763 /* AppDelegate.swift in Sources */,
 				E355808524C5A24400DCA763 /* SceneDelegate.swift in Sources */,
 				E30C02C924D2A1FE00EBEEB1 /* Utils.swift in Sources */,
+				E30C02CB24D2A48D00EBEEB1 /* Mode.swift in Sources */,
 				E30C02A124CEE8FE00EBEEB1 /* LyricModel.swift in Sources */,
 				E30C02AD24CEF27A00EBEEB1 /* LyricLineTableViewCell.swift in Sources */,
 				E30C02A924CEF16200EBEEB1 /* LyricTableViewController.swift in Sources */,

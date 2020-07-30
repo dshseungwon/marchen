@@ -20,6 +20,14 @@ class Utils {
         return key
     }
     
+    static func getChordNotesToPlay (key: Key, diatonic: Diatonic) -> [Int] {
+        let c3Offset = 48
+        
+        return Mode.major.diatonicTriad[diatonic.rawValue].map { (offset) -> Int in
+            c3Offset + offset + key.rawValue
+        }
+    }
+    
     
     static let keyToStrDic : [Key: String] = [
         Key.C: "C",
