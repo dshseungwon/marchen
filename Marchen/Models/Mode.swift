@@ -12,6 +12,10 @@ let majorTriad      = [0, 4, 7]
 let minorTriad      = [0, 3, 7]
 let diminishedTriad = [0, 3, 6]
 
+let majorPrefix = ""
+let minorPrefix = "m"
+let diminishedPrefix = "dim"
+
 enum Mode {
     case major, minor
     
@@ -31,6 +35,16 @@ enum Mode {
             return [majorTriad, minorTriad, minorTriad, majorTriad, majorTriad, minorTriad, diminishedTriad]
         case .minor:
             return [minorTriad, diminishedTriad, majorTriad, minorTriad, minorTriad, majorTriad, majorTriad]
+        }
+    }
+
+    
+    var triadPrefix: [String] {
+        switch self {
+        case .major:
+            return [majorPrefix, minorPrefix, minorPrefix, majorPrefix, majorPrefix, minorPrefix, diminishedPrefix]
+        case .minor:
+            return [minorPrefix, diminishedPrefix, majorPrefix, minorPrefix, minorPrefix, majorPrefix, majorPrefix]
         }
     }
     

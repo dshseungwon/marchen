@@ -38,6 +38,21 @@ class Utils {
         }
     }
     
+    static func getChordNameString (key: Key, diatonic: Diatonic) -> String {
+        return Utils.keyToStr(key: key) + Mode.major.triadPrefix[diatonic.rawValue]
+    }
+    
+    static func getChordNameKey (key: Key, diatonic: Diatonic) -> Key {
+        let name = getChordNameString(key: key, diatonic: diatonic)
+        return strToKey(str: name)
+    }
+    
+    static func TransformChordProgressionToArrayOfKey(chordProgression: [Diatonic], key: Key) -> [Key] {
+        return chordProgression.map { (diatonic) -> Key in
+            Utils.getChordNameKey(key: key, diatonic: diatonic)
+        }
+    }
+    
     
     static let keyToStrDic : [Key: String] = [
         Key.C: "C",
