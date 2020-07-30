@@ -13,29 +13,6 @@ class NewSongViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pickerView: UIPickerView!
     
-    enum Keys: Int, CaseIterable {
-        case C = 0
-        case D = 1
-        case E = 2
-        case F = 3
-        case G = 4
-        case A = 5
-        case B = 6
-    }
-    
-//    let Keys : Dictionary<String, Int> = ["C":0, "D":1, "E":2, "F":3, "G":4, "A":5, "B":6]
-    
-    enum Diatonic: Int, CaseIterable {
-        case I = 0
-        case II = 1
-        case III = 2
-        case IV = 3
-        case V = 4
-        case VI = 5
-        case VII = 6
-    }
-    
-   
     // Key(Diatonic Chord Progression) -> Chords
     // C(I - V - VI - IV) -> C - G - AM - F
     
@@ -78,8 +55,6 @@ class NewSongViewController: UIViewController {
      
      */
     
-    // Scale 의 1 / 3 / 5 음 출력?
-    
     var selectedLyric : LyricModel?
      {
          didSet {
@@ -88,7 +63,7 @@ class NewSongViewController: UIViewController {
      }
     
     var selectedChord: Diatonic?
-    var selectedKey: Keys?
+    var selectedKey: Key?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,23 +96,7 @@ extension NewSongViewController: UITableViewDataSource {
         
         guard let chord = Diatonic(rawValue: indexPath.row) else { fatalError("No such chord exists") }
         
-        switch chord {
-        case Diatonic.I:
-            cell.chordTextLabel.text = "I"
-        case Diatonic.II:
-            cell.chordTextLabel.text = "II"
-        case Diatonic.III:
-            cell.chordTextLabel.text = "III"
-        case Diatonic.IV:
-            cell.chordTextLabel.text = "IV"
-        case Diatonic.V:
-            cell.chordTextLabel.text = "V"
-        case Diatonic.VI:
-            cell.chordTextLabel.text = "VI"
-        case Diatonic.VII:
-            cell.chordTextLabel.text = "VII"
-        }
-        
+        cell.chordTextLabel.text = Utils.diatonicToStrDic[chord]
         
         return cell
     }
@@ -159,7 +118,7 @@ extension NewSongViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Keys.allCases.count
+        return Key.allCases.count
     }
     
     
@@ -168,27 +127,29 @@ extension NewSongViewController: UIPickerViewDataSource {
 //MARK: - PickerView Delegate Methods
 extension NewSongViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        guard let key = Keys(rawValue: row) else { fatalError("No such key exists") }
+        guard let key = Key(rawValue: row) else { fatalError("No such key exists") }
         
-        switch key {
-        case Keys.C:
-            return "C"
-        case Keys.D:
-            return "D"
-        case Keys.E:
-            return "E"
-        case Keys.F:
-            return "F"
-        case Keys.G:
-            return "G"
-        case Keys.A:
-            return "A"
-        case Keys.B:
-            return "B"
-        }
+        return Utils.keyToStr(key: key)
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedKey = Keys(rawValue: row)
+        selectedKey = Key(rawValue: row)
+    }
+}
+
+//MARK: - Prepare Segue
+extension NewSongViewController {
+    
+    @IBAction func generateButtonClicked(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "NewSongToChordPlay", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let destinationVC = segue.destination as! ChordPlayViewController
+        
+        destinationVC.selectedKey = selectedKey
+        destinationVC.selectedChord = selectedChord
+
     }
 }

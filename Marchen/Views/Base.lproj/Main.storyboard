@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H7e-w4-wKg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qpx-9M-5HN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -164,11 +164,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BRP-xe-77q"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New Song" id="vRy-eP-GAi"/>
+                    <navigationItem key="navigationItem" title="New Song" id="vRy-eP-GAi">
+                        <barButtonItem key="rightBarButtonItem" title="Go" id="HWK-gq-kpR">
+                            <connections>
+                                <action selector="generateButtonClicked:" destination="qgr-fc-OV2" id="tzV-Bw-oYW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="pickerView" destination="yRR-X5-4ao" id="Sk3-WH-qbn"/>
                         <outlet property="tableView" destination="0EP-gU-kIi" id="7p5-FB-RuY"/>
-                        <segue destination="H7e-w4-wKg" kind="show" id="9ei-XJ-yTf"/>
+                        <segue destination="H7e-w4-wKg" kind="show" identifier="NewSongToChordPlay" id="9ei-XJ-yTf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="upU-ym-kfC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

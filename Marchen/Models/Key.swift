@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Key: Int {
+enum Key: Int, CaseIterable {
     case C = 0
     case Db = 1
     case D = 2
