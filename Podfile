@@ -8,6 +8,7 @@ target 'Marchen' do
   # Pods for Marchen
 pod 'RealmSwift'
 pod 'SwipeCellKit'
+pod 'AudioKit'
 
   target 'MarchenTests' do
     inherit! :search_paths

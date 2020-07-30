@@ -25,7 +25,7 @@ class NewSongViewController: UIViewController {
     
 //    let Keys : Dictionary<String, Int> = ["C":0, "D":1, "E":2, "F":3, "G":4, "A":5, "B":6]
     
-    enum DiatonicChords: Int, CaseIterable {
+    enum Diatonic: Int, CaseIterable {
         case I = 0
         case II = 1
         case III = 2
@@ -55,6 +55,15 @@ class NewSongViewController: UIViewController {
     // getChord(Key, Diatonic Chord)
     // getChord(Key.C, DiatonicChords.I) -> C
     
+    var chordProgression: [[Diatonic]] = [
+        [Diatonic.I, Diatonic.V, Diatonic.VI, Diatonic.IV],
+        [Diatonic.I, Diatonic.VI, Diatonic.II, Diatonic.V],
+        [Diatonic.II, Diatonic.V, Diatonic.I, Diatonic.VI],
+        [Diatonic.IV, Diatonic.V, Diatonic.III, Diatonic.VI],
+        [Diatonic.I, Diatonic.II, Diatonic.III, Diatonic.IV],
+        [Diatonic.IV, Diatonic.V, Diatonic.VI, Diatonic.III]
+    ]
+    
     /*
      Diatonic Chord Progression:
      
@@ -78,7 +87,7 @@ class NewSongViewController: UIViewController {
          }
      }
     
-    var selectedChord: DiatonicChords?
+    var selectedChord: Diatonic?
     var selectedKey: Keys?
     
     override func viewDidLoad() {
@@ -104,28 +113,28 @@ class NewSongViewController: UIViewController {
 //MARK: - TableView Datasource Methods
 extension NewSongViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DiatonicChords.allCases.count
+        return Diatonic.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.ChordCellIdentifier, for: indexPath) as! ChordTableViewCell
         
-        guard let chord = DiatonicChords(rawValue: indexPath.row) else { fatalError("No such chord exists") }
+        guard let chord = Diatonic(rawValue: indexPath.row) else { fatalError("No such chord exists") }
         
         switch chord {
-        case DiatonicChords.I:
+        case Diatonic.I:
             cell.chordTextLabel.text = "I"
-        case DiatonicChords.II:
+        case Diatonic.II:
             cell.chordTextLabel.text = "II"
-        case DiatonicChords.III:
+        case Diatonic.III:
             cell.chordTextLabel.text = "III"
-        case DiatonicChords.IV:
+        case Diatonic.IV:
             cell.chordTextLabel.text = "IV"
-        case DiatonicChords.V:
+        case Diatonic.V:
             cell.chordTextLabel.text = "V"
-        case DiatonicChords.VI:
+        case Diatonic.VI:
             cell.chordTextLabel.text = "VI"
-        case DiatonicChords.VII:
+        case Diatonic.VII:
             cell.chordTextLabel.text = "VII"
         }
         
@@ -138,7 +147,7 @@ extension NewSongViewController: UITableViewDataSource {
 extension NewSongViewController: UITableViewDelegate {
     // Choose Chord to make song with.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedChord = DiatonicChords(rawValue: indexPath.row)
+        selectedChord = Diatonic(rawValue: indexPath.row)
     }
     
 }

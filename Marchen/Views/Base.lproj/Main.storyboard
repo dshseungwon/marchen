@@ -168,11 +168,46 @@
                     <connections>
                         <outlet property="pickerView" destination="yRR-X5-4ao" id="Sk3-WH-qbn"/>
                         <outlet property="tableView" destination="0EP-gU-kIi" id="7p5-FB-RuY"/>
+                        <segue destination="H7e-w4-wKg" kind="show" id="9ei-XJ-yTf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="upU-ym-kfC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3384.057971014493" y="154.6875"/>
+            <point key="canvasLocation" x="3422" y="155"/>
+        </scene>
+        <!--Chord Play View Controller-->
+        <scene sceneID="Jkg-tY-pOv">
+            <objects>
+                <viewController id="H7e-w4-wKg" customClass="ChordPlayViewController" customModule="Marchen" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zhN-la-bMC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2N-NG-697">
+                                <rect key="frame" x="147" y="261" width="120" height="92"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="playButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="4wp-dv-mrz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkZ-R2-0LK">
+                                <rect key="frame" x="140" y="444" width="127" height="99"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Stop"/>
+                                <connections>
+                                    <action selector="stopButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="Lhc-i8-1gf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="h1g-cb-Dsa"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="248-Bu-UIP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5W8-59-bXJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4227.536231884058" y="154.6875"/>
         </scene>
     </scenes>
 </document>

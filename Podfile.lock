@@ -1,4 +1,10 @@
 PODS:
+  - AudioKit (4.10.1):
+    - AudioKit/Core (= 4.10.1)
+    - AudioKit/UI (= 4.10.1)
+  - AudioKit/Core (4.10.1)
+  - AudioKit/UI (4.10.1):
+    - AudioKit/Core
   - Realm (5.3.2):
     - Realm/Headers (= 5.3.2)
   - Realm/Headers (5.3.2)
@@ -7,20 +13,23 @@ PODS:
   - SwipeCellKit (2.7.1)
 
 DEPENDENCIES:
+  - AudioKit
   - RealmSwift
   - SwipeCellKit
 
 SPEC REPOS:
   trunk:
+    - AudioKit
     - Realm
     - RealmSwift
     - SwipeCellKit
 
 SPEC CHECKSUMS:
+  AudioKit: b8e508a0af3dc7d53caf0ca1002b187a662f949e
   Realm: c6794276ca8884808ba168a22f9d71362b170b85
   RealmSwift: 42ec6cec3170aeeda407f797f07268a7d055ebc7
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
 
-PODFILE CHECKSUM: ffe8a8063290d861e30fcd53e23ec8811282a3b4
+PODFILE CHECKSUM: 3371385602fcc44347cf8ba49431ba7cb2b9c008
 
 COCOAPODS: 1.9.3
