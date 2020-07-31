@@ -58,7 +58,7 @@ class NewSongViewController: UIViewController {
         title = selectedLyric?.title
     }
     
-
+    
 }
 
 //MARK: - TableView Datasource Methods
@@ -153,21 +153,6 @@ extension NewSongViewController {
 }
 
 
-// Key(Diatonic Chord Progression) -> Chords
-// C(I - V - VI - IV) -> C - G - AM - F
-
-// Needs to define
-// Chord DS
-// Chord: Set of keys
-
-
-// Diatonic Chord Progression DS
-// -> List of Diatonic chords
-
-
-// Chord Progression DS
-// -> List of Chords
-
-
-// getChord(Key, Diatonic Chord)
-// getChord(Key.C, DiatonicChords.I) -> C
+extension NewSongViewController {
+    // Implement Here
+}

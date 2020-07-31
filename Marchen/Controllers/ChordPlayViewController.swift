@@ -15,12 +15,18 @@ class ChordPlayViewController: UIViewController {
     var selectedKey: Key?
     
     
-    let waveform = AKTable(.triangle) // .triangle, etc.
+    let waveform = AKTable(AKTableType.triangle)
     
     var oscillatorArray: [AKOscillator] = []
     
     var currentAmplitude = 1.0
     var currentRampDuration = 0.0
+    
+    var bpm = 120
+    
+    func bpmToBarPlaySec (bpm: Int)  -> Double {
+        return Double(60) / Double(bpm) * Double(4)
+    }
     
     
     @IBAction func playButtonClicked(_ sender: UIButton) {
@@ -28,15 +34,26 @@ class ChordPlayViewController: UIViewController {
         guard let chordProgression = selectedChordProgression  else { fatalError("Error initializing Chord") }
         guard let key = selectedKey else { fatalError("Error initializing Key") }
         
-        let chord = Utils.getChordNotesToPlay(key: key, diatonic: chordProgression[0])
-  
-        print(chord)
+        let barPlaySec = bpmToBarPlaySec(bpm: bpm)
         
-        var idx = 0
-        for note in chord {
-            playNoteSound(oscillator: oscillatorArray[idx], note: MIDINoteNumber(note))
-            idx += 1
+        let estimatedPlayTime = barPlaySec * chordProgression.count
+        
+        for (idx, diatonic) in chordProgression.enumerated() {
+            let chord = Utils.getChordNotesToPlay(key: key, diatonic: diatonic)
+            Timer.scheduledTimer(withTimeInterval: barPlaySec * idx, repeats: false) { (timerObj) in
+                for (idx, note) in chord.enumerated() {
+                    self.playNoteSound(oscillator: self.oscillatorArray[idx], note: MIDINoteNumber(note))
+                }
+            }
         }
+        
+        Timer.scheduledTimer(withTimeInterval: estimatedPlayTime, repeats: false) { (timerObj) in
+            for osc in self.oscillatorArray {
+                    osc.amplitude = 0
+                }
+        }
+        
+        
     }
     
     func playNoteSound(oscillator: AKOscillator, note: MIDINoteNumber) {
