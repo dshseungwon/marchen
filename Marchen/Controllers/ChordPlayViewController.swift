@@ -37,20 +37,24 @@ class ChordPlayViewController: UIViewController {
         let barPlaySec = bpmToBarPlaySec(bpm: bpm)
         
         let estimatedPlayTime = barPlaySec * chordProgression.count
-        
-        for (idx, diatonic) in chordProgression.enumerated() {
-            let chord = Utils.getChordNotesToPlay(key: key, diatonic: diatonic)
-            Timer.scheduledTimer(withTimeInterval: barPlaySec * idx, repeats: false) { (timerObj) in
-                for (idx, note) in chord.enumerated() {
-                    self.playNoteSound(oscillator: self.oscillatorArray[idx], note: MIDINoteNumber(note))
+//
+//        let timesToPlay = 2
+//
+//        for time in 1...timesToPlay {
+            for (idx, diatonic) in chordProgression.enumerated() {
+                let chord = Utils.getChordNotesToPlay(key: key, diatonic: diatonic)
+                Timer.scheduledTimer(withTimeInterval: barPlaySec * idx, repeats: false) { (timerObj) in
+                    for (idx, note) in chord.enumerated() {
+                        self.playNoteSound(oscillator: self.oscillatorArray[idx], note: MIDINoteNumber(note))
+                    }
                 }
             }
-        }
+//        }
         
         Timer.scheduledTimer(withTimeInterval: estimatedPlayTime, repeats: false) { (timerObj) in
             for osc in self.oscillatorArray {
-                    osc.amplitude = 0
-                }
+                osc.amplitude = 0
+            }
         }
         
         
