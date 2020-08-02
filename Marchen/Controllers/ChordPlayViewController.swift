@@ -13,6 +13,7 @@ class ChordPlayViewController: UIViewController {
     
     var selectedChordProgression: [Diatonic]?
     var selectedKey: Key?
+    var isStop = false
     
     
     let waveform = AKTable(AKTableType.triangle)
@@ -30,6 +31,7 @@ class ChordPlayViewController: UIViewController {
     
     
     @IBAction func playButtonClicked(_ sender: UIButton) {
+
         
         guard let chordProgression = selectedChordProgression  else { fatalError("Error initializing Chord") }
         guard let key = selectedKey else { fatalError("Error initializing Key") }
@@ -37,23 +39,28 @@ class ChordPlayViewController: UIViewController {
         let barPlaySec = bpmToBarPlaySec(bpm: bpm)
         
         let estimatedPlayTime = barPlaySec * chordProgression.count
-//
-//        let timesToPlay = 2
-//
-//        for time in 1...timesToPlay {
+
+        let timesToPlay = 2
+
+        isStop = false
+
+        for time in 1...timesToPlay {
             for (idx, diatonic) in chordProgression.enumerated() {
                 let chord = Utils.getChordNotesToPlay(key: key, diatonic: diatonic)
                 Timer.scheduledTimer(withTimeInterval: barPlaySec * idx, repeats: false) { (timerObj) in
                     for (idx, note) in chord.enumerated() {
-                        self.playNoteSound(oscillator: self.oscillatorArray[idx], note: MIDINoteNumber(note))
+                        if (isStop == false) {
+                            self.playNoteSound(oscillator: self.oscillatorArray[idx], note: MIDINoteNumber(note))
+                        }
                     }
                 }
             }
-//        }
-        
+        }
+
         Timer.scheduledTimer(withTimeInterval: estimatedPlayTime, repeats: false) { (timerObj) in
             for osc in self.oscillatorArray {
                 osc.amplitude = 0
+               
             }
         }
         
@@ -61,6 +68,8 @@ class ChordPlayViewController: UIViewController {
     }
     
     func playNoteSound(oscillator: AKOscillator, note: MIDINoteNumber) {
+        isStop = true
+
         // start from the correct note if amplitude is zero
         if oscillator.amplitude == 0 {
             oscillator.rampDuration = 0
