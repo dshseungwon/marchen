@@ -13,7 +13,9 @@ class ChordPlayViewController: UIViewController {
     
     var selectedChordProgression: [Diatonic]?
     var selectedKey: Key?
-    var isStop = false
+    
+    var isStop = true
+    var DoesStopNext = false
     
     
     let waveform = AKTable(AKTableType.triangle)
@@ -24,52 +26,133 @@ class ChordPlayViewController: UIViewController {
     var currentRampDuration = 0.0
     
     var bpm = 120
+    var playingIndex = 0
     
     func bpmToBarPlaySec (bpm: Int)  -> Double {
         return Double(60) / Double(bpm) * Double(4)
     }
     
+    func playTriadChord(chord: [Int]) {
+        print(self.playingIndex)
+        if(!isStop) {
+            for (idx, note) in chord.enumerated() {
+                self.playNoteSound(oscillator: self.oscillatorArray[idx], note: MIDINoteNumber(note))
+            }
+            self.playingIndex += 1
+        }
+    }
     
     @IBAction func playButtonClicked(_ sender: UIButton) {
-
         
         guard let chordProgression = selectedChordProgression  else { fatalError("Error initializing Chord") }
         guard let key = selectedKey else { fatalError("Error initializing Key") }
         
         let barPlaySec = bpmToBarPlaySec(bpm: bpm)
         
-        let estimatedPlayTime = barPlaySec * chordProgression.count
-
-        let timesToPlay = 2
-
+//        let estimatedPlayTime = barPlaySec * chordProgression.count
+        playingIndex = 0
         isStop = false
-
-        for time in 1...timesToPlay {
-            for (idx, diatonic) in chordProgression.enumerated() {
-                let chord = Utils.getChordNotesToPlay(key: key, diatonic: diatonic)
-                Timer.scheduledTimer(withTimeInterval: barPlaySec * idx, repeats: false) { (timerObj) in
-                    for (idx, note) in chord.enumerated() {
-                        if (isStop == false) {
-                            self.playNoteSound(oscillator: self.oscillatorArray[idx], note: MIDINoteNumber(note))
+        
+        
+        if (self.playingIndex < chordProgression.count) {
+            let currentDiatonic = chordProgression[playingIndex]
+            let currentChord = Utils.getChordNotesToPlay(key: key, diatonic: currentDiatonic)
+            
+            self.playTriadChord(chord: currentChord)
+            
+            if (self.playingIndex >= chordProgression.count) {
+                self.playingIndex = 0
+                self.isStop = true
+                return
+            }
+            
+            Timer.scheduledTimer(withTimeInterval: barPlaySec, repeats: true) { (timerObj) in
+                // Should notified that isStop value changed and call timerObj.invalidate.
+                if (self.isStop) {
+                    timerObj.invalidate()
+                }
+                
+                let currentDiatonic = chordProgression[self.playingIndex]
+                let currentChord = Utils.getChordNotesToPlay(key: key, diatonic: currentDiatonic)
+                self.playTriadChord(chord: currentChord)
+                
+                if (self.playingIndex >= chordProgression.count) {
+                    timerObj.invalidate()
+                    Timer.scheduledTimer(withTimeInterval: barPlaySec, repeats: false) { (timer) in
+                        for osc in self.oscillatorArray {
+                            osc.amplitude = 0
                         }
+                        self.playingIndex = 0
+                        self.isStop = true
                     }
                 }
             }
         }
-
-        Timer.scheduledTimer(withTimeInterval: estimatedPlayTime, repeats: false) { (timerObj) in
-            for osc in self.oscillatorArray {
-                osc.amplitude = 0
-               
-            }
-        }
+        
+        //        for (idx, diatonic) in chordProgression.enumerated() {
+        //            let chord = Utils.getChordNotesToPlay(key: key, diatonic: diatonic)
+        //            Timer.scheduledTimer(withTimeInterval: barPlaySec * idx, repeats: false) { (timerObj) in
+        //                for (idx, note) in chord.enumerated() {
+        //                    if (self.isStop == false) {
+        //                        self.playNoteSound(oscillator: self.oscillatorArray[idx], note: MIDINoteNumber(note))
+        //                    }
+        //                }
+        //            }
+        //        }
+        //
+        //        Timer.scheduledTimer(withTimeInterval: estimatedPlayTime, repeats: false) { (timerObj) in
+        //            for osc in self.oscillatorArray {
+        //                osc.amplitude = 0
+        //
+        //            }
+        //        }
         
         
     }
     
+    func anotherPlayButtonClicked() {
+        /*
+        moves 'tick'
+        when tick hits the another chord, changes osciliator information
+        update Tick using the timer. (+0.01 sec)
+         
+         Chord arrangement
+         0(startTime) ..< 2(endTime) C(chordName)
+         2 ..< 4 G
+         4 ..< 6 AM
+         6 ..< 8 F
+         
+         >> List of tuples
+         [(String, startTime, endTime)]
+         
+         
+         Boundary check function
+         getChord(currentTime) = C
+         
+         getChord(currentTime: Double) -> String? {
+             for chordInfo in songChords {
+                if chordInfo.1 <= currentTime && currentTime < chordInfo.2 {
+                    return chordInfo.0
+                }
+             }
+             return nil
+         }
+         
+         How to check
+        currentPlayingChord != current
+        when timer update... getChord(currentTime)
+         if getChord(currentTime) != currentChord {
+            do something...
+            currentChord = getChord(currentTime)
+         }
+        
+         
+        */
+    }
+    
+    
     func playNoteSound(oscillator: AKOscillator, note: MIDINoteNumber) {
-        isStop = true
-
+        
         // start from the correct note if amplitude is zero
         if oscillator.amplitude == 0 {
             oscillator.rampDuration = 0
@@ -83,6 +166,8 @@ class ChordPlayViewController: UIViewController {
     }
     
     @IBAction func stopButtonClicked(_ sender: UIButton) {
+        isStop = true
+        
         for osc in oscillatorArray {
             osc.amplitude = 0
         }
