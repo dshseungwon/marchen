@@ -48,11 +48,8 @@ class ChordPlayViewController: UIViewController {
     
     var tickTimer: Timer?
     
-    var playingIndex = 0
-    
+    var isMute = false
     var isStop = true
-    var DoesStopNext = false
-    
     
     
     func composeSong() {
@@ -120,6 +117,16 @@ class ChordPlayViewController: UIViewController {
         tickTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { (timerObj) in
             self.currentTick += 0.01
             
+            let diatonicOfCurrentTick = self.getDiatonicOfCurrentTick()
+            if diatonicOfCurrentTick != self.currentDiatonic {
+                self.currentDiatonic = diatonicOfCurrentTick
+                
+                if !self.isMute {
+                    self.playCurrentDiatonic()
+                }
+                
+            }
+            
             if self.currentTick >= self.songPlayTime {
                 self.stopTick()
             }
@@ -135,11 +142,18 @@ class ChordPlayViewController: UIViewController {
     }
     
     
-    @IBAction func playButtonClicked(_ sender: UIButton) {
-        guard let chordProgression = selectedChordProgression  else { fatalError("Error initializing Chord") }
+    func playCurrentDiatonic() {
         guard let key = selectedKey else { fatalError("Error initializing Key") }
         
+        let currentChordNotes = Utils.getChordNotesToPlay(key: key, diatonic: currentDiatonic)
         
+        for (idx, note) in currentChordNotes.enumerated() {
+            self.playNoteSound(oscillator: self.oscillatorArray[idx], note: MIDINoteNumber(note))
+        }
+        
+    }
+    
+    @IBAction func playButtonClicked(_ sender: UIButton) {
         
         
         //        let estimatedPlayTime = barPlaySec * chordProgression.count
@@ -203,18 +217,7 @@ class ChordPlayViewController: UIViewController {
         
     }
     
-    func playTriadChord(chord: [Int]) {
-        print(self.playingIndex)
-        if(!isStop) {
-            for (idx, note) in chord.enumerated() {
-                self.playNoteSound(oscillator: self.oscillatorArray[idx], note: MIDINoteNumber(note))
-            }
-            self.playingIndex += 1
-        }
-    }
-    
     func playNoteSound(oscillator: AKOscillator, note: MIDINoteNumber) {
-        
         // start from the correct note if amplitude is zero
         if oscillator.amplitude == 0 {
             oscillator.rampDuration = 0
@@ -228,10 +231,8 @@ class ChordPlayViewController: UIViewController {
     }
     
     @IBAction func stopButtonClicked(_ sender: UIButton) {
-        isStop = true
-        
         for osc in oscillatorArray {
-            osc.amplitude = 0
+            osc.stop()
         }
     }
     
