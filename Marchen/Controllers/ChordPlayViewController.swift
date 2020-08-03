@@ -97,45 +97,6 @@ class ChordPlayViewController: UIViewController {
     }
 
     
-    /*
-     moves 'tick'
-     when tick hits the another chord, changes osciliator information
-     update Tick using the timer. (+0.01 sec)
-     
-     Chord arrangement
-     0(startTime) ..< 2(endTime) C(chordName)
-     2 ..< 4 G
-     4 ..< 6 AM
-     6 ..< 8 F
-     
-     >> List of tuples
-     [(String, startTime, endTime)]
-     
-     
-     Boundary check function
-     getChord(currentTime) = C
-     
-     getChord(currentTime: Double) -> String? {
-     for chordInfo in songChords {
-     if chordInfo.1 <= currentTime && currentTime < chordInfo.2 {
-     return chordInfo.0
-     }
-     }
-     return nil
-     }
-     
-     How to check
-     currentPlayingChord != current
-     when timer update... getChord(currentTime)
-     if getChord(currentTime) != currentChord {
-     do something...
-     currentChord = getChord(currentTime)
-     }
-     
-     
-     */
-    
-    
     func updateTick() {
         if tickTimer == nil {
             tickTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { (timerObj) in
@@ -311,3 +272,43 @@ class ChordPlayViewController: UIViewController {
   //
   //            }
   //        }
+
+
+
+/*
+ moves 'tick'
+ when tick hits the another chord, changes osciliator information
+ update Tick using the timer. (+0.01 sec)
+ 
+ Chord arrangement
+ 0(startTime) ..< 2(endTime) C(chordName)
+ 2 ..< 4 G
+ 4 ..< 6 AM
+ 6 ..< 8 F
+ 
+ >> List of tuples
+ [(String, startTime, endTime)]
+ 
+ 
+ Boundary check function
+ getChord(currentTime) = C
+ 
+ getChord(currentTime: Double) -> String? {
+ for chordInfo in songChords {
+ if chordInfo.1 <= currentTime && currentTime < chordInfo.2 {
+ return chordInfo.0
+ }
+ }
+ return nil
+ }
+ 
+ How to check
+ currentPlayingChord != current
+ when timer update... getChord(currentTime)
+ if getChord(currentTime) != currentChord {
+ do something...
+ currentChord = getChord(currentTime)
+ }
+ 
+ 
+ */
