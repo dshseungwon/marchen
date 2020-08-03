@@ -153,7 +153,6 @@
 				E30C02A724CEF16200EBEEB1 /* LyricTableViewController.swift */,
 				E30C02B324D1703D00EBEEB1 /* NewSongViewController.swift */,
 				E30C02C224D26A3600EBEEB1 /* ChordPlayViewController.swift */,
-				E3BB255F24D8097D0008DB34 /* SongEngine.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -174,6 +173,7 @@
 		E30C02A224CEE92D00EBEEB1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E3BB255F24D8097D0008DB34 /* SongEngine.swift */,
 				E30C02A024CEE8FE00EBEEB1 /* LyricModel.swift */,
 				E30C02C424D2A18D00EBEEB1 /* Key.swift */,
 				E30C02C624D2A1AA00EBEEB1 /* Diatonic.swift */,
@@ -209,12 +209,12 @@
 		E355808124C5A24400DCA763 /* Marchen */ = {
 			isa = PBXGroup;
 			children = (
+				E355808B24C5A24400DCA763 /* Assets.xcassets */,
 				E355808224C5A24400DCA763 /* AppDelegate.swift */,
 				E355808424C5A24400DCA763 /* SceneDelegate.swift */,
 				E30C02A224CEE92D00EBEEB1 /* Models */,
 				E30C029F24CEE81A00EBEEB1 /* Views */,
 				E30C029E24CEE81000EBEEB1 /* Controllers */,
-				E355808B24C5A24400DCA763 /* Assets.xcassets */,
 				E355808D24C5A24400DCA763 /* LaunchScreen.storyboard */,
 				E355809024C5A24400DCA763 /* Info.plist */,
 				E30C02AF24CEF89D00EBEEB1 /* Constants.swift */,

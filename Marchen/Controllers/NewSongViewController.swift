@@ -160,6 +160,11 @@ extension NewSongViewController {
     }
 }
 
+// Event-driven
+// Wrapper Class
+// isInitied
+// Some keyword
+
 
 extension NewSongViewController: ChordPlayable {
     

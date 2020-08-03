@@ -96,13 +96,15 @@ class SongEngine {
         composeSong()
     }
     
-    // Needs further implementation.
-    func mute() {
-        isMute = true
-    }
+// Needs further implementation.
+//    func mute() {
+//        isMute = true
+//    }
     
     func play() {
-        updateTick()
+        if(isAvailable()) {
+            updateTick()
+        }
     }
     
     func stop() {
