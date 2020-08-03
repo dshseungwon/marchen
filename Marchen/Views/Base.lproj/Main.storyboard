@@ -191,27 +191,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2N-NG-697">
-                                <rect key="frame" x="147" y="261" width="120" height="92"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2N-NG-697">
+                                <rect key="frame" x="192" y="342" width="30" height="30"/>
                                 <state key="normal" title="Play"/>
                                 <connections>
                                     <action selector="playButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="4wp-dv-mrz"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkZ-R2-0LK">
-                                <rect key="frame" x="140" y="444" width="127" height="99"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkZ-R2-0LK">
+                                <rect key="frame" x="191" y="472" width="32" height="30"/>
                                 <state key="normal" title="Stop"/>
                                 <connections>
                                     <action selector="stopButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="Lhc-i8-1gf"/>
                                 </connections>
                             </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="01T-X7-JPj">
+                                <rect key="frame" x="120" y="240" width="174" height="2"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="01T-X7-JPj" firstAttribute="leading" secondItem="zhN-la-bMC" secondAttribute="leadingMargin" constant="100" id="66a-ZO-S8b"/>
+                            <constraint firstItem="vkZ-R2-0LK" firstAttribute="top" secondItem="m2N-NG-697" secondAttribute="bottom" constant="100" id="9L7-6H-Ugt"/>
+                            <constraint firstItem="01T-X7-JPj" firstAttribute="centerX" secondItem="zhN-la-bMC" secondAttribute="centerX" id="KCq-sL-9YZ"/>
+                            <constraint firstItem="m2N-NG-697" firstAttribute="top" secondItem="01T-X7-JPj" secondAttribute="bottom" constant="100" id="Rjt-t1-xen"/>
+                            <constraint firstItem="01T-X7-JPj" firstAttribute="top" secondItem="h1g-cb-Dsa" secondAttribute="top" constant="100" id="SWh-ml-OYU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="01T-X7-JPj" secondAttribute="trailing" constant="100" id="Se7-Dj-Nvj"/>
+                            <constraint firstItem="vkZ-R2-0LK" firstAttribute="centerX" secondItem="zhN-la-bMC" secondAttribute="centerX" id="lcb-Gp-Ak0"/>
+                            <constraint firstItem="m2N-NG-697" firstAttribute="centerX" secondItem="zhN-la-bMC" secondAttribute="centerX" id="xA9-ao-eAz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="h1g-cb-Dsa"/>
                     </view>
                     <navigationItem key="navigationItem" id="248-Bu-UIP"/>
+                    <connections>
+                        <outlet property="progressView" destination="01T-X7-JPj" id="Q0M-Wr-9Xa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5W8-59-bXJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

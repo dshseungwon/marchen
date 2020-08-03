@@ -12,6 +12,9 @@ import AudioKit
 class ChordPlayViewController: UIViewController {
     
     
+    @IBOutlet weak var progressView: UIProgressView!
+    
+    
     // From the Previous VC
     var selectedChordProgression: [Diatonic]? {  // e.g. [I, V, VI, IV]
         didSet {
@@ -34,19 +37,24 @@ class ChordPlayViewController: UIViewController {
     var barPlayTime: Double {
         return Double(60) / Double(bpm) * Double(4)
     }
-    var progressionRepeats = 2
+    var progressionRepeats = 1
     
     var songPlayTime: Double {
         return barPlayTime * progressionRepeats * 4
     }
     
-    var songDiatonics: [(Diatonic, Double, Double)] = []
+    var songDiatonics: [(Diatonic, Double, Double, Int)] = []
     
     // To control playing flow
     var currentTick: Double = 0.0
     var currentDiatonic: Diatonic!
     
     var tickTimer: Timer?
+    
+    var currentProgress: Float {
+        return Float(self.currentTick / self.songPlayTime)
+    }
+    var currentChordIndex = -1
     
     var isMute = false
     var isStop = true
@@ -57,11 +65,15 @@ class ChordPlayViewController: UIViewController {
         // Force-unwrap is actually safe.
         let chordProgression = selectedChordProgression!
         
+        var chordIndex = 0
+        
         for diatonic in chordProgression {
             let endTime = startTime+barPlayTime
-            songDiatonics.append((diatonic, startTime, endTime))
+            songDiatonics.append((diatonic, startTime, endTime, chordIndex))
             startTime = endTime
+            chordIndex += 1
         }
+        
         currentDiatonic = chordProgression[0]
     }
     
@@ -74,6 +86,16 @@ class ChordPlayViewController: UIViewController {
         }
         return nil
     }
+    
+    func getChordIndexOfCurrentTick() -> Int {
+        for diatonicInfo in songDiatonics {
+            if diatonicInfo.1 <= currentTick && currentTick < diatonicInfo.2 {
+                return diatonicInfo.3
+            }
+        }
+        return -1
+    }
+
     
     /*
      moves 'tick'
@@ -113,22 +135,28 @@ class ChordPlayViewController: UIViewController {
      
      */
     
+    
     func updateTick() {
         tickTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { (timerObj) in
             self.currentTick += 0.01
             
+            self.progressView.setProgress(self.currentProgress, animated: true)
+            
+            if self.currentTick >= self.songPlayTime {
+                self.stopTick()
+                return
+            }
+            
+            let chordIndexOfCurrentTick = self.getChordIndexOfCurrentTick()
             let diatonicOfCurrentTick = self.getDiatonicOfCurrentTick()
-            if diatonicOfCurrentTick != self.currentDiatonic {
+            
+            if chordIndexOfCurrentTick != self.currentChordIndex {
+                self.currentChordIndex = chordIndexOfCurrentTick
                 self.currentDiatonic = diatonicOfCurrentTick
                 
                 if !self.isMute {
                     self.playCurrentDiatonic()
                 }
-                
-            }
-            
-            if self.currentTick >= self.songPlayTime {
-                self.stopTick()
             }
         }
     }
@@ -155,6 +183,7 @@ class ChordPlayViewController: UIViewController {
     
     @IBAction func playButtonClicked(_ sender: UIButton) {
         
+        updateTick()
         
         //        let estimatedPlayTime = barPlaySec * chordProgression.count
         //        playingIndex = 0
@@ -231,6 +260,8 @@ class ChordPlayViewController: UIViewController {
     }
     
     @IBAction func stopButtonClicked(_ sender: UIButton) {
+        stopTick()
+        
         for osc in oscillatorArray {
             osc.stop()
         }
