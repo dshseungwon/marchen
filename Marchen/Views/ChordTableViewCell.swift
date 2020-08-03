@@ -10,7 +10,7 @@ import UIKit
 
 class ChordTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var chordTextLabel: UILabel!
+    @IBOutlet weak var chordTextLabel: PaddedLabel!
     @IBOutlet weak var chordPlayButton: UIButton!
     
     

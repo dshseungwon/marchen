@@ -35,6 +35,7 @@ class NewSongViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.register(UINib(nibName: K.ChordCellNibName, bundle: nil), forCellReuseIdentifier: K.ChordCellIdentifier)
+        tableView.rowHeight = 50.0
         
         tableView.dataSource = self
         tableView.delegate = self
