@@ -160,10 +160,12 @@ extension NewSongViewController {
     }
 }
 
-// Event-driven
-// Wrapper Class
-// isInitied
-// Some keyword
+
+// How to deal with the initializating timing problem?
+// 1. Event-driven
+// 2. Wrapper Class
+// 3. isInitied
+// 4. Some keyword
 
 
 extension NewSongViewController: ChordPlayable {

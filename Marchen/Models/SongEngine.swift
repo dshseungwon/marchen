@@ -49,7 +49,7 @@ class SongEngine {
     private var barPlayTime: Double {
         return Double(60) / Double(bpm) * Double(4)
     }
-    private var progressionRepeats = 1
+    private var progressionRepeats = 10
     
     private var songPlayTime: Double {  // Assume that the Chord Progression ONLY consists of 4 chords.
         return barPlayTime * progressionRepeats * 4
@@ -128,13 +128,14 @@ class SongEngine {
             guard let progression =  diatonicProgression else { fatalError("diatonicProgression not set") }
             var startTime: Double = 0.0
             var chordIndex = 0
-            for diatonic in progression {
-                let endTime = startTime+barPlayTime
-                songDiatonics.append((diatonic, startTime, endTime, chordIndex))
-                startTime = endTime
-                chordIndex += 1
+            for _ in 0 ..< progressionRepeats {
+                for diatonic in progression {
+                    let endTime = startTime + barPlayTime
+                    songDiatonics.append((diatonic, startTime, endTime, chordIndex))
+                    startTime = endTime
+                    chordIndex += 1
+                }
             }
-            
             currentDiatonic = progression[0]
         }
     }
