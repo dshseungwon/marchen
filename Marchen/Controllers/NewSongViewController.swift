@@ -71,6 +71,7 @@ extension NewSongViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.ChordCellIdentifier, for: indexPath) as! ChordTableViewCell
         
+        // Set Label
         let chordProgression = chordProgressions[indexPath.row]
         
         let strArray = Utils.TransformChordProgressionToStringArray(chordProgression: chordProgression, key: selectedKey )
@@ -79,6 +80,9 @@ extension NewSongViewController: UITableViewDataSource {
         let formattedString = String(format: format, arguments: strArray)
         
         cell.chordTextLabel.text = formattedString
+        
+        // Set Button
+        cell.delegate = self
         
         return cell
     }
@@ -154,6 +158,14 @@ extension NewSongViewController {
 }
 
 
-extension NewSongViewController {
-    // Implement Here
+extension NewSongViewController: ChordPlayable {
+    
+    func play() {
+        print("HI!")
+    }
+    
+    func stop() {
+        print("STOP!")
+    }
+    
 }
