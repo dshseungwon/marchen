@@ -12,19 +12,11 @@ import AudioKit
 class SongEngine {
     
     // From the Previous VC
-    var diatonicProgression: [Diatonic] {  // e.g. [I, V, VI, IV]
-        didSet {
-            composeSong()
-        }
-    }
-    var key: Key // e.g. Key.C
+    var diatonicProgression: [Diatonic]? // e.g. [I, V, VI, IV]
+    var key: Key? // e.g. Key.C
     
     //MARK: - INIT METHODS
-    init(diatonicProgression: [Diatonic], key: Key) {
-        self.diatonicProgression = diatonicProgression
-        self.key = key
-        
-        
+    init() {
         let oscillatorA = AKOscillator(waveform: waveform)
         oscillatorArray.append(oscillatorA)
         
@@ -98,6 +90,12 @@ class SongEngine {
         return progressionRepeats
     }
     
+    func setKeyAndDiatonicProgression(key: Key, diatonicProgression: [Diatonic]) {
+        self.key = key
+        self.diatonicProgression = diatonicProgression
+        composeSong()
+    }
+    
     // Needs further implementation.
     func mute() {
         isMute = true
@@ -115,17 +113,28 @@ class SongEngine {
         try! AudioKit.stop()
     }
     
-    private func composeSong() {
-        var startTime: Double = 0.0
-        var chordIndex = 0
-        for diatonic in diatonicProgression {
-            let endTime = startTime+barPlayTime
-            songDiatonics.append((diatonic, startTime, endTime, chordIndex))
-            startTime = endTime
-            chordIndex += 1
+    private func isAvailable() -> Bool {
+        if key == nil || diatonicProgression == nil {
+            return false
+        } else {
+            return true
         }
-        
-        currentDiatonic = diatonicProgression[0]
+    }
+    
+    private func composeSong() {
+        if isAvailable() {
+            guard let progression =  diatonicProgression else { fatalError("diatonicProgression not set") }
+            var startTime: Double = 0.0
+            var chordIndex = 0
+            for diatonic in progression {
+                let endTime = startTime+barPlayTime
+                songDiatonics.append((diatonic, startTime, endTime, chordIndex))
+                startTime = endTime
+                chordIndex += 1
+            }
+            
+            currentDiatonic = progression[0]
+        }
     }
     
     
@@ -200,10 +209,12 @@ class SongEngine {
     }
     
     private func playCurrentDiatonic() {
-        let currentChordNotes = Utils.getChordNotesToPlay(key: key, diatonic: currentDiatonic)
-        
-        for (idx, note) in currentChordNotes.enumerated() {
-            self.playNoteSound(oscillator: self.oscillatorArray[idx], note: MIDINoteNumber(note))
+        if isAvailable() {
+            let currentChordNotes = Utils.getChordNotesToPlay(key: key!, diatonic: currentDiatonic)
+            
+            for (idx, note) in currentChordNotes.enumerated() {
+                self.playNoteSound(oscillator: self.oscillatorArray[idx], note: MIDINoteNumber(note))
+            }
         }
     }
     

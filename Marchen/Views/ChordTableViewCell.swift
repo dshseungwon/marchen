@@ -9,14 +9,16 @@
 import UIKit
 
 protocol ChordPlayable {
-    func play()
+    func play(diatonicProgression: [Diatonic])
     func stop()
 }
 
 class ChordTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var chordTextLabel: PaddedLabel!
     @IBOutlet weak var chordPlayButton: UIButton!
+    
+    var cellDiatonicProgression: [Diatonic]?   // e.g. [I, V, VI, IV]
     
     var isPlaying: Bool = false
     var delegate: ChordPlayable?
@@ -25,10 +27,10 @@ class ChordTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -39,7 +41,10 @@ class ChordTableViewCell: UITableViewCell {
             if (self.isPlaying) {
                 // Stop Button Image
                 self.chordPlayButton.setImage(UIImage(systemName: "stop.circle"), for: .normal)
-                self.delegate?.play()
+                guard let diatonicProgression = self.cellDiatonicProgression else {
+                    fatalError("Cell does not have diatonicProgression")
+                }
+                self.delegate?.play(diatonicProgression: diatonicProgression)
             } else {
                 // Play Button Image
                 self.chordPlayButton.setImage(UIImage(systemName: "play.circle"), for: .normal)

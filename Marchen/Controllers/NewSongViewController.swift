@@ -31,6 +31,8 @@ class NewSongViewController: UIViewController {
     
     var selectedKey: Key = Key.C
     
+    let songEngine = SongEngine()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,6 +82,7 @@ extension NewSongViewController: UITableViewDataSource {
         let formattedString = String(format: format, arguments: strArray)
         
         cell.chordTextLabel.text = formattedString
+        cell.cellDiatonicProgression = chordProgression
         
         // Set Button
         cell.delegate = self
@@ -160,12 +163,13 @@ extension NewSongViewController {
 
 extension NewSongViewController: ChordPlayable {
     
-    func play() {
-        print("HI!")
+    func play(diatonicProgression: [Diatonic]) {
+        songEngine.setKeyAndDiatonicProgression(key: selectedKey, diatonicProgression: diatonicProgression)
+        songEngine.play()
     }
     
     func stop() {
-        print("STOP!")
+        songEngine.stop()
     }
     
 }
