@@ -53,12 +53,11 @@ class NewSongViewController: UIViewController {
         songEngine.attachObserver(self)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        // Do not do like this. Rather, just reset the tableview pick after changing the key.
-        //        generateButton.isEnabled = false
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        songEngine.invalidate()
     }
+    
     
     //MARK: - Load Lyric Function
     func loadLyric() {
