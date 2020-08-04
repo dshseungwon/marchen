@@ -173,13 +173,13 @@
 		E30C02A224CEE92D00EBEEB1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E3BB255F24D8097D0008DB34 /* SongEngine.swift */,
 				E30C02A024CEE8FE00EBEEB1 /* LyricModel.swift */,
 				E30C02C424D2A18D00EBEEB1 /* Key.swift */,
 				E30C02C624D2A1AA00EBEEB1 /* Diatonic.swift */,
 				E30C02C824D2A1FE00EBEEB1 /* Utils.swift */,
 				E30C02CA24D2A48D00EBEEB1 /* Mode.swift */,
 				E3BB255B24D2C4B50008DB34 /* ChordProgressions.swift */,
+				E3BB255F24D8097D0008DB34 /* SongEngine.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

@@ -49,7 +49,7 @@ class SongEngine {
     private var barPlayTime: Double {
         return Double(60) / Double(bpm) * Double(4)
     }
-    private var progressionRepeats = 10
+    private var progressionRepeats = 4
     
     private var songPlayTime: Double {  // Assume that the Chord Progression ONLY consists of 4 chords.
         return barPlayTime * progressionRepeats * 4
@@ -69,7 +69,7 @@ class SongEngine {
     }
     private var currentChordIndex = -1
     
-    private var isMute = false
+//    private var isMute = false
     private var isStop = true
     
     
@@ -115,6 +115,8 @@ class SongEngine {
         try! AudioKit.stop()
     }
     
+    //MARK: - Private Methods
+    
     private func isAvailable() -> Bool {
         if key == nil || diatonicProgression == nil {
             return false
@@ -125,6 +127,8 @@ class SongEngine {
     
     private func composeSong() {
         if isAvailable() {
+            print("composeSong!")
+            songDiatonics = []
             guard let progression =  diatonicProgression else { fatalError("diatonicProgression not set") }
             var startTime: Double = 0.0
             var chordIndex = 0
@@ -164,7 +168,6 @@ class SongEngine {
         if tickTimer == nil {
             tickTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { (timerObj) in
                 self.currentTick += 0.01
-                
                 if self.currentTick >= self.songPlayTime {
                     self.resetTick()
                     return
@@ -178,13 +181,14 @@ class SongEngine {
                     self.currentDiatonic = diatonicOfCurrentTick
                     self.isStop = false
                     
-                    if !self.isMute {
-                        self.playCurrentDiatonic()
-                    }
+                    self.playCurrentDiatonic()
+
                 }
             }
         } else {
             print("Timer already exists.")
+            resetTick()
+            updateTick()
         }
     }
     
@@ -199,8 +203,8 @@ class SongEngine {
         tickTimer?.invalidate()
         tickTimer = nil
         
-        currentTick = 0.0
         stopPlaying()
+        currentTick = 0.0
     }
     
     private func stopPlaying() {
