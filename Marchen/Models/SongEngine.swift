@@ -56,9 +56,14 @@ class SongEngine {
         
         let mixer = AKMixer(oscillatorA, oscillatorB, oscillatorC)
         let booster = AKBooster(mixer)
-        AudioKit.output = booster
         
+        if AudioKit.engine.isRunning {
+            invalidate()
+        }
+        
+        AudioKit.output = booster
         try! AudioKit.start()
+        
     }
     
     
@@ -94,7 +99,7 @@ class SongEngine {
     }
     private var currentChordIndex = -1
     
-//    private var isMute = false
+    //    private var isMute = false
     private var isStop = true
     
     private var autoResetTickWhenStop = false
@@ -126,10 +131,10 @@ class SongEngine {
         self.autoResetTickWhenStop = bool
     }
     
-// Needs further implementation.
-//    func mute() {
-//        isMute = true
-//    }
+    // Needs further implementation.
+    //    func mute() {
+    //        isMute = true
+    //    }
     
     func play() {
         if(isAvailable()) {
@@ -150,7 +155,10 @@ class SongEngine {
     }
     
     func invalidate() {
-        try! AudioKit.stop()
+        if AudioKit.engine.isRunning {
+            try! AudioKit.stop()
+            print("STOP")
+        }
     }
     
     //MARK: - Private Methods
@@ -221,7 +229,7 @@ class SongEngine {
                     self.isStop = false
                     
                     self.playCurrentDiatonic()
-
+                    
                 }
             }
         } else {

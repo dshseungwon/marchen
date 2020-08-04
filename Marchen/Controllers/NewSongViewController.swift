@@ -31,7 +31,7 @@ class NewSongViewController: UIViewController {
     
     var selectedKey: Key = Key.C
     
-    let songEngine = SongEngine()
+    var songEngine : SongEngine?
     
     private var nowPlayingChord = false
     private var playingCellTag: Int?
@@ -50,12 +50,20 @@ class NewSongViewController: UIViewController {
         
         generateButton.isEnabled = false
         
-        songEngine.attachObserver(self)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        songEngine = SongEngine()
+        songEngine?.attachObserver(self)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-        songEngine.invalidate()
+// 이러지 말고 새로 start 하기 전에 무조건 invalidate 해주는 logic 으로 변경
+//        songEngine.invalidate()
     }
     
     
@@ -154,7 +162,7 @@ extension NewSongViewController: UIPickerViewDelegate {
         
         // Make music stop if was playing
         if nowPlayingChord {
-            songEngine.reset()
+            songEngine?.reset()
             update(true)
         } else {
             tableView.reloadData()
@@ -190,8 +198,8 @@ extension NewSongViewController {
 extension NewSongViewController: ChordPlayable {
     
     func play(diatonicProgression: [Diatonic], tag: Int) {
-        songEngine.setKeyAndDiatonicProgression(key: selectedKey, diatonicProgression: diatonicProgression)
-        songEngine.play()
+        songEngine?.setKeyAndDiatonicProgression(key: selectedKey, diatonicProgression: diatonicProgression)
+        songEngine?.play()
         nowPlayingChord = true
         playingCellTag = tag
         tableView.reloadData()
@@ -199,7 +207,7 @@ extension NewSongViewController: ChordPlayable {
     
     func stop() {
         // RESET THE TICK
-        songEngine.reset()
+        songEngine?.reset()
         nowPlayingChord = false
         tableView.reloadData()
     }

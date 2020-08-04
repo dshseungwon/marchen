@@ -95,7 +95,7 @@ class ChordPlayViewController: UIViewController {
         }
         return -1
     }
-
+    
     
     func updateTick() {
         if tickTimer == nil {
@@ -201,77 +201,81 @@ class ChordPlayViewController: UIViewController {
         
         let mixer = AKMixer(oscillatorA, oscillatorB, oscillatorC)
         let booster = AKBooster(mixer)
+        
+        
+        if AudioKit.engine.isRunning {
+            try! AudioKit.stop()
+        }
+        
         AudioKit.output = booster
-        
         try! AudioKit.start()
-        
         
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        try! AudioKit.stop()
+//        try! AudioKit.stop()
     }
     
 }
 
 
 //        let estimatedPlayTime = barPlaySec * chordProgression.count
-  //        playingIndex = 0
-  //        isStop = false
-  
-  
-  //        if (self.playingIndex < chordProgression.count) {
-  //            let currentDiatonic = chordProgression[playingIndex]
-  //            let currentChord = Utils.getChordNotesToPlay(key: key, diatonic: currentDiatonic)
-  //
-  //            self.playTriadChord(chord: currentChord)
-  //
-  //            if (self.playingIndex >= chordProgression.count) {
-  //                self.playingIndex = 0
-  //                self.isStop = true
-  //                return
-  //            }
-  //
-  //            Timer.scheduledTimer(withTimeInterval: barPlaySec, repeats: true) { (timerObj) in
-  //                // Should notified that isStop value changed and call timerObj.invalidate.
-  //                if (self.isStop) {
-  //                    timerObj.invalidate()
-  //                }
-  //
-  //                let currentDiatonic = chordProgression[self.playingIndex]
-  //                let currentChord = Utils.getChordNotesToPlay(key: key, diatonic: currentDiatonic)
-  //                self.playTriadChord(chord: currentChord)
-  //
-  //                if (self.playingIndex >= chordProgression.count) {
-  //                    timerObj.invalidate()
-  //                    Timer.scheduledTimer(withTimeInterval: barPlaySec, repeats: false) { (timer) in
-  //                        for osc in self.oscillatorArray {
-  //                            osc.amplitude = 0
-  //                        }
-  //                        self.playingIndex = 0
-  //                        self.isStop = true
-  //                    }
-  //                }
-  //            }
-  //        }
-  
-  //        for (idx, diatonic) in chordProgression.enumerated() {
-  //            let chord = Utils.getChordNotesToPlay(key: key, diatonic: diatonic)
-  //            Timer.scheduledTimer(withTimeInterval: barPlaySec * idx, repeats: false) { (timerObj) in
-  //                for (idx, note) in chord.enumerated() {
-  //                    if (self.isStop == false) {
-  //                        self.playNoteSound(oscillator: self.oscillatorArray[idx], note: MIDINoteNumber(note))
-  //                    }
-  //                }
-  //            }
-  //        }
-  //
-  //        Timer.scheduledTimer(withTimeInterval: estimatedPlayTime, repeats: false) { (timerObj) in
-  //            for osc in self.oscillatorArray {
-  //                osc.amplitude = 0
-  //
-  //            }
-  //        }
+//        playingIndex = 0
+//        isStop = false
+
+
+//        if (self.playingIndex < chordProgression.count) {
+//            let currentDiatonic = chordProgression[playingIndex]
+//            let currentChord = Utils.getChordNotesToPlay(key: key, diatonic: currentDiatonic)
+//
+//            self.playTriadChord(chord: currentChord)
+//
+//            if (self.playingIndex >= chordProgression.count) {
+//                self.playingIndex = 0
+//                self.isStop = true
+//                return
+//            }
+//
+//            Timer.scheduledTimer(withTimeInterval: barPlaySec, repeats: true) { (timerObj) in
+//                // Should notified that isStop value changed and call timerObj.invalidate.
+//                if (self.isStop) {
+//                    timerObj.invalidate()
+//                }
+//
+//                let currentDiatonic = chordProgression[self.playingIndex]
+//                let currentChord = Utils.getChordNotesToPlay(key: key, diatonic: currentDiatonic)
+//                self.playTriadChord(chord: currentChord)
+//
+//                if (self.playingIndex >= chordProgression.count) {
+//                    timerObj.invalidate()
+//                    Timer.scheduledTimer(withTimeInterval: barPlaySec, repeats: false) { (timer) in
+//                        for osc in self.oscillatorArray {
+//                            osc.amplitude = 0
+//                        }
+//                        self.playingIndex = 0
+//                        self.isStop = true
+//                    }
+//                }
+//            }
+//        }
+
+//        for (idx, diatonic) in chordProgression.enumerated() {
+//            let chord = Utils.getChordNotesToPlay(key: key, diatonic: diatonic)
+//            Timer.scheduledTimer(withTimeInterval: barPlaySec * idx, repeats: false) { (timerObj) in
+//                for (idx, note) in chord.enumerated() {
+//                    if (self.isStop == false) {
+//                        self.playNoteSound(oscillator: self.oscillatorArray[idx], note: MIDINoteNumber(note))
+//                    }
+//                }
+//            }
+//        }
+//
+//        Timer.scheduledTimer(withTimeInterval: estimatedPlayTime, repeats: false) { (timerObj) in
+//            for osc in self.oscillatorArray {
+//                osc.amplitude = 0
+//
+//            }
+//        }
 
 
 
