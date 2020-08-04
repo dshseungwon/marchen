@@ -153,10 +153,13 @@ extension NewSongViewController: UIPickerViewDelegate {
         
         generateButton.isEnabled = false
         
-// Make music stop if was playing
-//      stop()
-        
-        tableView.reloadData()
+        // Make music stop if was playing
+        if nowPlayingChord {
+            songEngine.reset()
+            update(true)
+        } else {
+            tableView.reloadData()
+        }
     }
 }
 
@@ -205,9 +208,9 @@ extension NewSongViewController: ChordPlayable {
 }
 
 extension NewSongViewController: Observer {
-    func update(_ notifyValue: Bool) {
+    func update(_ notifyValue: Bool) { // We only call this function when song has finshed its playing.
         guard let tag = playingCellTag else { fatalError("playingCellTag is nil") }
-        nowPlayingChord = false
+        nowPlayingChord = false // same with !notifyValue
         let cell = tableView.cellForRow(at: IndexPath(row: tag, section: 0)) as! ChordTableViewCell
         cell.songHasFinished()
         tableView.reloadData()
