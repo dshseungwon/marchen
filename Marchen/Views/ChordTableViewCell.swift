@@ -25,6 +25,7 @@ class ChordTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         // Initialization code
     }
     
@@ -51,7 +52,5 @@ class ChordTableViewCell: UITableViewCell {
                 self.delegate?.stop()
             }
         }
-        
-        
     }
 }

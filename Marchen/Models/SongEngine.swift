@@ -127,7 +127,6 @@ class SongEngine {
     
     private func composeSong() {
         if isAvailable() {
-            print("composeSong!")
             songDiatonics = []
             guard let progression =  diatonicProgression else { fatalError("diatonicProgression not set") }
             var startTime: Double = 0.0

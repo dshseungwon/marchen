@@ -32,6 +32,8 @@ class NewSongViewController: UIViewController {
     var selectedKey: Key = Key.C
     
     let songEngine = SongEngine()
+    
+    var nowPlayingChord = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +54,7 @@ class NewSongViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        // Do no do like this. Rather, just reset the tableview pick after changing the key.
+        // Do not do like this. Rather, just reset the tableview pick after changing the key.
         //        generateButton.isEnabled = false
     }
     
@@ -86,6 +88,15 @@ extension NewSongViewController: UITableViewDataSource {
         
         // Set Button
         cell.delegate = self
+        
+        
+        cell.chordPlayButton.imageView?.tintColor = .link
+        cell.chordPlayButton.isEnabled = true
+        
+        if nowPlayingChord && !cell.isPlaying {
+            cell.chordPlayButton.imageView?.tintColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+            cell.chordPlayButton.isEnabled = false
+        }
         
         return cell
     }
@@ -173,10 +184,14 @@ extension NewSongViewController: ChordPlayable {
     func play(diatonicProgression: [Diatonic]) {
         songEngine.setKeyAndDiatonicProgression(key: selectedKey, diatonicProgression: diatonicProgression)
         songEngine.play()
+        nowPlayingChord = true
+        tableView.reloadData()
     }
     
     func stop() {
         songEngine.stop()
+        nowPlayingChord = false
+        tableView.reloadData()
     }
     
 }
