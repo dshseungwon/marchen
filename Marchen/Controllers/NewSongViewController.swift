@@ -33,8 +33,9 @@ class NewSongViewController: UIViewController {
     
     let songEngine = SongEngine()
     
-    var nowPlayingChord = false
-
+    private var nowPlayingChord = false
+    private var playingCellTag: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,6 +50,7 @@ class NewSongViewController: UIViewController {
         
         generateButton.isEnabled = false
         
+        songEngine.attachObserver(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,10 +90,11 @@ extension NewSongViewController: UITableViewDataSource {
         
         // Set Button
         cell.delegate = self
-        
+        cell.tag = indexPath.row
         
         cell.chordPlayButton.imageView?.tintColor = .link
         cell.chordPlayButton.isEnabled = true
+        
         
         if nowPlayingChord && !cell.isPlaying {
             cell.chordPlayButton.imageView?.tintColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
@@ -150,6 +153,9 @@ extension NewSongViewController: UIPickerViewDelegate {
         
         generateButton.isEnabled = false
         
+// Make music stop if was playing
+//      stop()
+        
         tableView.reloadData()
     }
 }
@@ -181,17 +187,29 @@ extension NewSongViewController {
 
 extension NewSongViewController: ChordPlayable {
     
-    func play(diatonicProgression: [Diatonic]) {
+    func play(diatonicProgression: [Diatonic], tag: Int) {
         songEngine.setKeyAndDiatonicProgression(key: selectedKey, diatonicProgression: diatonicProgression)
         songEngine.play()
         nowPlayingChord = true
+        playingCellTag = tag
         tableView.reloadData()
     }
     
     func stop() {
-        songEngine.stop()
+        // RESET THE TICK
+        songEngine.reset()
         nowPlayingChord = false
         tableView.reloadData()
     }
     
+}
+
+extension NewSongViewController: Observer {
+    func update(_ notifyValue: Bool) {
+        guard let tag = playingCellTag else { fatalError("playingCellTag is nil") }
+        nowPlayingChord = false
+        let cell = tableView.cellForRow(at: IndexPath(row: tag, section: 0)) as! ChordTableViewCell
+        cell.songHasFinished()
+        tableView.reloadData()
+    }
 }

@@ -9,7 +9,32 @@
 import UIKit
 import AudioKit
 
+protocol Observer {
+    func update(_ notifyValue: Bool)
+}
+
 class SongEngine {
+    
+    private var observers: [Observer] = [Observer]()
+    var isStopPublished: Bool {
+        set {
+            isStop = newValue
+            notify()
+        }
+        get {
+            return isStop
+        }
+    }
+    
+    func attachObserver(_ observer: Observer) {
+        observers.append(observer)
+    }
+    
+    func notify() {
+        for observer in observers {
+            observer.update(isStopPublished)
+        }
+    }
     
     // From the Previous VC
     var diatonicProgression: [Diatonic]? // e.g. [I, V, VI, IV]
@@ -49,7 +74,7 @@ class SongEngine {
     private var barPlayTime: Double {
         return Double(60) / Double(bpm) * Double(4)
     }
-    private var progressionRepeats = 4
+    private var progressionRepeats = 2
     
     private var songPlayTime: Double {  // Assume that the Chord Progression ONLY consists of 4 chords.
         return barPlayTime * progressionRepeats * 4
@@ -72,6 +97,7 @@ class SongEngine {
 //    private var isMute = false
     private var isStop = true
     
+    private var autoResetTickWhenStop = false
     
     //MARK: - Internal Methods.
     func setBPM(as bpm: Int) {
@@ -96,6 +122,10 @@ class SongEngine {
         composeSong()
     }
     
+    func setAutoResetTickWhenStop(as bool: Bool) {
+        self.autoResetTickWhenStop = bool
+    }
+    
 // Needs further implementation.
 //    func mute() {
 //        isMute = true
@@ -108,7 +138,15 @@ class SongEngine {
     }
     
     func stop() {
-        stopTick()
+        if autoResetTickWhenStop {
+            resetTick()
+        } else {
+            stopTick()
+        }
+    }
+    
+    func reset() {
+        resetTick()
     }
     
     func invalidate() {
@@ -168,6 +206,8 @@ class SongEngine {
             tickTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { (timerObj) in
                 self.currentTick += 0.01
                 if self.currentTick >= self.songPlayTime {
+                    // Song has finished.
+                    // Should notify in here.
                     self.resetTick()
                     return
                 }
@@ -207,7 +247,7 @@ class SongEngine {
     }
     
     private func stopPlaying() {
-        isStop = true
+        isStopPublished = true
         
         for osc in oscillatorArray {
             osc.stop()
