@@ -208,23 +208,23 @@
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="01T-X7-JPj">
                                 <rect key="frame" x="120" y="240" width="174" height="2"/>
                             </progressView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7UH-Fg-BqO">
-                                <rect key="frame" x="0.0" y="570" width="414" height="292"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="S8p-qt-flY">
+                                <rect key="frame" x="0.0" y="562" width="414" height="300"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="h1g-cb-Dsa" firstAttribute="bottom" secondItem="S8p-qt-flY" secondAttribute="bottom" id="3AK-eo-kM7"/>
                             <constraint firstItem="01T-X7-JPj" firstAttribute="leading" secondItem="zhN-la-bMC" secondAttribute="leadingMargin" constant="100" id="66a-ZO-S8b"/>
                             <constraint firstItem="vkZ-R2-0LK" firstAttribute="top" secondItem="m2N-NG-697" secondAttribute="bottom" constant="100" id="9L7-6H-Ugt"/>
                             <constraint firstItem="01T-X7-JPj" firstAttribute="centerX" secondItem="zhN-la-bMC" secondAttribute="centerX" id="KCq-sL-9YZ"/>
                             <constraint firstItem="m2N-NG-697" firstAttribute="top" secondItem="01T-X7-JPj" secondAttribute="bottom" constant="100" id="Rjt-t1-xen"/>
                             <constraint firstItem="01T-X7-JPj" firstAttribute="top" secondItem="h1g-cb-Dsa" secondAttribute="top" constant="100" id="SWh-ml-OYU"/>
-                            <constraint firstItem="7UH-Fg-BqO" firstAttribute="top" secondItem="vkZ-R2-0LK" secondAttribute="bottom" constant="68" id="SZk-3i-N0F"/>
                             <constraint firstAttribute="trailingMargin" secondItem="01T-X7-JPj" secondAttribute="trailing" constant="100" id="Se7-Dj-Nvj"/>
-                            <constraint firstItem="7UH-Fg-BqO" firstAttribute="leading" secondItem="h1g-cb-Dsa" secondAttribute="leading" id="Uh5-2F-6nu"/>
-                            <constraint firstItem="7UH-Fg-BqO" firstAttribute="bottom" secondItem="h1g-cb-Dsa" secondAttribute="bottom" id="WVz-ll-VQi"/>
+                            <constraint firstItem="h1g-cb-Dsa" firstAttribute="trailing" secondItem="S8p-qt-flY" secondAttribute="trailing" id="Vhl-j1-dT5"/>
                             <constraint firstItem="vkZ-R2-0LK" firstAttribute="centerX" secondItem="zhN-la-bMC" secondAttribute="centerX" id="lcb-Gp-Ak0"/>
-                            <constraint firstItem="7UH-Fg-BqO" firstAttribute="trailing" secondItem="h1g-cb-Dsa" secondAttribute="trailing" id="n8X-Mw-Gx6"/>
+                            <constraint firstItem="S8p-qt-flY" firstAttribute="leading" secondItem="h1g-cb-Dsa" secondAttribute="leading" id="wAi-qu-ut1"/>
+                            <constraint firstItem="S8p-qt-flY" firstAttribute="top" secondItem="vkZ-R2-0LK" secondAttribute="bottom" constant="60" id="wHH-UW-K1H"/>
                             <constraint firstItem="m2N-NG-697" firstAttribute="centerX" secondItem="zhN-la-bMC" secondAttribute="centerX" id="xA9-ao-eAz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h1g-cb-Dsa"/>
@@ -232,7 +232,7 @@
                     <navigationItem key="navigationItem" id="248-Bu-UIP"/>
                     <connections>
                         <outlet property="progressView" destination="01T-X7-JPj" id="Q0M-Wr-9Xa"/>
-                        <outlet property="stackView" destination="7UH-Fg-BqO" id="Por-oa-TpP"/>
+                        <outlet property="stackView" destination="S8p-qt-flY" id="EDv-i1-K0h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5W8-59-bXJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

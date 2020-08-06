@@ -188,7 +188,7 @@ extension NewSongViewController {
         let destinationVC = segue.destination as! ChordPlayViewController
         
         destinationVC.selectedKey = selectedKey
-        destinationVC.selectedChordProgression = selectedChordProgression
+        destinationVC.selectedDiatonicProgression = selectedChordProgression
         
     }
 }

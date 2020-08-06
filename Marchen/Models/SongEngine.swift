@@ -101,13 +101,23 @@ class SongEngine {
     
     private var autoResetTickWhenStop = false
     
+    private var isRepeat = false
+    
     //MARK: - Internal Methods.
     func setBPM(as bpm: Int) {
         self.bpm = bpm
     }
     
     func getBPM() -> Int {
-        return bpm
+        return self.bpm
+    }
+    
+    func setIsRepeat(as bool: Bool) {
+        self.isRepeat = bool
+    }
+    
+    func getIsRepeat() -> Bool {
+        return self.isRepeat
     }
     
     func setProgressionRepeats(as times: Int) {
@@ -208,6 +218,9 @@ class SongEngine {
                     // Song has finished.
                     // Should notify in here.
                     self.resetTick()
+                    if self.isRepeat {
+                        self.updateTick()
+                    }
                     return
                 }
                 
