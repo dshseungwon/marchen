@@ -24,6 +24,19 @@
 		E30C02C724D2A1AA00EBEEB1 /* Diatonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02C624D2A1AA00EBEEB1 /* Diatonic.swift */; };
 		E30C02C924D2A1FE00EBEEB1 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02C824D2A1FE00EBEEB1 /* Utils.swift */; };
 		E30C02CB24D2A48D00EBEEB1 /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02CA24D2A48D00EBEEB1 /* Mode.swift */; };
+		E31EDDF924DC097D003D98DA /* B3.wav in Resources */ = {isa = PBXBuildFile; fileRef = E31EDDEC24DC097C003D98DA /* B3.wav */; };
+		E31EDDFA24DC097D003D98DA /* D3.wav in Resources */ = {isa = PBXBuildFile; fileRef = E31EDDED24DC097C003D98DA /* D3.wav */; };
+		E31EDDFB24DC097D003D98DA /* G3.wav in Resources */ = {isa = PBXBuildFile; fileRef = E31EDDEE24DC097C003D98DA /* G3.wav */; };
+		E31EDDFC24DC097D003D98DA /* C4.wav in Resources */ = {isa = PBXBuildFile; fileRef = E31EDDEF24DC097C003D98DA /* C4.wav */; };
+		E31EDDFD24DC097D003D98DA /* Ab3.wav in Resources */ = {isa = PBXBuildFile; fileRef = E31EDDF024DC097C003D98DA /* Ab3.wav */; };
+		E31EDDFE24DC097D003D98DA /* Db3.wav in Resources */ = {isa = PBXBuildFile; fileRef = E31EDDF124DC097D003D98DA /* Db3.wav */; };
+		E31EDDFF24DC097D003D98DA /* Gb3.wav in Resources */ = {isa = PBXBuildFile; fileRef = E31EDDF224DC097D003D98DA /* Gb3.wav */; };
+		E31EDE0024DC097D003D98DA /* C3.wav in Resources */ = {isa = PBXBuildFile; fileRef = E31EDDF324DC097D003D98DA /* C3.wav */; };
+		E31EDE0124DC097D003D98DA /* F3.wav in Resources */ = {isa = PBXBuildFile; fileRef = E31EDDF424DC097D003D98DA /* F3.wav */; };
+		E31EDE0224DC097D003D98DA /* E3.wav in Resources */ = {isa = PBXBuildFile; fileRef = E31EDDF524DC097D003D98DA /* E3.wav */; };
+		E31EDE0324DC097D003D98DA /* Eb3.wav in Resources */ = {isa = PBXBuildFile; fileRef = E31EDDF624DC097D003D98DA /* Eb3.wav */; };
+		E31EDE0424DC097D003D98DA /* A3.wav in Resources */ = {isa = PBXBuildFile; fileRef = E31EDDF724DC097D003D98DA /* A3.wav */; };
+		E31EDE0524DC097D003D98DA /* Bb3.wav in Resources */ = {isa = PBXBuildFile; fileRef = E31EDDF824DC097D003D98DA /* Bb3.wav */; };
 		E355808324C5A24400DCA763 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355808224C5A24400DCA763 /* AppDelegate.swift */; };
 		E355808524C5A24400DCA763 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355808424C5A24400DCA763 /* SceneDelegate.swift */; };
 		E355808A24C5A24400DCA763 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E355808824C5A24400DCA763 /* Main.storyboard */; };
@@ -76,6 +89,19 @@
 		E30C02C624D2A1AA00EBEEB1 /* Diatonic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diatonic.swift; sourceTree = "<group>"; };
 		E30C02C824D2A1FE00EBEEB1 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		E30C02CA24D2A48D00EBEEB1 /* Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
+		E31EDDEC24DC097C003D98DA /* B3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = B3.wav; sourceTree = "<group>"; };
+		E31EDDED24DC097C003D98DA /* D3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = D3.wav; sourceTree = "<group>"; };
+		E31EDDEE24DC097C003D98DA /* G3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = G3.wav; sourceTree = "<group>"; };
+		E31EDDEF24DC097C003D98DA /* C4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = C4.wav; sourceTree = "<group>"; };
+		E31EDDF024DC097C003D98DA /* Ab3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Ab3.wav; sourceTree = "<group>"; };
+		E31EDDF124DC097D003D98DA /* Db3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Db3.wav; sourceTree = "<group>"; };
+		E31EDDF224DC097D003D98DA /* Gb3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Gb3.wav; sourceTree = "<group>"; };
+		E31EDDF324DC097D003D98DA /* C3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = C3.wav; sourceTree = "<group>"; };
+		E31EDDF424DC097D003D98DA /* F3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = F3.wav; sourceTree = "<group>"; };
+		E31EDDF524DC097D003D98DA /* E3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = E3.wav; sourceTree = "<group>"; };
+		E31EDDF624DC097D003D98DA /* Eb3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Eb3.wav; sourceTree = "<group>"; };
+		E31EDDF724DC097D003D98DA /* A3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = A3.wav; sourceTree = "<group>"; };
+		E31EDDF824DC097D003D98DA /* Bb3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bb3.wav; sourceTree = "<group>"; };
 		E355807F24C5A24400DCA763 /* Marchen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marchen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E355808224C5A24400DCA763 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E355808424C5A24400DCA763 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +210,26 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		E31EDE0624DC0989003D98DA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E31EDDF724DC097D003D98DA /* A3.wav */,
+				E31EDDF024DC097C003D98DA /* Ab3.wav */,
+				E31EDDEC24DC097C003D98DA /* B3.wav */,
+				E31EDDF824DC097D003D98DA /* Bb3.wav */,
+				E31EDDF324DC097D003D98DA /* C3.wav */,
+				E31EDDEF24DC097C003D98DA /* C4.wav */,
+				E31EDDED24DC097C003D98DA /* D3.wav */,
+				E31EDDF124DC097D003D98DA /* Db3.wav */,
+				E31EDDF524DC097D003D98DA /* E3.wav */,
+				E31EDDF624DC097D003D98DA /* Eb3.wav */,
+				E31EDDF424DC097D003D98DA /* F3.wav */,
+				E31EDDEE24DC097C003D98DA /* G3.wav */,
+				E31EDDF224DC097D003D98DA /* Gb3.wav */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		E355807624C5A24400DCA763 = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +255,7 @@
 		E355808124C5A24400DCA763 /* Marchen */ = {
 			isa = PBXGroup;
 			children = (
+				E31EDE0624DC0989003D98DA /* Resources */,
 				E355808B24C5A24400DCA763 /* Assets.xcassets */,
 				E355808224C5A24400DCA763 /* AppDelegate.swift */,
 				E355808424C5A24400DCA763 /* SceneDelegate.swift */,
@@ -349,11 +396,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E31EDE0024DC097D003D98DA /* C3.wav in Resources */,
 				E355808F24C5A24400DCA763 /* LaunchScreen.storyboard in Resources */,
 				E355808C24C5A24400DCA763 /* Assets.xcassets in Resources */,
 				E30C02B824D1729C00EBEEB1 /* ChordTableViewCell.xib in Resources */,
+				E31EDDFF24DC097D003D98DA /* Gb3.wav in Resources */,
+				E31EDE0224DC097D003D98DA /* E3.wav in Resources */,
+				E31EDE0524DC097D003D98DA /* Bb3.wav in Resources */,
 				E355808A24C5A24400DCA763 /* Main.storyboard in Resources */,
+				E31EDE0424DC097D003D98DA /* A3.wav in Resources */,
+				E31EDDFE24DC097D003D98DA /* Db3.wav in Resources */,
+				E31EDDFB24DC097D003D98DA /* G3.wav in Resources */,
 				E30C02AE24CEF27A00EBEEB1 /* LyricLineTableViewCell.xib in Resources */,
+				E31EDDF924DC097D003D98DA /* B3.wav in Resources */,
+				E31EDDFD24DC097D003D98DA /* Ab3.wav in Resources */,
+				E31EDE0124DC097D003D98DA /* F3.wav in Resources */,
+				E31EDE0324DC097D003D98DA /* Eb3.wav in Resources */,
+				E31EDDFA24DC097D003D98DA /* D3.wav in Resources */,
+				E31EDDFC24DC097D003D98DA /* C4.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
