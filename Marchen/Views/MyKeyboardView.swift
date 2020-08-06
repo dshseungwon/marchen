@@ -39,6 +39,9 @@ import AudioKit
 
     /// Activated key color
     @IBInspectable open var  keyOnColor: UIColor = #colorLiteral(red: 1.000, green: 0.000, blue: 0.000, alpha: 1.000)
+    
+    /// Chord key color
+    @IBInspectable open var  chordKeyColor: UIColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
 
     /// Class to handle user actions
     @objc open weak var delegate: MyKeyboardDelegate?
@@ -46,6 +49,7 @@ import AudioKit
     var oneOctaveSize = CGSize.zero
     var xOffset: CGFloat = 1
     var onKeys = Set<MIDINoteNumber>()
+    var chordKeys = Set<MIDINoteNumber>()
 
     /// Allows multiple notes to play concurrently
     @objc open var polyphonicMode = false {
@@ -342,16 +346,22 @@ import AudioKit
     }
 
     func whiteKeyColor(_ n: Int, octaveNumber: Int) -> UIColor {
-        return onKeys.contains(
-            MIDINoteNumber((firstOctave + octaveNumber) * 12 + whiteKeyNotes[n] + baseMIDINote)
-            ) ? keyOnColor : whiteKeyOff
+        let note = MIDINoteNumber((firstOctave + octaveNumber) * 12 + whiteKeyNotes[n] + baseMIDINote)
+        
+        // If note is one of chord key
+        let tmpColor = chordKeys.contains(note) ? chordKeyColor : whiteKeyOff
+        
+        // If note is pressed
+        return onKeys.contains(note) ? keyOnColor : tmpColor
     }
 
     func topKeyColor(_ n: Int, octaveNumber: Int) -> UIColor {
         if notesWithSharps[topKeyNotes[n]].range(of: "#") != nil {
-            return onKeys.contains(
-                MIDINoteNumber((firstOctave + octaveNumber) * 12 + topKeyNotes[n] + baseMIDINote)
-                ) ? keyOnColor : blackKeyOff
+            let note = MIDINoteNumber((firstOctave + octaveNumber) * 12 + topKeyNotes[n] + baseMIDINote)
+            
+            let tmpColor = chordKeys.contains(note) ? chordKeyColor : blackKeyOff
+            
+            return onKeys.contains(note) ? keyOnColor : tmpColor
         }
         return #colorLiteral(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.000)
 

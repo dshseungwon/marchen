@@ -13,6 +13,10 @@ protocol Observer {
     func update(_ notifyValue: Bool)
 }
 
+protocol ChordKeyObserver {
+    func update(_ notifyValue: Set<MIDINoteNumber>)
+}
+
 class SongEngine {
     
     var diatonicProgression: [Diatonic]? // e.g. [I, V, VI, IV]
@@ -62,6 +66,9 @@ class SongEngine {
             return isStop
         }
     }
+    
+    private var chordKeyObservers: [ChordKeyObserver] = [ChordKeyObserver]()
+
     
     // Variables for Initialize AudioKit
     private var sampler = AKSampler()
@@ -293,9 +300,15 @@ class SongEngine {
             // Stop the playing notes before play the diatonic chord.
             allNotesOff()
             
+            var chordKeys = Set<MIDINoteNumber>()
+            
             for note in currentChordNotes {
+                chordKeys.insert(MIDINoteNumber(note))
                 playNote(note: MIDINoteNumber(note), velocity: 127, channel: midiChannelIn)
             }
+            
+            // NOTIFY
+            notifyChordKeys(with: chordKeys)
         }
     }
     
@@ -307,9 +320,19 @@ extension SongEngine {
         observers.append(observer)
     }
     
+    func attachChordKeyObserver(_ observer: ChordKeyObserver) {
+        chordKeyObservers.append(observer)
+    }
+    
     func notify() {
         for observer in observers {
             observer.update(isStopPublished)
+        }
+    }
+    
+    func notifyChordKeys(with chordKeySet: Set<MIDINoteNumber>) {
+        for observer in chordKeyObservers {
+            observer.update(chordKeySet)
         }
     }
 }

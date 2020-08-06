@@ -10,7 +10,23 @@ import UIKit
 import AudioKit
 import AudioKitUI
 
-class ChordPlayViewController: UIViewController, MyKeyboardDelegate {
+class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObserver {
+    
+    func update(_ notifyValue: Set<MIDINoteNumber>) {
+        
+        var newSet = Set<MIDINoteNumber>()
+        for note in notifyValue {
+            var startNote = note % 12
+            while startNote <= 128 {
+                newSet.insert(startNote)
+                startNote += 12
+            }
+        }
+        
+        keyboardView.chordKeys = newSet
+        keyboardView.setNeedsDisplay()
+    }
+    
     
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var stackView: UIStackView!
@@ -28,11 +44,11 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate {
     
 
     let songEngine = SongEngine()
-    
-
+    let keyboardView = MyKeyboardView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        songEngine.attachChordKeyObserver(self)
         setupUI()
     }
     
@@ -40,12 +56,8 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate {
     }
     
     private func setupUI() {
-        let keyboardView = MyKeyboardView()
         keyboardView.delegate = self
-        
-        keyboardView.keyOnColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
         keyboardView.polyphonicMode = true
-        keyboardView.polyphonicButton = #colorLiteral(red: 0.3176470697, green: 0.07450980693, blue: 0.02745098062, alpha: 1)
         stackView.addArrangedSubview(keyboardView)
         
     }
