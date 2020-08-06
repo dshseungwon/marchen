@@ -89,7 +89,12 @@ extension NewSongViewController: UITableViewDataSource {
         
         let strArray = Utils.TransformChordProgressionToStringArray(chordProgression: chordProgression, key: selectedKey )
         
-        let format = "%@ - %@ - %@ - %@"
+        var format = "%@"
+        for _ in 1 ..< chordProgression.count {
+            format += " - %@"
+        }
+        
+//        let format = "%@ - %@ - %@ - %@"
         let formattedString = String(format: format, arguments: strArray)
         
         cell.chordTextLabel.text = formattedString

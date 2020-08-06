@@ -65,7 +65,7 @@ class SongEngine {
     private var currentVolume = 1.0
     
     // Variables about Song Information
-    private var bpm = 120
+    private var bpm = 240
     private var barPlayTime: Double {
         return Double(60) / Double(bpm) * Double(4)
     }
