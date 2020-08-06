@@ -223,8 +223,10 @@ extension NewSongViewController: Observer {
     func update(_ notifyValue: Bool) { // We only call this function when song has finshed its playing.
         guard let tag = playingCellTag else { fatalError("playingCellTag is nil") }
         nowPlayingChord = false // same with !notifyValue
-        let cell = tableView.cellForRow(at: IndexPath(row: tag, section: 0)) as! ChordTableViewCell
-        cell.songHasFinished()
-        tableView.reloadData()
+        if let cell = tableView.cellForRow(at: IndexPath(row: tag, section: 0)) {
+            let castedCell = cell as! ChordTableViewCell
+            castedCell.songHasFinished()
+            tableView.reloadData()
+        }
     }
 }

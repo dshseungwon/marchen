@@ -15,7 +15,10 @@ let chordProgressions: [[Diatonic]] = [
     [Diatonic.IV, Diatonic.V, Diatonic.III, Diatonic.VI],
     [Diatonic.I, Diatonic.II, Diatonic.III, Diatonic.IV],
     [Diatonic.IV, Diatonic.V, Diatonic.VI, Diatonic.III],
-    [Diatonic.VI, Diatonic.VI, Diatonic.IV, Diatonic.IV, Diatonic.I, Diatonic.I, Diatonic.V, Diatonic.V]
+    [Diatonic.VI, Diatonic.VI, Diatonic.IV, Diatonic.IV, Diatonic.I, Diatonic.I, Diatonic.V, Diatonic.V],
+    [Diatonic.IV, Diatonic.V, Diatonic.VI],
+    [Diatonic.IV, Diatonic.V, Diatonic.III, Diatonic.IV],
+    
 ]
 
 
@@ -28,6 +31,9 @@ let chordProgressions: [[Diatonic]] = [
  4) IV - V - III - VI
  5) I - II - III - IV
  6) IV - V - VI - III
+ 
+ 7) VI - IV - I - V
+ 8) IV - V - VI
  
  Ref) https://m.post.naver.com/viewer/postView.nhn?volumeNo=26918722&memberNo=16273960
  
