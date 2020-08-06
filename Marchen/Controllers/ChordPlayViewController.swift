@@ -10,7 +10,7 @@ import UIKit
 import AudioKit
 import AudioKitUI
 
-class ChordPlayViewController: UIViewController, AKKeyboardDelegate {
+class ChordPlayViewController: UIViewController, MyKeyboardDelegate {
     
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var stackView: UIStackView!
@@ -40,16 +40,14 @@ class ChordPlayViewController: UIViewController, AKKeyboardDelegate {
     }
     
     private func setupUI() {
-        let keyboardView = AKKeyboardView()
+        let keyboardView = MyKeyboardView()
         keyboardView.delegate = self
         
+        keyboardView.keyOnColor = #colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1)
+        keyboardView.polyphonicMode = true
+        keyboardView.polyphonicButton = #colorLiteral(red: 0.3176470697, green: 0.07450980693, blue: 0.02745098062, alpha: 1)
         stackView.addArrangedSubview(keyboardView)
         
-//        stackView.widthAnchor.constraint(equalToConstant: stackView.frame.width).isActive = true
-//        stackView.heightAnchor.constraint(equalToConstant: stackView.frame.height).isActive = true
-//
-//        stackView.centerXAnchor.constraint(equalTo: stackView.centerXAnchor).isActive = true
-//        stackView.centerYAnchor.constraint(equalTo: stackView.centerYAnchor).isActive = true
     }
     
     @IBAction func playButtonClicked(_ sender: UIButton) {
@@ -57,7 +55,7 @@ class ChordPlayViewController: UIViewController, AKKeyboardDelegate {
         guard let progression = selectedDiatonicProgression else { fatalError("Progression did not set.") }
 
         songEngine.setIsRepeat(as: true)
-        songEngine.setBPM(as: 240)
+        songEngine.setBPM(as: 280)
         songEngine.setKeyAndDiatonicProgression(key: key, diatonicProgression: progression)
         songEngine.play()
     }

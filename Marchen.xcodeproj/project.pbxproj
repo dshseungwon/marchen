@@ -25,6 +25,7 @@
 		E30C02C924D2A1FE00EBEEB1 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02C824D2A1FE00EBEEB1 /* Utils.swift */; };
 		E30C02CB24D2A48D00EBEEB1 /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02CA24D2A48D00EBEEB1 /* Mode.swift */; };
 		E31EDE2924DC1B2E003D98DA /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = E31EDE2824DC1B2E003D98DA /* Sounds */; };
+		E31EDE2B24DC6E64003D98DA /* MyKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31EDE2A24DC6E64003D98DA /* MyKeyboardView.swift */; };
 		E355808324C5A24400DCA763 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355808224C5A24400DCA763 /* AppDelegate.swift */; };
 		E355808524C5A24400DCA763 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355808424C5A24400DCA763 /* SceneDelegate.swift */; };
 		E355808A24C5A24400DCA763 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E355808824C5A24400DCA763 /* Main.storyboard */; };
@@ -78,6 +79,7 @@
 		E30C02C824D2A1FE00EBEEB1 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		E30C02CA24D2A48D00EBEEB1 /* Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
 		E31EDE2824DC1B2E003D98DA /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
+		E31EDE2A24DC6E64003D98DA /* MyKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKeyboardView.swift; sourceTree = "<group>"; };
 		E355807F24C5A24400DCA763 /* Marchen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marchen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E355808224C5A24400DCA763 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E355808424C5A24400DCA763 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				E30C02B524D1729C00EBEEB1 /* ChordTableViewCell.swift */,
 				E30C02B624D1729C00EBEEB1 /* ChordTableViewCell.xib */,
 				E3BB255D24D806D80008DB34 /* PaddedLabel.swift */,
+				E31EDE2A24DC6E64003D98DA /* MyKeyboardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				E30C02AD24CEF27A00EBEEB1 /* LyricLineTableViewCell.swift in Sources */,
 				E30C02A924CEF16200EBEEB1 /* LyricTableViewController.swift in Sources */,
 				E30C02C724D2A1AA00EBEEB1 /* Diatonic.swift in Sources */,
+				E31EDE2B24DC6E64003D98DA /* MyKeyboardView.swift in Sources */,
 				E30C02C324D26A3600EBEEB1 /* ChordPlayViewController.swift in Sources */,
 				E30C02B424D1703D00EBEEB1 /* NewSongViewController.swift in Sources */,
 				E3BB255E24D806D80008DB34 /* PaddedLabel.swift in Sources */,
