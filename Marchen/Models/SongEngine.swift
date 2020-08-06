@@ -22,20 +22,30 @@ class SongEngine {
     //MARK: - INIT METHODS
     init() {
         
-            let mixer = AKMixer(sampler)
-            let booster = AKBooster(mixer)
-            
-            if AudioKit.engine.isRunning {
-                invalidate()
-            }
-            
-            AudioKit.output = booster
-            try! AudioKit.start()
+        let mixer = AKMixer(sampler)
+        let booster = AKBooster(mixer)
         
-            let soundsFolder = Bundle.main.bundleURL.appendingPathComponent("Sounds/sfz").path
-            sampler.unloadAllSamples()
-            sampler.loadSFZ(path: soundsFolder, fileName: "Piano.sfz")
+        if AudioKit.engine.isRunning {
+            invalidate()
+        }
+        
+        AudioKit.output = booster
+        try! AudioKit.start()
+        
+        setupSampler()
+        
+    }
+    
+    private func setupSampler() {
+        let soundsFolder = Bundle.main.bundleURL.appendingPathComponent("Sounds/sfz").path
+        sampler.unloadAllSamples()
+        sampler.loadSFZ(path: soundsFolder, fileName: "Piano.sfz")
         sampler.masterVolume = currentVolume
+        
+        sampler.attackDuration = 0.01
+        sampler.decayDuration = 0.1
+        sampler.sustainLevel = 0.8
+        sampler.releaseDuration = 0.5
     }
     
     // Variables for Observer Pattern
@@ -231,16 +241,16 @@ class SongEngine {
     func playNote(note: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
         sampler.play(noteNumber: note, velocity: velocity)
     }
-
+    
     func stopNote(note: MIDINoteNumber, channel: MIDIChannel) {
         sampler.stop(noteNumber: note)
     }
     
     func allNotesOff() {
-           for note in 0 ... 127 {
-               sampler.stop(noteNumber: MIDINoteNumber(note))
-           }
-       }
+        for note in 0 ... 127 {
+            sampler.stop(noteNumber: MIDINoteNumber(note))
+        }
+    }
     
     private func stopPlaying() {
         isStopPublished = true
@@ -251,6 +261,9 @@ class SongEngine {
     private func playCurrentDiatonic() {
         if isAvailable() {
             let currentChordNotes = Utils.getChordNotesToPlay(key: key!, diatonic: currentDiatonic)
+            
+            // Stop the playing notes before play the diatonic chord.
+            allNotesOff()
             
             for note in currentChordNotes {
                 playNote(note: MIDINoteNumber(note), velocity: 127, channel: midiChannelIn)
