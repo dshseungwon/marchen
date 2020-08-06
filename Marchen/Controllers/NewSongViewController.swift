@@ -107,7 +107,8 @@ extension NewSongViewController: UITableViewDataSource {
         cell.chordPlayButton.imageView?.tintColor = .link
         cell.chordPlayButton.isEnabled = true
         
-        
+        // cell 을 reuse 하니까 isPlaying 까지 Reuse 되는 버그 발생.
+        // isPlaying 정보를 여기 Controller가 가지고 있자.
         if nowPlayingChord && !cell.isPlaying {
             cell.chordPlayButton.imageView?.tintColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
             cell.chordPlayButton.isEnabled = false
@@ -203,6 +204,7 @@ extension NewSongViewController {
 extension NewSongViewController: ChordPlayable {
     
     func play(diatonicProgression: [Diatonic], tag: Int) {
+        songEngine?.setBPM(as: 120)
         songEngine?.setKeyAndDiatonicProgression(key: selectedKey, diatonicProgression: diatonicProgression)
         songEngine?.play()
         nowPlayingChord = true

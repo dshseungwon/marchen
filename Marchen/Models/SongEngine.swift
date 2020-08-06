@@ -21,7 +21,11 @@ class SongEngine {
     //MARK: - INIT METHODS
     init() {
         
-        let mixer = AKMixer(sampler)
+        let filteredSampler = AKLowPassFilter(sampler)
+        filteredSampler.cutoffFrequency = 2000 // B6 = 1975.5Hz, C7 = 2093.0
+        filteredSampler.resonance = 0 // dB
+
+        let mixer = AKMixer(filteredSampler)
         let booster = AKBooster(mixer)
         
         if AudioKit.engine.isRunning {
@@ -65,7 +69,7 @@ class SongEngine {
     private var currentVolume = 1.0
     
     // Variables about Song Information
-    private var bpm = 240
+    private var bpm = 120
     private var barPlayTime: Double {
         return Double(60) / Double(bpm) * Double(4)
     }

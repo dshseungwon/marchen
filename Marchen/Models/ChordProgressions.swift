@@ -9,16 +9,16 @@
 import Foundation
 
 let chordProgressions: [[Diatonic]] = [
+    [Diatonic.IV, Diatonic.V, Diatonic.VI],
+    [Diatonic.VI, Diatonic.V, Diatonic.IV],
     [Diatonic.I, Diatonic.V, Diatonic.VI, Diatonic.IV],
     [Diatonic.I, Diatonic.VI, Diatonic.II, Diatonic.V],
+    [Diatonic.I, Diatonic.II, Diatonic.III, Diatonic.IV],
     [Diatonic.II, Diatonic.V, Diatonic.I, Diatonic.VI],
     [Diatonic.IV, Diatonic.V, Diatonic.III, Diatonic.VI],
-    [Diatonic.I, Diatonic.II, Diatonic.III, Diatonic.IV],
     [Diatonic.IV, Diatonic.V, Diatonic.VI, Diatonic.III],
-    [Diatonic.VI, Diatonic.VI, Diatonic.IV, Diatonic.IV, Diatonic.I, Diatonic.I, Diatonic.V, Diatonic.V],
-    [Diatonic.IV, Diatonic.V, Diatonic.VI],
     [Diatonic.IV, Diatonic.V, Diatonic.III, Diatonic.IV],
-    
+    [Diatonic.VI, Diatonic.VI, Diatonic.IV, Diatonic.IV, Diatonic.I, Diatonic.I, Diatonic.V, Diatonic.V],
 ]
 
 
