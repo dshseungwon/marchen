@@ -162,6 +162,14 @@ class SongEngine {
             print("STOP")
         }
     }
+
+    func play(note: MIDINoteNumber, velocity: MIDIVelocity = 127) {
+        sampler.play(noteNumber: note, velocity: velocity)
+    }
+
+    func stop(note: MIDINoteNumber) {
+        sampler.stop(noteNumber: note)
+    }
     
     //MARK: - Private Methods
     private func isAvailable() -> Bool {
@@ -258,15 +266,15 @@ class SongEngine {
         currentTick = 0.0
     }
     
-    func playNote(note: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
+    private func playNote(note: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
         sampler.play(noteNumber: note, velocity: velocity)
     }
     
-    func stopNote(note: MIDINoteNumber, channel: MIDIChannel) {
+    private func stopNote(note: MIDINoteNumber, channel: MIDIChannel) {
         sampler.stop(noteNumber: note)
     }
     
-    func allNotesOff() {
+    private func allNotesOff() {
         for note in 0 ... 127 {
             sampler.stop(noteNumber: MIDINoteNumber(note))
         }

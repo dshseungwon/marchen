@@ -191,47 +191,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2N-NG-697">
-                                <rect key="frame" x="192" y="342" width="30" height="30"/>
-                                <state key="normal" title="Play"/>
-                                <connections>
-                                    <action selector="playButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="4wp-dv-mrz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkZ-R2-0LK">
-                                <rect key="frame" x="191" y="472" width="32" height="30"/>
-                                <state key="normal" title="Stop"/>
-                                <connections>
-                                    <action selector="stopButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="Lhc-i8-1gf"/>
-                                </connections>
-                            </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="01T-X7-JPj">
-                                <rect key="frame" x="120" y="240" width="174" height="2"/>
-                            </progressView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="or2-jN-5AB">
+                                <rect key="frame" x="0.0" y="140" width="414" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2N-NG-697">
+                                        <rect key="frame" x="0.0" y="0.0" width="192" height="30"/>
+                                        <state key="normal" title="Play"/>
+                                        <connections>
+                                            <action selector="playButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="4wp-dv-mrz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkZ-R2-0LK">
+                                        <rect key="frame" x="222" y="0.0" width="192" height="30"/>
+                                        <state key="normal" title="Stop"/>
+                                        <connections>
+                                            <action selector="stopButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="Lhc-i8-1gf"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="S8p-qt-flY">
-                                <rect key="frame" x="0.0" y="562" width="414" height="300"/>
+                                <rect key="frame" x="0.0" y="180" width="414" height="682"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="h1g-cb-Dsa" firstAttribute="bottom" secondItem="S8p-qt-flY" secondAttribute="bottom" id="3AK-eo-kM7"/>
-                            <constraint firstItem="01T-X7-JPj" firstAttribute="leading" secondItem="zhN-la-bMC" secondAttribute="leadingMargin" constant="100" id="66a-ZO-S8b"/>
-                            <constraint firstItem="vkZ-R2-0LK" firstAttribute="top" secondItem="m2N-NG-697" secondAttribute="bottom" constant="100" id="9L7-6H-Ugt"/>
-                            <constraint firstItem="01T-X7-JPj" firstAttribute="centerX" secondItem="zhN-la-bMC" secondAttribute="centerX" id="KCq-sL-9YZ"/>
-                            <constraint firstItem="m2N-NG-697" firstAttribute="top" secondItem="01T-X7-JPj" secondAttribute="bottom" constant="100" id="Rjt-t1-xen"/>
-                            <constraint firstItem="01T-X7-JPj" firstAttribute="top" secondItem="h1g-cb-Dsa" secondAttribute="top" constant="100" id="SWh-ml-OYU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="01T-X7-JPj" secondAttribute="trailing" constant="100" id="Se7-Dj-Nvj"/>
-                            <constraint firstItem="h1g-cb-Dsa" firstAttribute="trailing" secondItem="S8p-qt-flY" secondAttribute="trailing" id="Vhl-j1-dT5"/>
-                            <constraint firstItem="vkZ-R2-0LK" firstAttribute="centerX" secondItem="zhN-la-bMC" secondAttribute="centerX" id="lcb-Gp-Ak0"/>
-                            <constraint firstItem="S8p-qt-flY" firstAttribute="leading" secondItem="h1g-cb-Dsa" secondAttribute="leading" id="wAi-qu-ut1"/>
-                            <constraint firstItem="S8p-qt-flY" firstAttribute="top" secondItem="vkZ-R2-0LK" secondAttribute="bottom" constant="60" id="wHH-UW-K1H"/>
-                            <constraint firstItem="m2N-NG-697" firstAttribute="centerX" secondItem="zhN-la-bMC" secondAttribute="centerX" id="xA9-ao-eAz"/>
+                            <constraint firstItem="or2-jN-5AB" firstAttribute="leading" secondItem="h1g-cb-Dsa" secondAttribute="leading" id="A45-fx-seM"/>
+                            <constraint firstItem="or2-jN-5AB" firstAttribute="top" secondItem="h1g-cb-Dsa" secondAttribute="top" id="H2M-5j-vwz"/>
+                            <constraint firstItem="S8p-qt-flY" firstAttribute="trailing" secondItem="h1g-cb-Dsa" secondAttribute="trailing" id="LXa-lj-34o"/>
+                            <constraint firstItem="S8p-qt-flY" firstAttribute="bottom" secondItem="h1g-cb-Dsa" secondAttribute="bottom" id="d81-AV-nay"/>
+                            <constraint firstItem="S8p-qt-flY" firstAttribute="leading" secondItem="h1g-cb-Dsa" secondAttribute="leading" id="h9G-lq-0U1"/>
+                            <constraint firstItem="S8p-qt-flY" firstAttribute="top" secondItem="or2-jN-5AB" secondAttribute="bottom" constant="10" id="kJb-f5-uKe"/>
+                            <constraint firstItem="h1g-cb-Dsa" firstAttribute="trailing" secondItem="or2-jN-5AB" secondAttribute="trailing" id="v8q-YD-BEn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h1g-cb-Dsa"/>
                     </view>
                     <navigationItem key="navigationItem" id="248-Bu-UIP"/>
                     <connections>
-                        <outlet property="progressView" destination="01T-X7-JPj" id="Q0M-Wr-9Xa"/>
                         <outlet property="stackView" destination="S8p-qt-flY" id="EDv-i1-K0h"/>
                     </connections>
                 </viewController>

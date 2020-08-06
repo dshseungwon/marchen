@@ -45,11 +45,11 @@ class ChordPlayViewController: UIViewController, AKKeyboardDelegate {
         
         stackView.addArrangedSubview(keyboardView)
         
-//        keyboardView.widthAnchor.constraint(equalToConstant: stackView.frame.width).isActive = true
-//        keyboardView.heightAnchor.constraint(equalToConstant: stackView.frame.height).isActive = true
+//        stackView.widthAnchor.constraint(equalToConstant: stackView.frame.width).isActive = true
+//        stackView.heightAnchor.constraint(equalToConstant: stackView.frame.height).isActive = true
 //
-//        keyboardView.centerXAnchor.constraint(equalTo: stackView.centerXAnchor).isActive = true
-//        keyboardView.centerYAnchor.constraint(equalTo: stackView.centerYAnchor).isActive = true
+//        stackView.centerXAnchor.constraint(equalTo: stackView.centerXAnchor).isActive = true
+//        stackView.centerYAnchor.constraint(equalTo: stackView.centerYAnchor).isActive = true
     }
     
     @IBAction func playButtonClicked(_ sender: UIButton) {
@@ -68,10 +68,10 @@ class ChordPlayViewController: UIViewController, AKKeyboardDelegate {
     
     
     func noteOn(note: MIDINoteNumber) {
-        
+        songEngine.play(note: note)
     }
     
     func noteOff(note: MIDINoteNumber) {
-        
+        songEngine.stop(note: note)
     }
 }
