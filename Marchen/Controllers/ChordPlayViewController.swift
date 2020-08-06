@@ -28,7 +28,6 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
     }
     
     
-    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var stackView: UIStackView!
     
     // From the Previous VC
@@ -67,7 +66,7 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
         guard let progression = selectedDiatonicProgression else { fatalError("Progression did not set.") }
 
         songEngine.setIsRepeat(as: true)
-        songEngine.setBPM(as: 280)
+        songEngine.setBPM(as: 90)
         songEngine.setKeyAndDiatonicProgression(key: key, diatonicProgression: progression)
         songEngine.play()
     }

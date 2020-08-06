@@ -211,18 +211,18 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="S8p-qt-flY">
-                                <rect key="frame" x="0.0" y="180" width="414" height="682"/>
+                                <rect key="frame" x="20" y="190" width="374" height="672"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="or2-jN-5AB" firstAttribute="leading" secondItem="h1g-cb-Dsa" secondAttribute="leading" id="A45-fx-seM"/>
                             <constraint firstItem="or2-jN-5AB" firstAttribute="top" secondItem="h1g-cb-Dsa" secondAttribute="top" id="H2M-5j-vwz"/>
-                            <constraint firstItem="S8p-qt-flY" firstAttribute="trailing" secondItem="h1g-cb-Dsa" secondAttribute="trailing" id="LXa-lj-34o"/>
+                            <constraint firstItem="S8p-qt-flY" firstAttribute="leading" secondItem="h1g-cb-Dsa" secondAttribute="leading" constant="20" id="U0J-Dy-Eel"/>
                             <constraint firstItem="S8p-qt-flY" firstAttribute="bottom" secondItem="h1g-cb-Dsa" secondAttribute="bottom" id="d81-AV-nay"/>
-                            <constraint firstItem="S8p-qt-flY" firstAttribute="leading" secondItem="h1g-cb-Dsa" secondAttribute="leading" id="h9G-lq-0U1"/>
-                            <constraint firstItem="S8p-qt-flY" firstAttribute="top" secondItem="or2-jN-5AB" secondAttribute="bottom" constant="10" id="kJb-f5-uKe"/>
+                            <constraint firstItem="or2-jN-5AB" firstAttribute="leading" secondItem="h1g-cb-Dsa" secondAttribute="leading" id="hrz-T2-5NZ"/>
+                            <constraint firstItem="S8p-qt-flY" firstAttribute="top" secondItem="or2-jN-5AB" secondAttribute="bottom" constant="20" id="kJb-f5-uKe"/>
                             <constraint firstItem="h1g-cb-Dsa" firstAttribute="trailing" secondItem="or2-jN-5AB" secondAttribute="trailing" id="v8q-YD-BEn"/>
+                            <constraint firstItem="h1g-cb-Dsa" firstAttribute="trailing" secondItem="S8p-qt-flY" secondAttribute="trailing" constant="20" id="y3E-MB-x0b"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h1g-cb-Dsa"/>
                     </view>
