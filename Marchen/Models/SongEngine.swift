@@ -42,34 +42,96 @@ class SongEngine {
     
     //MARK: - INIT METHODS
     init() {
-        let oscillatorA = AKOscillator(waveform: waveform)
-        oscillatorArray.append(oscillatorA)
         
-        
-        let oscillatorB = AKOscillator(waveform: waveform)
-        oscillatorArray.append(oscillatorB)
-        
-        
-        let oscillatorC = AKOscillator(waveform: waveform)
-        oscillatorArray.append(oscillatorC)
-        
-        
-        let mixer = AKMixer(oscillatorA, oscillatorB, oscillatorC)
-        let booster = AKBooster(mixer)
-        
-        if AudioKit.engine.isRunning {
-            invalidate()
+        do {
+            let C3File = try AKAudioFile(readFileName: "C3.wav")
+            let Db3File = try AKAudioFile(readFileName: "Db3.wav")
+            let D3File = try AKAudioFile(readFileName: "D3.wav")
+            let Eb3File = try AKAudioFile(readFileName: "Eb3.wav")
+            let E3File = try AKAudioFile(readFileName: "E3.wav")
+            let F3File = try AKAudioFile(readFileName: "F3.wav")
+            let Gb3File = try AKAudioFile(readFileName: "Gb3.wav")
+            let G3File = try AKAudioFile(readFileName: "G3.wav")
+            let Ab3File = try AKAudioFile(readFileName: "Ab3.wav")
+            let A3File = try AKAudioFile(readFileName: "A3.wav")
+            let Bb3File = try AKAudioFile(readFileName: "Bb3.wav")
+            let B3File = try AKAudioFile(readFileName: "B3.wav")
+            let C4File = try AKAudioFile(readFileName: "C4.wav")
+            
+            let C3 = AKPlayer(audioFile: C3File)
+            C3.isLooping = false
+            C3.buffering = .always
+            let Db3 = AKPlayer(audioFile: Db3File)
+            Db3.isLooping = false
+            Db3.buffering = .always
+            let D3 = AKPlayer(audioFile: D3File)
+            D3.isLooping = false
+            D3.buffering = .always
+            let Eb3 = AKPlayer(audioFile: Eb3File)
+            Eb3.isLooping = false
+            Eb3.buffering = .always
+            let E3 = AKPlayer(audioFile: E3File)
+            E3.isLooping = false
+            E3.buffering = .always
+            let F3 = AKPlayer(audioFile: F3File)
+            F3.isLooping = false
+            F3.buffering = .always
+            let Gb3 = AKPlayer(audioFile: Gb3File)
+            Gb3.isLooping = false
+            Gb3.buffering = .always
+            let G3 =  AKPlayer(audioFile: G3File)
+            G3.isLooping = false
+            G3.buffering = .always
+            let Ab3 =  AKPlayer(audioFile: Ab3File)
+            Ab3.isLooping = false
+            Ab3.buffering = .always
+            let A3 =  AKPlayer(audioFile: A3File)
+            A3.isLooping = false
+            A3.buffering = .always
+            let Bb3 =  AKPlayer(audioFile: Bb3File)
+            Bb3.isLooping = false
+            Bb3.buffering = .always
+            let B3 =  AKPlayer(audioFile: B3File)
+            B3.isLooping = false
+            B3.buffering = .always
+            let C4 =  AKPlayer(audioFile: C4File)
+            C4.isLooping = false
+            C4.buffering = .always
+            
+            notePlayerDictionary.updateValue(C3, forKey: 48)
+            notePlayerDictionary.updateValue(Db3, forKey: 49)
+            notePlayerDictionary.updateValue(D3, forKey: 50)
+            notePlayerDictionary.updateValue(Eb3, forKey: 51)
+            notePlayerDictionary.updateValue(E3, forKey: 52)
+            notePlayerDictionary.updateValue(F3, forKey: 53)
+            notePlayerDictionary.updateValue(Gb3, forKey: 54)
+            notePlayerDictionary.updateValue(G3, forKey: 55)
+            notePlayerDictionary.updateValue(Ab3, forKey: 56)
+            notePlayerDictionary.updateValue(A3, forKey: 57)
+            notePlayerDictionary.updateValue(Bb3, forKey: 58)
+            notePlayerDictionary.updateValue(B3, forKey: 59)
+            notePlayerDictionary.updateValue(C4, forKey: 60)
+            
+            
+            let mixer = AKMixer(C3, Db3, D3, Eb3, E3, F3, Gb3, G3, Ab3, A3, Bb3, B3, C4)
+            let booster = AKBooster(mixer)
+            
+            if AudioKit.engine.isRunning {
+                invalidate()
+            }
+            
+            AudioKit.output = booster
+            try! AudioKit.start()
+            
+            
+        } catch {
+            fatalError(error.localizedDescription)
         }
-        
-        AudioKit.output = booster
-        try! AudioKit.start()
-        
+
     }
     
     
-    // To initialize Oscillator
-    private let waveform = AKTable(AKTableType.triangle)
-    private var oscillatorArray: [AKOscillator] = []
+    private var notePlayerDictionary: [MIDINoteNumber: AKPlayer] = [:]
     private var currentAmplitude = 1.0
     private var currentRampDuration = 0.0
     
@@ -257,32 +319,49 @@ class SongEngine {
     private func stopPlaying() {
         isStopPublished = true
         
-        for osc in oscillatorArray {
-            osc.stop()
-        }
+        notePlayerDictionary.forEach { $1.stop() }
+
     }
     
     private func playCurrentDiatonic() {
         if isAvailable() {
             let currentChordNotes = Utils.getChordNotesToPlay(key: key!, diatonic: currentDiatonic)
             
-            for (idx, note) in currentChordNotes.enumerated() {
-                self.playNoteSound(oscillator: self.oscillatorArray[idx], note: MIDINoteNumber(note))
+            for note in currentChordNotes {
+                let player = self.notePlayerDictionary[MIDINoteNumber(note)]
+                
+                player?.volume = currentAmplitude
+                player?.play()
+                
             }
         }
     }
     
-    private func playNoteSound(oscillator: AKOscillator, note: MIDINoteNumber) {
-        // start from the correct note if amplitude is zero
-        if oscillator.amplitude == 0 {
-            oscillator.rampDuration = 0
-        }
-        oscillator.frequency = note.midiNoteToFrequency()
-        
-        // Still use rampDuration for volume
-        oscillator.rampDuration = currentRampDuration
-        oscillator.amplitude = currentAmplitude
-        oscillator.play()
-    }
-    
 }
+
+//    private func playNoteSound(oscillator: AKOscillator, note: MIDINoteNumber) {
+//        // start from the correct note if amplitude is zero
+//        if oscillator.amplitude == 0 {
+//            oscillator.rampDuration = 0
+//        }
+//        oscillator.frequency = note.midiNoteToFrequency()
+//
+//        // Still use rampDuration for volume
+//        oscillator.rampDuration = currentRampDuration
+//        oscillator.amplitude = currentAmplitude
+//        oscillator.play()
+//    }
+
+//            notePlayerDictionary.updateValue(C3, forKey: "C3")
+//            notePlayerDictionary.updateValue(Db3, forKey: "Db3")
+//            notePlayerDictionary.updateValue(D3, forKey: "D3")
+//            notePlayerDictionary.updateValue(Eb3, forKey: "Eb3")
+//            notePlayerDictionary.updateValue(E3, forKey: "E3")
+//            notePlayerDictionary.updateValue(F3, forKey: "F3")
+//            notePlayerDictionary.updateValue(Gb3, forKey: "Gb3")
+//            notePlayerDictionary.updateValue(G3, forKey: "G3")
+//            notePlayerDictionary.updateValue(Ab3, forKey: "Ab3")
+//            notePlayerDictionary.updateValue(A3, forKey: "A3")
+//            notePlayerDictionary.updateValue(Bb3, forKey: "Bb3")
+//            notePlayerDictionary.updateValue(B3, forKey: "B3")
+//            notePlayerDictionary.updateValue(C4, forKey: "C4")
