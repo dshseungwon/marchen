@@ -15,7 +15,6 @@ protocol Observer {
 
 class SongEngine {
     
-    // From the Previous VC
     var diatonicProgression: [Diatonic]? // e.g. [I, V, VI, IV]
     var key: Key? // e.g. Key.C
     
@@ -72,8 +71,12 @@ class SongEngine {
     }
     private var progressionRepeats = 2
     
-    private var songPlayTime: Double {  // Assume that the Chord Progression ONLY consists of 4 chords.
-        return barPlayTime * progressionRepeats * 4
+    private var songPlayTime: Double {
+        if let progression = diatonicProgression {
+            return barPlayTime * progressionRepeats * progression.count
+        } else {
+            return Double(0)
+        }
     }
     
     private var songDiatonics: [(Diatonic, Double, Double, Int)] = []
