@@ -41,25 +41,27 @@ class ChordTableViewCell: UITableViewCell {
     }
     
     func updateButtonImage() {
-        DispatchQueue.main.async {
-            if (self.isPlaying) {
-                // Stop Button Image
-                self.chordPlayButton.setImage(UIImage(systemName: "stop.circle"), for: .normal)
-                guard let diatonicProgression = self.cellDiatonicProgression else {
-                    fatalError("Cell does not have diatonicProgression")
-                }
-                self.delegate?.play(diatonicProgression: diatonicProgression, tag: self.tag)
-            } else {
-                // Play Button Image
-                self.chordPlayButton.setImage(UIImage(systemName: "play.circle"), for: .normal)
-                self.delegate?.stop()
-            }
+        if (self.isPlaying) {
+            // Stop Button Image
+            self.chordPlayButton.setImage(UIImage(systemName: "stop.circle"), for: .normal)
+        } else {
+            // Play Button Image
+            self.chordPlayButton.setImage(UIImage(systemName: "play.circle"), for: .normal)
         }
     }
     
     @IBAction func playButtonClicked(_ sender: UIButton) {
         isPlaying = !isPlaying
         
-        updateButtonImage()
+        DispatchQueue.main.async {
+            if (self.isPlaying) {
+                guard let diatonicProgression = self.cellDiatonicProgression else {
+                    fatalError("Cell does not have diatonicProgression")
+                }
+                self.delegate?.play(diatonicProgression: diatonicProgression, tag: self.tag)
+            } else {
+                self.delegate?.stop()
+            }
+        }
     }
 }

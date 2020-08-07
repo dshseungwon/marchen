@@ -34,7 +34,7 @@ class NewSongViewController: UIViewController {
     var songEngine : SongEngine?
     
     private var nowPlayingChord = false
-    private var playingCellTag: Int?
+    private var playingCellTag = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +103,14 @@ extension NewSongViewController: UITableViewDataSource {
         // Set Button
         cell.delegate = self
         cell.tag = indexPath.row
+        
+        if cell.tag == playingCellTag {
+            cell.isPlaying = true
+        } else {
+            cell.isPlaying = false
+        }
+        
+        cell.updateButtonImage()
         
         cell.chordPlayButton.imageView?.tintColor = .link
         cell.chordPlayButton.isEnabled = true
@@ -216,6 +224,7 @@ extension NewSongViewController: ChordPlayable {
         // RESET THE TICK
         songEngine?.reset()
         nowPlayingChord = false
+        playingCellTag = -1
         tableView.reloadData()
     }
     
@@ -223,9 +232,9 @@ extension NewSongViewController: ChordPlayable {
 
 extension NewSongViewController: SongHasFinished {
     func update(_ notifyValue: Bool) { // We only call this function when song has finshed its playing.
-        guard let tag = playingCellTag else { fatalError("playingCellTag is nil") }
+//        guard let tag = playingCellTag else { fatalError("playingCellTag is nil") }
         nowPlayingChord = false // same with !notifyValue
-        if let cell = tableView.cellForRow(at: IndexPath(row: tag, section: 0)) {
+        if let cell = tableView.cellForRow(at: IndexPath(row: playingCellTag, section: 0)) {
             let castedCell = cell as! ChordTableViewCell
             castedCell.songHasFinished()
             tableView.reloadData()
