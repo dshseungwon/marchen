@@ -35,10 +35,10 @@ class ChordTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func songHasFinished() {
-        isPlaying = false
-        self.chordPlayButton.setImage(UIImage(systemName: "play.circle"), for: .normal)
-    }
+//    func songHasFinished() {
+//        isPlaying = false
+//        self.chordPlayButton.setImage(UIImage(systemName: "play.circle"), for: .normal)
+//    }
     
     func updateButtonImage() {
         if (self.isPlaying) {

@@ -60,10 +60,15 @@ class NewSongViewController: UIViewController {
         songEngine?.attachObserver(self)
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(true)
-// 이러지 말고 새로 start 하기 전에 무조건 invalidate 해주는 logic 으로 변경
-//        songEngine.invalidate()
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        songEngine?.reset()
+        nowPlayingChord = false
+        playingCellTag = -1
+        selectedChordProgression = nil
+        generateButton.isEnabled = false
+        
     }
     
     
@@ -109,7 +114,6 @@ extension NewSongViewController: UITableViewDataSource {
         } else {
             cell.isPlaying = false
         }
-        
         cell.updateButtonImage()
         
         cell.chordPlayButton.imageView?.tintColor = .link
@@ -234,10 +238,13 @@ extension NewSongViewController: SongHasFinished {
     func update(_ notifyValue: Bool) { // We only call this function when song has finshed its playing.
 //        guard let tag = playingCellTag else { fatalError("playingCellTag is nil") }
         nowPlayingChord = false // same with !notifyValue
-        if let cell = tableView.cellForRow(at: IndexPath(row: playingCellTag, section: 0)) {
-            let castedCell = cell as! ChordTableViewCell
-            castedCell.songHasFinished()
-            tableView.reloadData()
-        }
+        playingCellTag = -1
+        tableView.reloadData()
+//        if let cell = tableView.cellForRow(at: IndexPath(row: playingCellTag, section: 0)) {
+//            let castedCell = cell as! ChordTableViewCell
+//            castedCell.songHasFinished()
+//            playingCellTag = -1
+//            tableView.reloadData()
+//        }
     }
 }
