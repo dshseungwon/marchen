@@ -36,10 +36,7 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
     @IBOutlet weak var stackView: UIStackView!
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
-        if isPlaying {
-            songEngine.reset()
-            playButton.setTitle("Play", for: .normal)
-        }
+        changeUIWhenStop()
         songEngine.setBPM(as: Int(sender.value))
         bpmLabel.text = "BPM: \(Int(sender.value).description)"
     }
@@ -77,6 +74,14 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
         
     }
     
+    private func changeUIWhenStop() {
+        if isPlaying {
+            songEngine.reset()
+            playButton.setTitle("Play", for: .normal)
+            isPlaying = false
+        }
+    }
+    
     @IBAction func playButtonClicked(_ sender: UIButton) {
         isPlaying = !isPlaying
         if isPlaying {
@@ -92,6 +97,12 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
             songEngine.reset()
         }
         
+    }
+    
+    @IBAction func chordInABarButtonClicked(_ sender: UIButton) {
+        guard let buttonText = sender.titleLabel?.text else {fatalError("Error in getting buttonText")}
+        songEngine.setChordsInABar(as: Int(buttonText) ?? 1)
+        changeUIWhenStop()
     }
     
     func noteOn(note: MIDINoteNumber) {

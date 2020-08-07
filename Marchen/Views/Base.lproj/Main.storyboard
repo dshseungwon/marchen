@@ -191,47 +191,85 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="or2-jN-5AB" userLabel="Menu Stack View">
-                                <rect key="frame" x="20" y="140" width="384" height="32"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8jj-g7-qod" userLabel="Setting Stack View">
+                                <rect key="frame" x="10" y="93" width="394" height="69"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2N-NG-697">
-                                        <rect key="frame" x="0.0" y="0.0" width="121.5" height="32"/>
-                                        <state key="normal" title="Play"/>
-                                        <connections>
-                                            <action selector="playButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="4wp-dv-mrz"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BPM: 120" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOT-lP-feQ">
-                                        <rect key="frame" x="131.5" y="0.0" width="121" height="32"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="120" minimumValue="1" maximumValue="280" translatesAutoresizingMaskIntoConstraints="NO" id="qHn-pY-a79">
-                                        <rect key="frame" x="262.5" y="0.0" width="121.5" height="32"/>
-                                        <connections>
-                                            <action selector="stepperValueChanged:" destination="H7e-w4-wKg" eventType="valueChanged" id="NFd-xQ-dqo"/>
-                                        </connections>
-                                    </stepper>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="or2-jN-5AB" userLabel="Menu Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="32"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2N-NG-697">
+                                                <rect key="frame" x="0.0" y="0.0" width="124.5" height="32"/>
+                                                <state key="normal" title="Play"/>
+                                                <connections>
+                                                    <action selector="playButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="4wp-dv-mrz"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BPM: 120" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOT-lP-feQ">
+                                                <rect key="frame" x="134.5" y="0.0" width="125" height="32"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="120" minimumValue="1" maximumValue="280" translatesAutoresizingMaskIntoConstraints="NO" id="qHn-pY-a79">
+                                                <rect key="frame" x="269.5" y="0.0" width="124.5" height="32"/>
+                                                <connections>
+                                                    <action selector="stepperValueChanged:" destination="H7e-w4-wKg" eventType="valueChanged" id="NFd-xQ-dqo"/>
+                                                </connections>
+                                            </stepper>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6sb-L8-TuK" userLabel="Playing Stack View">
+                                        <rect key="frame" x="0.0" y="37" width="394" height="32"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2P-Nm-O9V">
+                                                <rect key="frame" x="0.0" y="0.0" width="95" height="32"/>
+                                                <state key="normal" title="1"/>
+                                                <connections>
+                                                    <action selector="chordInABarButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="od2-r9-o7J"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5h-sZ-QDN">
+                                                <rect key="frame" x="100" y="0.0" width="94.5" height="32"/>
+                                                <state key="normal" title="2"/>
+                                                <connections>
+                                                    <action selector="chordInABarButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="jPr-IH-Lpt"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xW1-nv-J1I">
+                                                <rect key="frame" x="199.5" y="0.0" width="95" height="32"/>
+                                                <state key="normal" title="3"/>
+                                                <connections>
+                                                    <action selector="chordInABarButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="L0g-XE-zac"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GK8-m5-p3J">
+                                                <rect key="frame" x="299.5" y="0.0" width="94.5" height="32"/>
+                                                <state key="normal" title="4"/>
+                                                <connections>
+                                                    <action selector="chordInABarButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="hbe-jQ-MzX"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="S8p-qt-flY" userLabel="Keyboard Stack View">
-                                <rect key="frame" x="20" y="192" width="374" height="670"/>
+                                <rect key="frame" x="20" y="172" width="374" height="690"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="or2-jN-5AB" firstAttribute="top" secondItem="h1g-cb-Dsa" secondAttribute="top" id="H2M-5j-vwz"/>
-                            <constraint firstItem="S8p-qt-flY" firstAttribute="leading" secondItem="h1g-cb-Dsa" secondAttribute="leading" constant="20" id="U0J-Dy-Eel"/>
-                            <constraint firstItem="S8p-qt-flY" firstAttribute="bottom" secondItem="h1g-cb-Dsa" secondAttribute="bottom" id="d81-AV-nay"/>
-                            <constraint firstItem="or2-jN-5AB" firstAttribute="leading" secondItem="h1g-cb-Dsa" secondAttribute="leading" constant="20" id="hrz-T2-5NZ"/>
-                            <constraint firstItem="S8p-qt-flY" firstAttribute="top" secondItem="or2-jN-5AB" secondAttribute="bottom" constant="20" id="kJb-f5-uKe"/>
-                            <constraint firstItem="h1g-cb-Dsa" firstAttribute="trailing" secondItem="or2-jN-5AB" secondAttribute="trailing" constant="10" id="v8q-YD-BEn"/>
-                            <constraint firstItem="h1g-cb-Dsa" firstAttribute="trailing" secondItem="S8p-qt-flY" secondAttribute="trailing" constant="20" id="y3E-MB-x0b"/>
+                            <constraint firstAttribute="trailing" secondItem="8jj-g7-qod" secondAttribute="trailing" constant="10" id="0ZK-g8-Oj0"/>
+                            <constraint firstItem="h1g-cb-Dsa" firstAttribute="trailing" secondItem="S8p-qt-flY" secondAttribute="trailing" constant="20" id="8nT-ra-Han"/>
+                            <constraint firstItem="S8p-qt-flY" firstAttribute="top" secondItem="8jj-g7-qod" secondAttribute="bottom" constant="10" id="BLa-Vi-o7V"/>
+                            <constraint firstItem="8jj-g7-qod" firstAttribute="leading" secondItem="h1g-cb-Dsa" secondAttribute="leading" constant="10" id="h2t-hT-TL8"/>
+                            <constraint firstItem="h1g-cb-Dsa" firstAttribute="bottom" secondItem="S8p-qt-flY" secondAttribute="bottom" id="hPa-jX-9O1"/>
+                            <constraint firstItem="8jj-g7-qod" firstAttribute="top" secondItem="h1g-cb-Dsa" secondAttribute="top" constant="5" id="iKe-PV-Hzd"/>
+                            <constraint firstItem="S8p-qt-flY" firstAttribute="leading" secondItem="h1g-cb-Dsa" secondAttribute="leading" constant="20" id="leQ-JG-vzC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h1g-cb-Dsa"/>
                     </view>
-                    <navigationItem key="navigationItem" id="248-Bu-UIP"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="248-Bu-UIP"/>
                     <connections>
                         <outlet property="bpmLabel" destination="JOT-lP-feQ" id="R2f-Vq-SZP"/>
                         <outlet property="playButton" destination="m2N-NG-697" id="RAo-ZS-MOi"/>
