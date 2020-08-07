@@ -40,9 +40,7 @@ class ChordTableViewCell: UITableViewCell {
         self.chordPlayButton.setImage(UIImage(systemName: "play.circle"), for: .normal)
     }
     
-    @IBAction func playButtonClicked(_ sender: UIButton) {
-        isPlaying = !isPlaying
-        
+    func updateButtonImage() {
         DispatchQueue.main.async {
             if (self.isPlaying) {
                 // Stop Button Image
@@ -57,5 +55,11 @@ class ChordTableViewCell: UITableViewCell {
                 self.delegate?.stop()
             }
         }
+    }
+    
+    @IBAction func playButtonClicked(_ sender: UIButton) {
+        isPlaying = !isPlaying
+        
+        updateButtonImage()
     }
 }

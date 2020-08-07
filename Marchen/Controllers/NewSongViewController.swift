@@ -221,7 +221,7 @@ extension NewSongViewController: ChordPlayable {
     
 }
 
-extension NewSongViewController: Observer {
+extension NewSongViewController: SongHasFinished {
     func update(_ notifyValue: Bool) { // We only call this function when song has finshed its playing.
         guard let tag = playingCellTag else { fatalError("playingCellTag is nil") }
         nowPlayingChord = false // same with !notifyValue

@@ -9,7 +9,7 @@
 import UIKit
 import AudioKit
 
-protocol Observer {
+protocol SongHasFinished {
     func update(_ notifyValue: Bool)
 }
 
@@ -56,7 +56,7 @@ class SongEngine {
     }
     
     // Variables for Observer Pattern
-    private var observers: [Observer] = [Observer]()
+    private var observers: [SongHasFinished] = [SongHasFinished]()
     var isStopPublished: Bool {
         set {
             isStop = newValue
@@ -316,7 +316,7 @@ class SongEngine {
 
 extension SongEngine {
     // Methods for Observer pattern
-    func attachObserver(_ observer: Observer) {
+    func attachObserver(_ observer: SongHasFinished) {
         observers.append(observer)
     }
     
