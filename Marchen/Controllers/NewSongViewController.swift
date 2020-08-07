@@ -216,7 +216,7 @@ extension NewSongViewController {
 extension NewSongViewController: ChordPlayable {
     
     func play(diatonicProgression: [Diatonic], tag: Int) {
-        songEngine?.setBPM(as: 240)
+        songEngine?.setBPM(as: 120)
         songEngine?.setKeyAndDiatonicProgression(key: selectedKey, diatonicProgression: diatonicProgression)
         songEngine?.play()
         nowPlayingChord = true

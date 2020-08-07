@@ -78,13 +78,17 @@ class SongEngine {
     // Variables about Song Information
     private var bpm = 120
     private var barPlayTime: Double {
-        return Double(60) / Double(bpm) * Double(4)
+        Double(60) / Double(bpm) * Double(4)
+    }
+    private var chordsInABar = 1
+    private var chordPlayTime: Double {
+        barPlayTime / chordsInABar
     }
     private var progressionRepeats = 2
     
     private var songPlayTime: Double {
         if let progression = diatonicProgression {
-            return barPlayTime * progressionRepeats * progression.count
+            return chordPlayTime * progressionRepeats * progression.count
         } else {
             return Double(0)
         }
@@ -133,6 +137,14 @@ class SongEngine {
     
     func getProgressionRepeats() -> Int {
         return progressionRepeats
+    }
+    
+    func setChordsInABar(as number: Int) {
+        self.chordsInABar = number
+    }
+    
+    func getChordsInABar() -> Int {
+        return chordsInABar
     }
     
     func setKeyAndDiatonicProgression(key: Key, diatonicProgression: [Diatonic]) {
@@ -195,7 +207,7 @@ class SongEngine {
             var chordIndex = 0
             for _ in 0 ..< progressionRepeats {
                 for diatonic in progression {
-                    let endTime = startTime + barPlayTime
+                    let endTime = startTime + chordPlayTime
                     songDiatonics.append((diatonic, startTime, endTime, chordIndex))
                     startTime = endTime
                     chordIndex += 1

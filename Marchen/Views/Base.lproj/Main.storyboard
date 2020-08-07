@@ -191,27 +191,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="or2-jN-5AB">
-                                <rect key="frame" x="0.0" y="140" width="414" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="or2-jN-5AB" userLabel="Menu Stack View">
+                                <rect key="frame" x="20" y="140" width="384" height="32"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2N-NG-697">
-                                        <rect key="frame" x="0.0" y="0.0" width="192" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="121.5" height="32"/>
                                         <state key="normal" title="Play"/>
                                         <connections>
                                             <action selector="playButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="4wp-dv-mrz"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkZ-R2-0LK">
-                                        <rect key="frame" x="222" y="0.0" width="192" height="30"/>
-                                        <state key="normal" title="Stop"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BPM: 120" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOT-lP-feQ">
+                                        <rect key="frame" x="131.5" y="0.0" width="121" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="120" minimumValue="1" maximumValue="280" translatesAutoresizingMaskIntoConstraints="NO" id="qHn-pY-a79">
+                                        <rect key="frame" x="262.5" y="0.0" width="121.5" height="32"/>
                                         <connections>
-                                            <action selector="stopButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="Lhc-i8-1gf"/>
+                                            <action selector="stepperValueChanged:" destination="H7e-w4-wKg" eventType="valueChanged" id="NFd-xQ-dqo"/>
                                         </connections>
-                                    </button>
+                                    </stepper>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="S8p-qt-flY">
-                                <rect key="frame" x="20" y="190" width="374" height="672"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="S8p-qt-flY" userLabel="Keyboard Stack View">
+                                <rect key="frame" x="20" y="192" width="374" height="670"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -219,16 +224,19 @@
                             <constraint firstItem="or2-jN-5AB" firstAttribute="top" secondItem="h1g-cb-Dsa" secondAttribute="top" id="H2M-5j-vwz"/>
                             <constraint firstItem="S8p-qt-flY" firstAttribute="leading" secondItem="h1g-cb-Dsa" secondAttribute="leading" constant="20" id="U0J-Dy-Eel"/>
                             <constraint firstItem="S8p-qt-flY" firstAttribute="bottom" secondItem="h1g-cb-Dsa" secondAttribute="bottom" id="d81-AV-nay"/>
-                            <constraint firstItem="or2-jN-5AB" firstAttribute="leading" secondItem="h1g-cb-Dsa" secondAttribute="leading" id="hrz-T2-5NZ"/>
+                            <constraint firstItem="or2-jN-5AB" firstAttribute="leading" secondItem="h1g-cb-Dsa" secondAttribute="leading" constant="20" id="hrz-T2-5NZ"/>
                             <constraint firstItem="S8p-qt-flY" firstAttribute="top" secondItem="or2-jN-5AB" secondAttribute="bottom" constant="20" id="kJb-f5-uKe"/>
-                            <constraint firstItem="h1g-cb-Dsa" firstAttribute="trailing" secondItem="or2-jN-5AB" secondAttribute="trailing" id="v8q-YD-BEn"/>
+                            <constraint firstItem="h1g-cb-Dsa" firstAttribute="trailing" secondItem="or2-jN-5AB" secondAttribute="trailing" constant="10" id="v8q-YD-BEn"/>
                             <constraint firstItem="h1g-cb-Dsa" firstAttribute="trailing" secondItem="S8p-qt-flY" secondAttribute="trailing" constant="20" id="y3E-MB-x0b"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h1g-cb-Dsa"/>
                     </view>
                     <navigationItem key="navigationItem" id="248-Bu-UIP"/>
                     <connections>
+                        <outlet property="bpmLabel" destination="JOT-lP-feQ" id="R2f-Vq-SZP"/>
+                        <outlet property="playButton" destination="m2N-NG-697" id="RAo-ZS-MOi"/>
                         <outlet property="stackView" destination="S8p-qt-flY" id="EDv-i1-K0h"/>
+                        <outlet property="stepperUI" destination="qHn-pY-a79" id="kth-sC-dck"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5W8-59-bXJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
