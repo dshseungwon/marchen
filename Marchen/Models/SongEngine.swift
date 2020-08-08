@@ -44,18 +44,6 @@ class SongEngine {
         
     }
     
-    private func setupSampler() {
-        let soundsFolder = Bundle.main.bundleURL.appendingPathComponent("Sounds/sfz").path
-        sampler.unloadAllSamples()
-        sampler.loadSFZ(path: soundsFolder, fileName: "Piano.sfz")
-        sampler.masterVolume = currentVolume
-        
-        sampler.attackDuration = 0.01
-        sampler.decayDuration = 0.1
-        sampler.sustainLevel = 0.8
-        sampler.releaseDuration = 0.5
-    }
-    
     // Variables for Observer Pattern
     private var observers: [SongHasFinished] = [SongHasFinished]()
     var isStopPublished: Bool {
@@ -89,7 +77,7 @@ class SongEngine {
     
     private var songPlayTime: Double {
         if let progression = diatonicProgression {
-            return chordPlayTime * Double(progressionRepeats) * Double(progression.count)
+            return barPlayTime * Double(progressionRepeats) * Double(progression.count)
         } else {
             return Double(0)
         }
@@ -196,6 +184,18 @@ class SongEngine {
     }
     
     //MARK: - Private Methods
+    private func setupSampler() {
+        let soundsFolder = Bundle.main.bundleURL.appendingPathComponent("Sounds/sfz").path
+        sampler.unloadAllSamples()
+        sampler.loadSFZ(path: soundsFolder, fileName: "Piano.sfz")
+        sampler.masterVolume = currentVolume
+        
+        sampler.attackDuration = 0.01
+        sampler.decayDuration = 0.1
+        sampler.sustainLevel = 0.8
+        sampler.releaseDuration = 0.5
+    }
+    
     private func isAvailable() -> Bool {
         if key == nil || diatonicProgression == nil {
             return false
@@ -212,35 +212,18 @@ class SongEngine {
             var chordIndex = 0
             for _ in 0 ..< progressionRepeats {
                 for diatonic in progression {
-                    let endTime = startTime + chordPlayTime
-                    songDiatonics.append((diatonic, startTime, endTime, chordIndex))
-                    startTime = endTime
-                    chordIndex += 1
+                    for _ in 0 ..< chordsInABar {
+                        let endTime = startTime + chordPlayTime
+                        songDiatonics.append((diatonic, startTime, endTime, chordIndex))
+                        startTime = endTime
+                        chordIndex += 1
+                    }
                 }
             }
             currentDiatonic = progression[0]
         }
     }
-    
-//    private func getDiatonicOfCurrentTick() -> Diatonic? {
-//        for diatonicInfo in songDiatonics {
-//            if diatonicInfo.1 <= currentTick && currentTick < diatonicInfo.2 {
-//
-//                // SET NEXT DIATONIC
-//                /// last diatonic of the song
-//                if diatonicInfo.3 >= songDiatonics.count - 1 {
-//                    nextDiatonic = nil
-//                } else {
-//                    nextDiatonic = songDiatonics[diatonicInfo.3 + 1].0
-//                }
-//
-//                // Return current diatonic
-//                return diatonicInfo.0
-//            }
-//        }
-//        return nil
-//    }
-    
+   
     private func getChordIndexOfCurrentTick() -> Int {
         for diatonicInfo in songDiatonics {
             if diatonicInfo.1 <= currentTick && currentTick < diatonicInfo.2 {
@@ -380,6 +363,7 @@ class SongEngine {
     
 }
 
+//MARK: - Observer Pattern Methods
 extension SongEngine {
     // Methods for Observer pattern
     func attachObserver(_ observer: SongHasFinished) {
