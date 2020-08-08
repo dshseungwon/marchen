@@ -13,7 +13,6 @@ import AudioKitUI
 class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObserver {
 
     func updateNextChordKeys(nextChordKeys: Set<MIDINoteNumber>) {
-        
         var newSet = Set<MIDINoteNumber>()
         for note in nextChordKeys {
             var startNote = note % 12

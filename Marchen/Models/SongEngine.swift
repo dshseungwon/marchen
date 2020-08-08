@@ -83,13 +83,13 @@ class SongEngine {
     }
     private var chordsInABar = 1
     private var chordPlayTime: Double {
-        barPlayTime / chordsInABar
+        barPlayTime / Double(chordsInABar)
     }
     private var progressionRepeats = 1
     
     private var songPlayTime: Double {
         if let progression = diatonicProgression {
-            return chordPlayTime * progressionRepeats * progression.count
+            return chordPlayTime * Double(progressionRepeats) * Double(progression.count)
         } else {
             return Double(0)
         }
@@ -184,7 +184,6 @@ class SongEngine {
     func invalidate() {
         if AudioKit.engine.isRunning {
             try! AudioKit.stop()
-            print("STOP")
         }
     }
 
@@ -254,12 +253,14 @@ class SongEngine {
     private func checkWhetherToNotifyNextChord(chordIndex: Int) -> Bool {
         if chordIndex != -1 {
             let division = Double(3) / Double(4)
-            let offSet = round(chordPlayTime * division * Double(10)) / Double(10)
+            let offSet = chordPlayTime * division
             let notifyTime = songDiatonics[chordIndex].1 + offSet
             
+            let roundedNotifyTime = round(notifyTime * Double(10)) / Double(10)
             let roundedTick = round(currentTick * Double(10)) / Double(10)
             
-            if roundedTick == notifyTime {
+//            print(roundedTick, roundedNotifyTime)
+            if roundedTick == roundedNotifyTime {
                 return true
             }
         }
