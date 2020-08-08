@@ -14,7 +14,8 @@ protocol SongHasFinished {
 }
 
 protocol ChordKeyObserver {
-    func update(_ notifyValue: Set<MIDINoteNumber>)
+    func update(currentChordKeys: Set<MIDINoteNumber>)
+    func updateNextChordKeys(nextChordKeys: Set<MIDINoteNumber>)
 }
 
 class SongEngine {
@@ -94,6 +95,11 @@ class SongEngine {
         }
     }
     
+    // DATA STURCTURE FOR COMPOSED SONG
+    // $.0: Diatonic -> Diatonic
+    // $.1: Double -> Start time
+    // $.2: Double -> End time
+    // $.3: Int -> Index
     private var songDiatonics: [(Diatonic, Double, Double, Int)] = []
     
     
@@ -217,15 +223,24 @@ class SongEngine {
         }
     }
     
-    
-    private func getDiatonicOfCurrentTick() -> Diatonic? {
-        for diatonicInfo in songDiatonics {
-            if diatonicInfo.1 <= currentTick && currentTick < diatonicInfo.2 {
-                return diatonicInfo.0
-            }
-        }
-        return nil
-    }
+//    private func getDiatonicOfCurrentTick() -> Diatonic? {
+//        for diatonicInfo in songDiatonics {
+//            if diatonicInfo.1 <= currentTick && currentTick < diatonicInfo.2 {
+//
+//                // SET NEXT DIATONIC
+//                /// last diatonic of the song
+//                if diatonicInfo.3 >= songDiatonics.count - 1 {
+//                    nextDiatonic = nil
+//                } else {
+//                    nextDiatonic = songDiatonics[diatonicInfo.3 + 1].0
+//                }
+//
+//                // Return current diatonic
+//                return diatonicInfo.0
+//            }
+//        }
+//        return nil
+//    }
     
     private func getChordIndexOfCurrentTick() -> Int {
         for diatonicInfo in songDiatonics {
@@ -236,6 +251,20 @@ class SongEngine {
         return -1
     }
     
+    private func checkWhetherToNotifyNextChord(chordIndex: Int) -> Bool {
+        if chordIndex != -1 {
+            let division = Double(3) / Double(4)
+            let offSet = round(chordPlayTime * division * Double(10)) / Double(10)
+            let notifyTime = songDiatonics[chordIndex].1 + offSet
+            
+            let roundedTick = round(currentTick * Double(10)) / Double(10)
+            
+            if roundedTick == notifyTime {
+                return true
+            }
+        }
+        return false
+    }
     
     private func updateTick() {
         if tickTimer == nil {
@@ -252,7 +281,8 @@ class SongEngine {
                 }
                 
                 let chordIndexOfCurrentTick = self.getChordIndexOfCurrentTick()
-                let diatonicOfCurrentTick = self.getDiatonicOfCurrentTick()
+//                let diatonicOfCurrentTick = self.getDiatonicOfCurrentTick()
+                let diatonicOfCurrentTick = self.songDiatonics[chordIndexOfCurrentTick].0
                 
                 if self.isStop || chordIndexOfCurrentTick != self.currentChordIndex {
                     self.currentChordIndex = chordIndexOfCurrentTick
@@ -260,7 +290,30 @@ class SongEngine {
                     self.isStop = false
                     
                     self.playCurrentDiatonic()
+                }
+                
+                if self.checkWhetherToNotifyNextChord(chordIndex: chordIndexOfCurrentTick) {
+                    // SET NEXT DIATONIC
+                    var nextDiatonic: Diatonic?
+                    /// last diatonic of the song
+                    if chordIndexOfCurrentTick >= self.songDiatonics.count - 1 {
+                        nextDiatonic = nil
+                    } else {
+                        nextDiatonic = self.songDiatonics[chordIndexOfCurrentTick].0
+                    }
                     
+                    if let nextTickDiatonic = nextDiatonic {
+                        let nextChordNotes = Utils.getChordNotesToPlay(key: self.key!, diatonic: nextTickDiatonic)
+                        
+                        // GET NEXT DIATONIC AND MAKE A SET
+                        var nextChordKeys = Set<MIDINoteNumber>()
+                        
+                        for note in nextChordNotes {
+                            nextChordKeys.insert(MIDINoteNumber(note))
+                        }
+                        
+                        self.showNextChordKeys(nextChordKeys: nextChordKeys)
+                    }
                 }
             }
         } else {
@@ -344,7 +397,13 @@ extension SongEngine {
     
     func notifyChordKeys(with chordKeySet: Set<MIDINoteNumber>) {
         for observer in chordKeyObservers {
-            observer.update(chordKeySet)
+            observer.update(currentChordKeys: chordKeySet)
+        }
+    }
+    
+    func showNextChordKeys(nextChordKeys: Set<MIDINoteNumber>) {
+        for observer in chordKeyObservers {
+            observer.updateNextChordKeys(nextChordKeys: nextChordKeys)
         }
     }
 }

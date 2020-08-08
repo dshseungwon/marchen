@@ -42,6 +42,9 @@ import AudioKit
     
     /// Chord key color
     @IBInspectable open var  chordKeyColor: UIColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
+    
+    /// Next chord key color
+    @IBInspectable open var  nextChordKeyColor: UIColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
 
     /// Class to handle user actions
     @objc open weak var delegate: MyKeyboardDelegate?
@@ -50,7 +53,8 @@ import AudioKit
     var xOffset: CGFloat = 1
     var onKeys = Set<MIDINoteNumber>()
     var chordKeys = Set<MIDINoteNumber>()
-
+    var nextChordKeys = Set<MIDINoteNumber>()
+    
     /// Allows multiple notes to play concurrently
     @objc open var polyphonicMode = false {
         didSet {
@@ -349,19 +353,25 @@ import AudioKit
         let note = MIDINoteNumber((firstOctave + octaveNumber) * 12 + whiteKeyNotes[n] + baseMIDINote)
         
         // If note is one of chord key
-        let tmpColor = chordKeys.contains(note) ? chordKeyColor : whiteKeyOff
+        let isChordKeyColor = chordKeys.contains(note) ? chordKeyColor : whiteKeyOff
+        
+        let isNextChordKeyColor = nextChordKeys.contains(note) ? nextChordKeyColor : isChordKeyColor
         
         // If note is pressed
-        return onKeys.contains(note) ? keyOnColor : tmpColor
+        return onKeys.contains(note) ? keyOnColor : isNextChordKeyColor
     }
 
     func topKeyColor(_ n: Int, octaveNumber: Int) -> UIColor {
         if notesWithSharps[topKeyNotes[n]].range(of: "#") != nil {
+            
             let note = MIDINoteNumber((firstOctave + octaveNumber) * 12 + topKeyNotes[n] + baseMIDINote)
             
-            let tmpColor = chordKeys.contains(note) ? chordKeyColor : blackKeyOff
+            let isChordKeyColor = chordKeys.contains(note) ? chordKeyColor : blackKeyOff
             
-            return onKeys.contains(note) ? keyOnColor : tmpColor
+            let isNextChordKeyColor = nextChordKeys.contains(note) ? nextChordKeyColor : isChordKeyColor
+            
+            return onKeys.contains(note) ? keyOnColor : isNextChordKeyColor
+            
         }
         return #colorLiteral(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.000)
 
