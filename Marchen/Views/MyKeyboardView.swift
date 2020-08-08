@@ -44,7 +44,7 @@ import AudioKit
     @IBInspectable open var  chordKeyColor: UIColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
     
     /// Next chord key color
-    @IBInspectable open var  nextChordKeyColor: UIColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+    @IBInspectable open var  nextChordKeyColor: UIColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
 
     /// Class to handle user actions
     @objc open weak var delegate: MyKeyboardDelegate?

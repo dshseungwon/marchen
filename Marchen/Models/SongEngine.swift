@@ -85,7 +85,7 @@ class SongEngine {
     private var chordPlayTime: Double {
         barPlayTime / chordsInABar
     }
-    private var progressionRepeats = 2
+    private var progressionRepeats = 1
     
     private var songPlayTime: Double {
         if let progression = diatonicProgression {
@@ -295,11 +295,11 @@ class SongEngine {
                 if self.checkWhetherToNotifyNextChord(chordIndex: chordIndexOfCurrentTick) {
                     // SET NEXT DIATONIC
                     var nextDiatonic: Diatonic?
-                    /// last diatonic of the song
-                    if chordIndexOfCurrentTick >= self.songDiatonics.count - 1 {
-                        nextDiatonic = nil
+                    /// check whetehr is is the last diatonic of the song
+                    if chordIndexOfCurrentTick + 1 < self.songDiatonics.count {
+                        nextDiatonic = self.songDiatonics[chordIndexOfCurrentTick + 1].0
                     } else {
-                        nextDiatonic = self.songDiatonics[chordIndexOfCurrentTick].0
+                        nextDiatonic = self.songDiatonics[0].0
                     }
                     
                     if let nextTickDiatonic = nextDiatonic {
