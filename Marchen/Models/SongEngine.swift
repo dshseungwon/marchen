@@ -41,27 +41,41 @@ class SongEngine {
             }
         }
     }
+    
     var key: Key? // e.g. Key.C
     
     //MARK: - INIT METHODS
-    init() {
-        
-        let filteredSampler = AKLowPassFilter(sampler)
-        filteredSampler.cutoffFrequency = 2000 // B6 = 1975.5Hz, C7 = 2093.0
-        filteredSampler.resonance = 0 // dB
-
-        let mixer = AKMixer(filteredSampler)
-        let booster = AKBooster(mixer)
-        
-        if AudioKit.engine.isRunning {
-            invalidate()
+    init(songName: String) {
+        do {
+            if AudioKit.engine.isRunning {
+                invalidate()
+            }
+            
+            let filteredSampler = AKLowPassFilter(sampler)
+            filteredSampler.cutoffFrequency = 2000 // B6 = 1975.5Hz, C7 = 2093.0
+            filteredSampler.resonance = 0 // dB
+            
+            let format = AVAudioFormat(commonFormat: .pcmFormatFloat64, sampleRate: 44100, channels: 2, interleaved: true)!
+            // Use .caf extension as default.
+            // If you want to change the extension, Use AKAudioFile(forWriting:)
+            let audioFile = try AKAudioFile(writeIn: .documents, name: songName, settings: format.settings)
+            player = try AKAudioPlayer(file: audioFile)
+            
+            let mixer = AKMixer(filteredSampler, player)
+            let booster = AKBooster(mixer)
+            
+            recorder = try AKNodeRecorder(node: mixer, file: audioFile)
+            
+            AudioKit.output = booster
+            try AudioKit.start()
+            setupSampler()
+        } catch {
+            print("Error while initializing SongEngine: \(error)")
         }
-        
-        AudioKit.output = booster
-        try! AudioKit.start()
-        
-        setupSampler()
-        
+    }
+    
+    convenience init() {
+        self.init(songName: "tmpRecords")
     }
     
     // Variables for Observer Pattern
@@ -77,12 +91,13 @@ class SongEngine {
     }
     
     private var chordKeyObservers: [ChordKeyObserver] = [ChordKeyObserver]()
-
     
     // Variables for Initialize AudioKit
     private var sampler = AKSampler()
     private var midiChannelIn: MIDIChannel = 0
     private var currentVolume = 1.0
+    private var recorder: AKNodeRecorder?
+    private var player: AKAudioPlayer?
     
     // Variables about Song Information
     private var bpm = 120
@@ -196,6 +211,38 @@ class SongEngine {
         }
     }
     
+    func startRecording() {
+        do {
+            try recorder?.record()
+        } catch {
+            AKLog("Couldn't record")
+        }
+    }
+    
+    func stopRecording() {
+        recorder?.stop()
+        // If you want to export to another file,
+        // Use recoder?.audioFile?.exportAsynchronously
+    }
+    
+    func playRecording() {
+        if let plyr = player {
+            do {
+                try plyr.reloadFile()
+            } catch {
+                AKLog("Couldn't reload file.")
+            }
+            if plyr.audioFile.duration > 0.0 {
+                plyr.completionHandler = nil
+                plyr.play()
+            } else {
+                print("AudioFile is empty")
+            }
+        } else {
+            print("Nothing has recorded yet")
+        }
+    }
+    
     func stop() {
         if autoResetTickWhenStop {
             resetTick()
@@ -213,11 +260,11 @@ class SongEngine {
             try! AudioKit.stop()
         }
     }
-
+    
     func play(note: MIDINoteNumber, velocity: MIDIVelocity = 127) {
         sampler.play(noteNumber: note, velocity: velocity)
     }
-
+    
     func stop(note: MIDINoteNumber) {
         sampler.stop(noteNumber: note)
     }
@@ -247,7 +294,7 @@ class SongEngine {
         if isAvailable() {
             songDiatonics = []
             guard let progression =  _diatonicProgression else { fatalError("diatonicProgression not set") }
-   
+            
             var startTime: Double = 0.0
             var chordIndex = 0
             for _ in 0 ..< progressionRepeats {
@@ -261,7 +308,7 @@ class SongEngine {
             currentDiatonic = progression[0]
         }
     }
-   
+    
     private func getChordIndexOfCurrentTick() -> Int {
         for diatonicInfo in songDiatonics {
             if diatonicInfo.1 <= currentTick && currentTick < diatonicInfo.2 {
@@ -280,7 +327,7 @@ class SongEngine {
             let roundedNotifyTime = round(notifyTime * Double(10)) / Double(10)
             let roundedTick = round(currentTick * Double(10)) / Double(10)
             
-//            print(roundedTick, roundedNotifyTime)
+            //            print(roundedTick, roundedNotifyTime)
             if roundedTick == roundedNotifyTime {
                 return true
             }
@@ -303,7 +350,6 @@ class SongEngine {
                 }
                 
                 let chordIndexOfCurrentTick = self.getChordIndexOfCurrentTick()
-//                let diatonicOfCurrentTick = self.getDiatonicOfCurrentTick()
                 let diatonicOfCurrentTick = self.songDiatonics[chordIndexOfCurrentTick].0
                 
                 if self.isStop || chordIndexOfCurrentTick != self.currentChordIndex {

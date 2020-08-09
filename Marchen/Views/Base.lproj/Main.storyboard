@@ -472,7 +472,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h1g-cb-Dsa"/>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="248-Bu-UIP"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="248-Bu-UIP">
+                        <barButtonItem key="rightBarButtonItem" systemItem="play" id="ZkJ-z9-v4g">
+                            <connections>
+                                <action selector="playRecordedButtonClicked:" destination="H7e-w4-wKg" id="9LJ-oY-U5V"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="bpmLabel" destination="JOT-lP-feQ" id="R2f-Vq-SZP"/>
                         <outlet property="playButton" destination="m2N-NG-697" id="RAo-ZS-MOi"/>

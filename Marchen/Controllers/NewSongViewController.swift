@@ -260,6 +260,7 @@ extension NewSongViewController {
         
         destinationVC.selectedKey = selectedKey
         destinationVC.selectedDiatonicProgression = selectedChordProgression
+        destinationVC.selectedLyric = selectedLyric
         
     }
 }

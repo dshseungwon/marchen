@@ -60,18 +60,33 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
     
     var selectedKey: Key? // e.g. Key.C
     
-    private let songEngine = SongEngine()
+    var selectedLyric : LyricModel?
+    {
+        didSet {
+            loadLyric()
+        }
+    }
+    
+    private lazy var songEngine = {
+        return SongEngine(songName: selectedLyric!.title)
+    }()
+    
     private let keyboardView = MyKeyboardView()
     
     private var isPlaying = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         songEngine.attachChordKeyObserver(self)
         setupUI()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+    }
+    
+    private func loadLyric() {
+        title = selectedLyric?.title
     }
     
     private func setupUI() {
@@ -106,7 +121,13 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
             songEngine.setIsRepeat(as: true)
             songEngine.setKeyAndDiatonicProgression(key: key, diatonicProgression: progression)
             songEngine.play()
+            
+            // START RECORDING
+            songEngine.startRecording()
         } else {
+            // END RECORDING
+            songEngine.stopRecording()
+            
             sender.setTitle("Play", for: .normal)
             songEngine.reset()
         }
@@ -133,4 +154,9 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
     func noteOff(note: MIDINoteNumber) {
         songEngine.stop(note: note)
     }
+    
+    @IBAction func playRecordedButtonClicked(_ sender: UIBarButtonItem) {
+        songEngine.playRecording()
+    }
+    
 }
