@@ -10,36 +10,23 @@ import Foundation
 import RealmSwift
 
 /*
-Realm DB >> load [[Int]] >> load [[Diatonic]]
+ Realm DB >> load [[Int]] >> load [[Diatonic]]
  
  Usage: [[Diatonic]]
-
-Relam DB << save [[Int]] << save [[Diatonic]]
-*/
+ 
+ Relam DB << save [[Int]] << save [[Diatonic]]
+ */
 
 class ChordProgressionModel: Object {
     
     var chordProgressionArray = List<ChordProgression>()
     
-    static func DiatonicArrayToIntArray(_ diatonicArray: [[Diatonic]]) -> List<ChordProgression> {
-        let chordProgressionList = List<ChordProgression>()
-        
-        for diatonicProgression in diatonicArray {
-            let chordProgression = ChordProgression()
-            
-            for diatonic in diatonicProgression {
-                chordProgression.chordProgression.append(diatonic)
-            }
-            
-            chordProgressionList.append(chordProgression)
-        }
-        
-        return chordProgressionList
-    }
-    
     static func RLMIntArrayToDiatonicArray(_ intArray: List<ChordProgression>) -> [[Diatonic]] {
         return intArray.map { (intProgression) -> [Diatonic] in
-            return intProgression.chordProgression
+            intProgression.chordProgression.map { (int) -> Diatonic in
+                guard let diatonic = Diatonic(rawValue: int) else { fatalError("Error converting Int to Diatonic") }
+                return diatonic
+            }
         }
     }
     
@@ -47,15 +34,30 @@ class ChordProgressionModel: Object {
         return ChordProgressionModel.RLMIntArrayToDiatonicArray(chordProgressionArray)
     }
     
-    func saveDiatonicProgression(diatonicArray: [[Diatonic]])  {
-        self.chordProgressionArray = ChordProgressionModel.DiatonicArrayToIntArray(diatonicArray)
-    }
+    //    static func DiatonicArrayToIntArray(_ diatonicArray: [[Diatonic]]) -> List<ChordProgression> {
+    //        let chordProgressionList = List<ChordProgression>()
+    //
+    //        for diatonicProgression in diatonicArray {
+    //            let chordProgression = ChordProgression()
+    //
+    //            for diatonic in diatonicProgression {
+    //                chordProgression.chordProgression.append(diatonic.rawValue)
+    //            }
+    //
+    //            chordProgressionList.append(chordProgression)
+    //        }
+    //
+    //        return chordProgressionList
+    //    }
+    
+    //    func saveDiatonicProgression(diatonicArray: [[Diatonic]])  {
+    //        self.chordProgressionArray = ChordProgressionModel.DiatonicArrayToIntArray(diatonicArray)
+    //    }
     
 }
 
 class ChordProgression: Object {
-    dynamic var chordProgression: [Diatonic] = []
-    @objc dynamic var intChordProgression: [Int] = []
+    dynamic var chordProgression = List<Int>()
 }
 
 

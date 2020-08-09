@@ -48,12 +48,12 @@ class NewSongViewController: UIViewController {
     func saveChordProgression(chordProgression: [Diatonic]) {
         let newChordProgression = ChordProgression()
         
-        // COPY VALUE AS IT IS STRUCT TYPE
-        newChordProgression.chordProgression = chordProgression
+        for diatonic in chordProgression {
+            newChordProgression.chordProgression.append(diatonic.rawValue)
+        }
         
         do {
             try realm.write {
-                realm.add(newChordProgression)
                 DBChordProgressionModel?.first?.chordProgressionArray.append(newChordProgression)
                 print("Append: \(newChordProgression.chordProgression)")
             }
@@ -74,11 +74,11 @@ class NewSongViewController: UIViewController {
                     print("NEW MODEL")
                     realm.add(ChordProgressionModel())
                 }
-                
                 // SAVE DEFAULT CHORD PROGRESSIONS
                 for chordProgression in defaultChordProgressions {
                     saveChordProgression(chordProgression: chordProgression)
                 }
+                
             } catch {
                 print("Error adding new ChordProgressionModel")
             }
@@ -142,10 +142,7 @@ extension NewSongViewController: UITableViewDataSource {
         guard let chordProgression = DBChordProgressionModel?.first?.loadDiatonicProgression()[indexPath.row] else {
             fatalError("DBchordProgression does not exist")
         }
-        
-        print(DBChordProgressionModel?.first?.loadDiatonicProgression())
-        print(DBChordProgressionModel?.first?.chordProgressionArray[0].chordProgression)
-
+                
         let strArray = Utils.TransformChordProgressionToStringArray(chordProgression: chordProgression, key: selectedKey )
         
         var format = "%@"
