@@ -33,7 +33,7 @@
 		E355808F24C5A24400DCA763 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E355808D24C5A24400DCA763 /* LaunchScreen.storyboard */; };
 		E355809A24C5A24400DCA763 /* MarchenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355809924C5A24400DCA763 /* MarchenTests.swift */; };
 		E35580A524C5A24400DCA763 /* MarchenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35580A424C5A24400DCA763 /* MarchenUITests.swift */; };
-		E3BB255C24D2C4B50008DB34 /* ChordProgressions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BB255B24D2C4B50008DB34 /* ChordProgressions.swift */; };
+		E3BB255C24D2C4B50008DB34 /* ChordProgressionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BB255B24D2C4B50008DB34 /* ChordProgressionModel.swift */; };
 		E3BB255E24D806D80008DB34 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BB255D24D806D80008DB34 /* PaddedLabel.swift */; };
 		E3BB256024D8097D0008DB34 /* SongEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BB255F24D8097D0008DB34 /* SongEngine.swift */; };
 /* End PBXBuildFile section */
@@ -93,7 +93,7 @@
 		E35580A024C5A24400DCA763 /* MarchenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarchenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E35580A424C5A24400DCA763 /* MarchenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarchenUITests.swift; sourceTree = "<group>"; };
 		E35580A624C5A24400DCA763 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E3BB255B24D2C4B50008DB34 /* ChordProgressions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordProgressions.swift; sourceTree = "<group>"; };
+		E3BB255B24D2C4B50008DB34 /* ChordProgressionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordProgressionModel.swift; sourceTree = "<group>"; };
 		E3BB255D24D806D80008DB34 /* PaddedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		E3BB255F24D8097D0008DB34 /* SongEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongEngine.swift; sourceTree = "<group>"; };
 		E3C58BD1F71E32FC0AE9A2C5 /* Pods-MarchenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarchenTests.debug.xcconfig"; path = "Target Support Files/Pods-MarchenTests/Pods-MarchenTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -179,11 +179,11 @@
 			isa = PBXGroup;
 			children = (
 				E30C02A024CEE8FE00EBEEB1 /* LyricModel.swift */,
+				E3BB255B24D2C4B50008DB34 /* ChordProgressionModel.swift */,
 				E30C02C424D2A18D00EBEEB1 /* Key.swift */,
 				E30C02C624D2A1AA00EBEEB1 /* Diatonic.swift */,
 				E30C02C824D2A1FE00EBEEB1 /* Utils.swift */,
 				E30C02CA24D2A48D00EBEEB1 /* Mode.swift */,
-				E3BB255B24D2C4B50008DB34 /* ChordProgressions.swift */,
 				E3BB255F24D8097D0008DB34 /* SongEngine.swift */,
 			);
 			path = Models;
@@ -493,7 +493,7 @@
 				E3BB256024D8097D0008DB34 /* SongEngine.swift in Sources */,
 				E30C02C524D2A18D00EBEEB1 /* Key.swift in Sources */,
 				E355808324C5A24400DCA763 /* AppDelegate.swift in Sources */,
-				E3BB255C24D2C4B50008DB34 /* ChordProgressions.swift in Sources */,
+				E3BB255C24D2C4B50008DB34 /* ChordProgressionModel.swift in Sources */,
 				E355808524C5A24400DCA763 /* SceneDelegate.swift in Sources */,
 				E30C02C924D2A1FE00EBEEB1 /* Utils.swift in Sources */,
 				E30C02CB24D2A48D00EBEEB1 /* Mode.swift in Sources */,

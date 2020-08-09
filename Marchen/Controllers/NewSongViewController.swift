@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class NewSongViewController: UIViewController {
     
@@ -14,6 +15,12 @@ class NewSongViewController: UIViewController {
     @IBOutlet weak var pickerView: UIPickerView!
     
     @IBOutlet weak var generateButton: UIBarButtonItem!
+    
+    
+    lazy var realm : Realm = {
+        return try! Realm()
+    }()
+    
     
     var selectedLyric : LyricModel?
     {
@@ -33,8 +40,50 @@ class NewSongViewController: UIViewController {
     
     var songEngine : SongEngine?
     
+    var DBChordProgressionModel: Results<ChordProgressionModel>?
+    
     private var nowPlayingChord = false
     private var playingCellTag = -1
+    
+    func saveChordProgression(chordProgression: [Diatonic]) {
+        let newChordProgression = ChordProgression()
+        
+        // COPY VALUE AS IT IS STRUCT TYPE
+        newChordProgression.chordProgression = chordProgression
+        
+        do {
+            try realm.write {
+                realm.add(newChordProgression)
+                DBChordProgressionModel?.first?.chordProgressionArray.append(newChordProgression)
+                print("Append: \(newChordProgression.chordProgression)")
+            }
+        } catch {
+            print("Error appending new chordProgression")
+        }
+        
+        self.tableView.reloadData()
+        
+    }
+    
+    func loadChordProgressionModels() {
+        print("Load Model")
+        DBChordProgressionModel = realm.objects(ChordProgressionModel.self)
+        if DBChordProgressionModel?.count == 0 {
+            do {
+                try realm.write {
+                    print("NEW MODEL")
+                    realm.add(ChordProgressionModel())
+                }
+                
+                // SAVE DEFAULT CHORD PROGRESSIONS
+                for chordProgression in defaultChordProgressions {
+                    saveChordProgression(chordProgression: chordProgression)
+                }
+            } catch {
+                print("Error adding new ChordProgressionModel")
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +99,7 @@ class NewSongViewController: UIViewController {
         
         generateButton.isEnabled = false
         
-        
+        loadChordProgressionModels()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,15 +132,20 @@ class NewSongViewController: UIViewController {
 //MARK: - TableView Datasource Methods
 extension NewSongViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chordProgressions.count
+        return DBChordProgressionModel?.first?.chordProgressionArray.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.ChordCellIdentifier, for: indexPath) as! ChordTableViewCell
         
         // Set Label
-        let chordProgression = chordProgressions[indexPath.row]
+        guard let chordProgression = DBChordProgressionModel?.first?.loadDiatonicProgression()[indexPath.row] else {
+            fatalError("DBchordProgression does not exist")
+        }
         
+        print(DBChordProgressionModel?.first?.loadDiatonicProgression())
+        print(DBChordProgressionModel?.first?.chordProgressionArray[0].chordProgression)
+
         let strArray = Utils.TransformChordProgressionToStringArray(chordProgression: chordProgression, key: selectedKey )
         
         var format = "%@"
@@ -99,7 +153,7 @@ extension NewSongViewController: UITableViewDataSource {
             format += " - %@"
         }
         
-//        let format = "%@ - %@ - %@ - %@"
+        //        let format = "%@ - %@ - %@ - %@"
         let formattedString = String(format: format, arguments: strArray)
         
         cell.chordTextLabel.text = formattedString
@@ -134,7 +188,7 @@ extension NewSongViewController: UITableViewDataSource {
 extension NewSongViewController: UITableViewDelegate {
     // Choose Chord to make song with.
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedChordProgression = chordProgressions[indexPath.row]
+        selectedChordProgression = DBChordProgressionModel?.first?.loadDiatonicProgression()[indexPath.row]
     }
     
 }
@@ -236,15 +290,15 @@ extension NewSongViewController: ChordPlayable {
 
 extension NewSongViewController: SongHasFinished {
     func update(_ notifyValue: Bool) { // We only call this function when song has finshed its playing.
-//        guard let tag = playingCellTag else { fatalError("playingCellTag is nil") }
+        //        guard let tag = playingCellTag else { fatalError("playingCellTag is nil") }
         nowPlayingChord = false // same with !notifyValue
         playingCellTag = -1
         tableView.reloadData()
-//        if let cell = tableView.cellForRow(at: IndexPath(row: playingCellTag, section: 0)) {
-//            let castedCell = cell as! ChordTableViewCell
-//            castedCell.songHasFinished()
-//            playingCellTag = -1
-//            tableView.reloadData()
-//        }
+        //        if let cell = tableView.cellForRow(at: IndexPath(row: playingCellTag, section: 0)) {
+        //            let castedCell = cell as! ChordTableViewCell
+        //            castedCell.songHasFinished()
+        //            playingCellTag = -1
+        //            tableView.reloadData()
+        //        }
     }
 }
