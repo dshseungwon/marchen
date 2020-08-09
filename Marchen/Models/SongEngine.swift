@@ -20,7 +20,27 @@ protocol ChordKeyObserver {
 
 class SongEngine {
     
-    var diatonicProgression: [Diatonic]? // e.g. [I, V, VI, IV]
+    var _diatonicProgression: [Diatonic]?
+    
+    var diatonicProgression: [Diatonic]? { // e.g. [I, V, VI, IV]
+        get {
+            return _diatonicProgression
+        }
+        set(newValue) {
+            if let diatonicArray = newValue {
+                // Apply repeatsOfAChord
+                var dp: [Diatonic] = []
+                
+                for diatonic in diatonicArray {
+                    for _ in 0 ..< repeatsOfAChord {
+                        dp.append(diatonic)
+                    }
+                }
+                
+                _diatonicProgression = dp
+            }
+        }
+    }
     var key: Key? // e.g. Key.C
     
     //MARK: - INIT METHODS
@@ -69,6 +89,17 @@ class SongEngine {
     private var barPlayTime: Double {
         Double(60) / Double(bpm) * Double(4)
     }
+    
+    /*
+     repeatsOfAChord
+     1 -> A B C D
+     2 -> AA BB CC DD
+     chordsInABar
+     1 -> A B C D
+     2 -> AB CD
+     */
+    private var repeatsOfAChord = 1
+    
     private var chordsInABar = 1
     private var chordPlayTime: Double {
         barPlayTime / Double(chordsInABar)
@@ -76,8 +107,8 @@ class SongEngine {
     private var progressionRepeats = 1
     
     private var songPlayTime: Double {
-        if let progression = diatonicProgression {
-            return barPlayTime * Double(progressionRepeats) * Double(progression.count)
+        if let progression = _diatonicProgression {
+            return chordPlayTime * Double(progressionRepeats) * Double(progression.count)
         } else {
             return Double(0)
         }
@@ -131,6 +162,14 @@ class SongEngine {
     
     func getProgressionRepeats() -> Int {
         return progressionRepeats
+    }
+    
+    func setRepeatsOfAChord(as number: Int) {
+        self.repeatsOfAChord = number
+    }
+    
+    func getRepeatsOfAChord() -> Int {
+        return repeatsOfAChord
     }
     
     func setChordsInABar(as number: Int) {
@@ -197,7 +236,7 @@ class SongEngine {
     }
     
     private func isAvailable() -> Bool {
-        if key == nil || diatonicProgression == nil {
+        if key == nil || _diatonicProgression == nil {
             return false
         } else {
             return true
@@ -207,17 +246,16 @@ class SongEngine {
     private func composeSong() {
         if isAvailable() {
             songDiatonics = []
-            guard let progression =  diatonicProgression else { fatalError("diatonicProgression not set") }
+            guard let progression =  _diatonicProgression else { fatalError("diatonicProgression not set") }
+   
             var startTime: Double = 0.0
             var chordIndex = 0
             for _ in 0 ..< progressionRepeats {
                 for diatonic in progression {
-                    for _ in 0 ..< chordsInABar {
-                        let endTime = startTime + chordPlayTime
-                        songDiatonics.append((diatonic, startTime, endTime, chordIndex))
-                        startTime = endTime
-                        chordIndex += 1
-                    }
+                    let endTime = startTime + chordPlayTime
+                    songDiatonics.append((diatonic, startTime, endTime, chordIndex))
+                    startTime = endTime
+                    chordIndex += 1
                 }
             }
             currentDiatonic = progression[0]

@@ -115,13 +115,15 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
     
     @IBAction func repeatsOfAChordButtonClicked(_ sender: UIButton) {
         guard let buttonText = sender.titleLabel?.text else {fatalError("Error in getting buttonText")}
-        songEngine.setChordsInABar(as: Int(buttonText) ?? 1)
+        songEngine.setRepeatsOfAChord(as: Int(buttonText) ?? 1)
         changeUIWhenStop()
     }
     
     
     @IBAction func chordShiftsInABarButtonClicked(_ sender: UIButton) {
-        
+        guard let buttonText = sender.titleLabel?.text else {fatalError("Error in getting buttonText")}
+        songEngine.setChordsInABar(as: Int(buttonText) ?? 1)
+        changeUIWhenStop()
     }
     
     func noteOn(note: MIDINoteNumber) {
