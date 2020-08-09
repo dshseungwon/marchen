@@ -67,6 +67,7 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
         }
     }
     
+    // Could lead to a timing problem. Be careful!
     private lazy var songEngine = {
         return SongEngine(songName: selectedLyric!.title)
     }()
@@ -78,7 +79,6 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        songEngine.attachChordKeyObserver(self)
         setupUI()
     }
     
@@ -87,6 +87,8 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
     
     private func loadLyric() {
         title = selectedLyric?.title
+        // Solve possible timing problem.
+        songEngine.attachChordKeyObserver(self)
     }
     
     private func setupUI() {
