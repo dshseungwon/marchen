@@ -45,46 +45,6 @@ class NewSongViewController: UIViewController {
     private var nowPlayingChord = false
     private var playingCellTag = -1
     
-    func saveChordProgression(chordProgression: [Diatonic]) {
-        let newChordProgression = ChordProgression()
-        
-        for diatonic in chordProgression {
-            newChordProgression.chordProgression.append(diatonic.rawValue)
-        }
-        
-        do {
-            try realm.write {
-                DBChordProgressionModel?.first?.chordProgressionArray.append(newChordProgression)
-                print("Append: \(newChordProgression.chordProgression)")
-            }
-        } catch {
-            print("Error appending new chordProgression")
-        }
-        
-        self.tableView.reloadData()
-        
-    }
-    
-    func loadChordProgressionModels() {
-        print("Load Model")
-        DBChordProgressionModel = realm.objects(ChordProgressionModel.self)
-        if DBChordProgressionModel?.count == 0 {
-            do {
-                try realm.write {
-                    print("NEW MODEL")
-                    realm.add(ChordProgressionModel())
-                }
-                // SAVE DEFAULT CHORD PROGRESSIONS
-                for chordProgression in defaultChordProgressions {
-                    saveChordProgression(chordProgression: chordProgression)
-                }
-                
-            } catch {
-                print("Error adding new ChordProgressionModel")
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -124,6 +84,54 @@ class NewSongViewController: UIViewController {
     //MARK: - Load Lyric Function
     func loadLyric() {
         title = selectedLyric?.title
+    }
+    
+    
+    //MARK: - Chord Progression Methods
+    private func saveChordProgression(chordProgression: [Diatonic]) {
+        let newChordProgression = ChordProgression()
+        
+        for diatonic in chordProgression {
+            newChordProgression.chordProgression.append(diatonic.rawValue)
+        }
+        
+        do {
+            try realm.write {
+                DBChordProgressionModel?.first?.chordProgressionArray.append(newChordProgression)
+                print("Append: \(newChordProgression.chordProgression)")
+            }
+        } catch {
+            print("Error appending new chordProgression")
+        }
+        
+        self.tableView.reloadData()
+    }
+    
+    private func loadChordProgressionModels() {
+        print("Load Model")
+        DBChordProgressionModel = realm.objects(ChordProgressionModel.self)
+        if DBChordProgressionModel?.count == 0 {
+            do {
+                try realm.write {
+                    print("NEW MODEL")
+                    realm.add(ChordProgressionModel())
+                }
+                // SAVE DEFAULT CHORD PROGRESSIONS
+                for chordProgression in defaultChordProgressions {
+                    saveChordProgression(chordProgression: chordProgression)
+                }
+                
+            } catch {
+                print("Error adding new ChordProgressionModel")
+            }
+        }
+    }
+    
+    @IBAction func addChordButtonClicked(_ sender: UIButton) {
+        let newChordAlert = self.storyboard?.instantiateViewController(withIdentifier: "NewChordAlertViewController") as! NewChordAlertViewController
+        newChordAlert.delegate = self
+        newChordAlert.modalPresentationStyle = .overCurrentContext
+        present(newChordAlert, animated: false, completion: nil)
     }
     
     
@@ -297,5 +305,11 @@ extension NewSongViewController: SongHasFinished {
         //            playingCellTag = -1
         //            tableView.reloadData()
         //        }
+    }
+}
+
+extension NewSongViewController: UpdateDiatonicProgression {
+    func update(diatonicProgression: [Diatonic]) {
+        saveChordProgression(chordProgression: diatonicProgression)
     }
 }

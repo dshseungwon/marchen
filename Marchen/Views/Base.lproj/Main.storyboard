@@ -146,6 +146,13 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGM-xL-qfa">
+                                <rect key="frame" x="376" y="420" width="18" height="22"/>
+                                <state key="normal" image="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="addChordButtonClicked:" destination="qgr-fc-OV2" eventType="touchUpInside" id="MKH-Ls-gMW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -158,10 +165,12 @@
                             <constraint firstItem="BRP-xe-77q" firstAttribute="trailing" secondItem="QxM-GP-DWE" secondAttribute="trailing" id="PVx-KF-xMl"/>
                             <constraint firstItem="BRP-xe-77q" firstAttribute="trailing" secondItem="0gS-YH-OSe" secondAttribute="trailing" id="Qzo-eV-McQ"/>
                             <constraint firstItem="yRR-X5-4ao" firstAttribute="leading" secondItem="BRP-xe-77q" secondAttribute="leading" id="Ssz-zO-2LA"/>
+                            <constraint firstItem="rGM-xL-qfa" firstAttribute="centerY" secondItem="QxM-GP-DWE" secondAttribute="centerY" id="Yb3-Oz-dKg"/>
                             <constraint firstItem="0gS-YH-OSe" firstAttribute="leading" secondItem="BRP-xe-77q" secondAttribute="leading" constant="20" id="a69-l4-Kro"/>
                             <constraint firstItem="BRP-xe-77q" firstAttribute="trailing" secondItem="yRR-X5-4ao" secondAttribute="trailing" id="ePD-vC-QAv"/>
                             <constraint firstItem="0EP-gU-kIi" firstAttribute="top" secondItem="QxM-GP-DWE" secondAttribute="bottom" constant="10" id="j2w-uM-fzo"/>
                             <constraint firstItem="0EP-gU-kIi" firstAttribute="bottom" secondItem="BRP-xe-77q" secondAttribute="bottom" id="ji2-KT-TTv"/>
+                            <constraint firstItem="BRP-xe-77q" firstAttribute="trailing" secondItem="rGM-xL-qfa" secondAttribute="trailing" constant="20" id="nO5-Is-otX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BRP-xe-77q"/>
                     </view>
@@ -181,7 +190,146 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="upU-ym-kfC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3422" y="155"/>
+            <point key="canvasLocation" x="3421.739130434783" y="154.6875"/>
+        </scene>
+        <!--New Chord Alert View Controller-->
+        <scene sceneID="pqn-Fc-DsG">
+            <objects>
+                <viewController storyboardIdentifier="NewChordAlertViewController" id="ZQQ-b7-XSE" customClass="NewChordAlertViewController" customModule="Marchen" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eyI-Zb-dbs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jSz-qO-G6s">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ot-4b-HC1">
+                                <rect key="frame" x="83" y="284.5" width="248" height="327"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="asg-fE-6f6">
+                                        <rect key="frame" x="0.0" y="0.0" width="248" height="327"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="mWo-PM-TcE">
+                                                <rect key="frame" x="0.0" y="0.0" width="248" height="81.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYg-Uw-JOl" userLabel="I">
+                                                        <rect key="frame" x="0.0" y="0.0" width="82.5" height="81.5"/>
+                                                        <state key="normal" title="I"/>
+                                                        <connections>
+                                                            <action selector="diatonicButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="GYq-Mr-Z3r"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LMF-Zi-lQu" userLabel="II">
+                                                        <rect key="frame" x="82.5" y="0.0" width="83" height="81.5"/>
+                                                        <state key="normal" title="II"/>
+                                                        <connections>
+                                                            <action selector="diatonicButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="aTl-bc-YIH"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEU-Bu-lJq" userLabel="III">
+                                                        <rect key="frame" x="165.5" y="0.0" width="82.5" height="81.5"/>
+                                                        <state key="normal" title="III"/>
+                                                        <connections>
+                                                            <action selector="diatonicButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="Z1r-j6-PgA"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="iTx-NB-Swo">
+                                                <rect key="frame" x="0.0" y="81.5" width="248" height="82"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twj-CA-x7s" userLabel="IV">
+                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="82"/>
+                                                        <state key="normal" title="IV"/>
+                                                        <connections>
+                                                            <action selector="diatonicButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="Pg2-qc-sNT"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSZ-ff-KPY" userLabel="V">
+                                                        <rect key="frame" x="62" y="0.0" width="62" height="82"/>
+                                                        <state key="normal" title="V"/>
+                                                        <connections>
+                                                            <action selector="diatonicButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="mjM-QB-S0E"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Mm-nF-WqN" userLabel="VI">
+                                                        <rect key="frame" x="124" y="0.0" width="62" height="82"/>
+                                                        <state key="normal" title="VI"/>
+                                                        <connections>
+                                                            <action selector="diatonicButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="Eqq-Eh-5dV"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkL-iv-VU7" userLabel="VII">
+                                                        <rect key="frame" x="186" y="0.0" width="62" height="82"/>
+                                                        <state key="normal" title="VII"/>
+                                                        <connections>
+                                                            <action selector="diatonicButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="Xhf-yi-pui"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GpI-KF-Imp">
+                                                <rect key="frame" x="0.0" y="163.5" width="248" height="82"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzp-ks-FZo">
+                                                        <rect key="frame" x="0.0" y="0.0" width="248" height="82"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wwO-u2-dgN">
+                                                <rect key="frame" x="0.0" y="245.5" width="248" height="81.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uz7-Vv-1PL">
+                                                        <rect key="frame" x="0.0" y="0.0" width="124" height="81.5"/>
+                                                        <state key="normal" title="Cancel"/>
+                                                        <connections>
+                                                            <action selector="cancelButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="QZY-dg-WGg"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oS-g8-maw">
+                                                        <rect key="frame" x="124" y="0.0" width="124" height="81.5"/>
+                                                        <state key="normal" title="Add"/>
+                                                        <connections>
+                                                            <action selector="addButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="l6i-6X-g6g"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="asg-fE-6f6" firstAttribute="top" secondItem="8ot-4b-HC1" secondAttribute="top" id="0Wj-iw-sgX"/>
+                                    <constraint firstAttribute="trailing" secondItem="asg-fE-6f6" secondAttribute="trailing" id="5cX-yu-s3H"/>
+                                    <constraint firstAttribute="bottom" secondItem="asg-fE-6f6" secondAttribute="bottom" id="75t-FC-zmO"/>
+                                    <constraint firstItem="asg-fE-6f6" firstAttribute="leading" secondItem="8ot-4b-HC1" secondAttribute="leading" id="MCg-kj-HVR"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="jSz-qO-G6s" firstAttribute="top" secondItem="eyI-Zb-dbs" secondAttribute="top" id="0hF-aS-l8H"/>
+                            <constraint firstItem="8ot-4b-HC1" firstAttribute="width" secondItem="vxl-Ku-qfh" secondAttribute="width" multiplier="0.6" id="5NY-TY-d95"/>
+                            <constraint firstItem="8ot-4b-HC1" firstAttribute="height" secondItem="vxl-Ku-qfh" secondAttribute="height" multiplier="0.4" id="AhT-sy-vDv"/>
+                            <constraint firstItem="8ot-4b-HC1" firstAttribute="centerY" secondItem="eyI-Zb-dbs" secondAttribute="centerY" id="PKg-xx-xE3"/>
+                            <constraint firstItem="8ot-4b-HC1" firstAttribute="centerX" secondItem="eyI-Zb-dbs" secondAttribute="centerX" id="T4T-7Z-IkM"/>
+                            <constraint firstAttribute="bottom" secondItem="jSz-qO-G6s" secondAttribute="bottom" id="Z8J-Ls-awc"/>
+                            <constraint firstItem="jSz-qO-G6s" firstAttribute="leading" secondItem="eyI-Zb-dbs" secondAttribute="leading" id="aAU-7M-gy2"/>
+                            <constraint firstAttribute="trailing" secondItem="jSz-qO-G6s" secondAttribute="trailing" id="aSR-qQ-LWI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vxl-Ku-qfh"/>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="jSz-qO-G6s" id="Kyv-Fb-4of"/>
+                        <outlet property="label" destination="wzp-ks-FZo" id="66b-bN-kZa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NWj-FO-fZP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3422" y="865"/>
         </scene>
         <!--Chord Play View Controller-->
         <scene sceneID="Jkg-tY-pOv">
@@ -282,4 +430,7 @@
             <point key="canvasLocation" x="4227.536231884058" y="154.6875"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
+    </resources>
 </document>
