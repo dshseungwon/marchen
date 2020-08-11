@@ -37,6 +37,7 @@
 		E3BB255C24D2C4B50008DB34 /* ChordProgressionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BB255B24D2C4B50008DB34 /* ChordProgressionModel.swift */; };
 		E3BB255E24D806D80008DB34 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BB255D24D806D80008DB34 /* PaddedLabel.swift */; };
 		E3BB256024D8097D0008DB34 /* SongEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BB255F24D8097D0008DB34 /* SongEngine.swift */; };
+		E3FDF0BB24E2AFC400851F62 /* CALayer+addBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FDF0BA24E2AFC400851F62 /* CALayer+addBorder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		E3BB255D24D806D80008DB34 /* PaddedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddedLabel.swift; sourceTree = "<group>"; };
 		E3BB255F24D8097D0008DB34 /* SongEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongEngine.swift; sourceTree = "<group>"; };
 		E3C58BD1F71E32FC0AE9A2C5 /* Pods-MarchenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarchenTests.debug.xcconfig"; path = "Target Support Files/Pods-MarchenTests/Pods-MarchenTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E3FDF0BA24E2AFC400851F62 /* CALayer+addBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+addBorder.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 				E3BB255D24D806D80008DB34 /* PaddedLabel.swift */,
 				E31EDE2A24DC6E64003D98DA /* MyKeyboardView.swift */,
 				E31EDE2C24E018CA003D98DA /* NewChordAlertViewController.swift */,
+				E3FDF0BA24E2AFC400851F62 /* CALayer+addBorder.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 				E355808524C5A24400DCA763 /* SceneDelegate.swift in Sources */,
 				E30C02C924D2A1FE00EBEEB1 /* Utils.swift in Sources */,
 				E30C02CB24D2A48D00EBEEB1 /* Mode.swift in Sources */,
+				E3FDF0BB24E2AFC400851F62 /* CALayer+addBorder.swift in Sources */,
 				E30C02A124CEE8FE00EBEEB1 /* LyricModel.swift in Sources */,
 				E30C02AD24CEF27A00EBEEB1 /* LyricLineTableViewCell.swift in Sources */,
 				E30C02A924CEF16200EBEEB1 /* LyricTableViewController.swift in Sources */,

@@ -95,6 +95,11 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
         
         cell.lyricTextField.delegate = self
         
+        cell.frame = CGRect(x: 0, y: 0, width: tableView.frame.size.width - CGFloat(20), height: cell.frame.size.height)
+        cell.lyricTextField.frame = cell.frame
+        cell.underlineView.frame = cell.frame
+        cell.underlineView.layer.addBorder([.bottom], color: UIColor.label, width: 1.5)
+        
         return cell
     }
     
