@@ -55,36 +55,42 @@ class NewChordAlertViewController: UIViewController {
             self.backgroundView.backgroundColor = UIColor.lightGray.withAlphaComponent(CGFloat(0.6))
         })
         
-        guard let key = selectdKey else { fatalError("Key has not set yet.") }
-        displayDiatonicChords(of: key)
+        displayDiatonicChords()
     }
     
-    func displayDiatonicChords(of key: Key) {
+    func displayDiatonicChords() {
+        guard let key = selectdKey else { fatalError("Key has not set yet.") }
+
         // Diatonic (I II III ... VII) -> (Key) -> Name(C G AM) set.
-        label_I.text = "I: \(Utils.getChordNameString(key: selectdKey!, diatonic: Diatonic.I))"
-        label_II.text = "II: \(Utils.getChordNameString(key: selectdKey!, diatonic: Diatonic.II))"
-        label_III.text = "III: \(Utils.getChordNameString(key: selectdKey!, diatonic: Diatonic.III))"
-        label_IV.text = "IV: \(Utils.getChordNameString(key: selectdKey!, diatonic: Diatonic.IV))"
-        label_V.text = "V: \(Utils.getChordNameString(key: selectdKey!, diatonic: Diatonic.V))"
-        label_VI.text = "VI: \(Utils.getChordNameString(key: selectdKey!, diatonic: Diatonic.VI))"
-        label_VII.text = "VII: \(Utils.getChordNameString(key: selectdKey!, diatonic: Diatonic.VII))"
+        label_I.text = "I: \(Utils.getChordNameString(key: key, diatonic: Diatonic.I))"
+        label_II.text = "II: \(Utils.getChordNameString(key: key, diatonic: Diatonic.II))"
+        label_III.text = "III: \(Utils.getChordNameString(key: key, diatonic: Diatonic.III))"
+        label_IV.text = "IV: \(Utils.getChordNameString(key: key, diatonic: Diatonic.IV))"
+        label_V.text = "V: \(Utils.getChordNameString(key: key, diatonic: Diatonic.V))"
+        label_VI.text = "VI: \(Utils.getChordNameString(key: key, diatonic: Diatonic.VI))"
+        label_VII.text = "VII: \(Utils.getChordNameString(key: key, diatonic: Diatonic.VII))"
     }
     
     @IBAction func playButtonClicked(_ sender: UIButton) {
+        guard let key = selectdKey else { fatalError("Key has not set yet.") }
         let tag = sender.tag
         
-        
+        songEngine.setBPM(as: 120)
+        songEngine.setKeyAndDiatonicProgression(key: key, diatonicProgression: [Diatonic.init(rawValue: tag)!])
+        songEngine.play()
     }
     
     
     @IBAction func diatonicButtonClicked(_ sender: UIButton) {
+        guard let key = selectdKey else { fatalError("Key has not set yet.") }
         let tag = sender.tag
+        
         let diatonic = Diatonic(rawValue: tag)!
         diatonicProgression.append(diatonic)
         
         var strArray: [String] = []
         for diatonic in diatonicProgression {
-            strArray.append(Utils.diatonicToStr(diatonic: diatonic))
+            strArray.append("\(Utils.diatonicToStr(diatonic: diatonic))(\(Utils.getChordNameString(key: key, diatonic: diatonic)))")
         }
         
         var format = "%@"
