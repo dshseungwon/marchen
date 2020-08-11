@@ -49,6 +49,17 @@ class NewChordAlertViewController: UIViewController {
         scrollView.layer.borderWidth = 1
         scrollView.layer.borderColor = UIColor.label.cgColor
         
+        // Code for shadow, should set masksToBounds = false
+        //        alertView.layer.shadowColor = UIColor.black.cgColor
+        //        alertView.layer.shadowOpacity = 0.2
+        //        alertView.layer.shadowRadius = 4.0
+        //
+        //        alertView.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        //
+        //        alertView.layer.shadowPath = UIBezierPath(rect: alertView.bounds).cgPath
+        //        alertView.layer.shouldRasterize = true
+        //        alertView.layer.rasterizationScale = UIScreen.main.scale
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
