@@ -78,7 +78,7 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        UIApplication.shared.isIdleTimerDisabled = true
         setupUI()
     }
     
@@ -95,7 +95,7 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
         playButton.backgroundColor = .clear
         playButton.layer.cornerRadius = 5
         playButton.layer.borderWidth = 1
-        playButton.layer.borderColor = UIColor.black.cgColor
+        playButton.layer.borderColor = UIColor.label.cgColor
         
         stepperUI.value = 120
         

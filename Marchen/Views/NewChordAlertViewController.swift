@@ -47,7 +47,7 @@ class NewChordAlertViewController: UIViewController {
         scrollView.backgroundColor = .clear
         scrollView.layer.cornerRadius = 5
         scrollView.layer.borderWidth = 1
-        scrollView.layer.borderColor = UIColor.black.cgColor
+        scrollView.layer.borderColor = UIColor.label.cgColor
         
     }
     
