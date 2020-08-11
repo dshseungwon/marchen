@@ -34,7 +34,7 @@ class NewChordAlertViewController: UIViewController {
     
     var selectdKey: Key?
     
-    var songEngine = SongEngine()
+    var songEngine: SongEngine?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,9 +75,9 @@ class NewChordAlertViewController: UIViewController {
         guard let key = selectdKey else { fatalError("Key has not set yet.") }
         let tag = sender.tag
         
-        songEngine.setBPM(as: 120)
-        songEngine.setKeyAndDiatonicProgression(key: key, diatonicProgression: [Diatonic.init(rawValue: tag)!])
-        songEngine.play()
+        songEngine?.setBPM(as: 120)
+        songEngine?.setKeyAndDiatonicProgression(key: key, diatonicProgression: [Diatonic.init(rawValue: tag)!])
+        songEngine?.play()
     }
     
     

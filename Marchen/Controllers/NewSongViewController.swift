@@ -131,6 +131,7 @@ class NewSongViewController: UIViewController {
         let newChordAlert = self.storyboard?.instantiateViewController(withIdentifier: "NewChordAlertViewController") as! NewChordAlertViewController
         newChordAlert.delegate = self
         newChordAlert.selectdKey = selectedKey
+        newChordAlert.songEngine = songEngine
         newChordAlert.modalPresentationStyle = .overCurrentContext
         present(newChordAlert, animated: false, completion: nil)
     }
