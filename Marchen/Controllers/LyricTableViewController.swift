@@ -25,6 +25,8 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
     
     var indexOfLineToFocus: Int?
     
+    var focusToNewCell = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -105,8 +107,9 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let idx = indexOfLineToFocus {
-            if indexPath.row == idx {
+            if indexPath.row == idx && focusToNewCell {
                 (cell as! LyricLineTableViewCell).lyricTextField.becomeFirstResponder()
+                focusToNewCell = false
             }
         }
     }
@@ -135,7 +138,9 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
             }
         }
         
+        focusToNewCell = true
         tableView.reloadData()
+        tableView.scrollToRow(at: IndexPath(row: indexOfLineToFocus ?? lyric.lines.count - 1, section: 0), at: .none, animated: true)
     }
     
     
@@ -181,6 +186,15 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
     
     
     //MARK: - View Functions
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        if UIDevice.current.orientation.isLandscape {
+            tableView.reloadData()
+        } else {
+            tableView.reloadData()
+        }
+    }
     
     //    override func viewDidAppear(_ animated: Bool) {
     //        //        scrollToTop()
