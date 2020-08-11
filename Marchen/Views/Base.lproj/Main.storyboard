@@ -506,6 +506,7 @@
                         <viewLayoutGuide key="safeArea" id="vxl-Ku-qfh"/>
                     </view>
                     <connections>
+                        <outlet property="alertView" destination="8ot-4b-HC1" id="arv-ax-Jmr"/>
                         <outlet property="backgroundView" destination="jSz-qO-G6s" id="Kyv-Fb-4of"/>
                         <outlet property="chordProgressionLabel" destination="XFv-Ji-I7B" id="bTm-IV-q42"/>
                         <outlet property="label_I" destination="bJD-9e-xaL" id="658-67-HUz"/>

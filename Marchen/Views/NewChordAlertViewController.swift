@@ -15,6 +15,7 @@ protocol UpdateDiatonicProgression {
 
 class NewChordAlertViewController: UIViewController {
     @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var alertView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
     var diatonicProgression: [Diatonic] = []
@@ -40,6 +41,9 @@ class NewChordAlertViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        alertView.layer.cornerRadius = 10
+        alertView.layer.masksToBounds = true
+        
         scrollView.backgroundColor = .clear
         scrollView.layer.cornerRadius = 5
         scrollView.layer.borderWidth = 1
