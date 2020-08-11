@@ -204,188 +204,255 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ot-4b-HC1">
-                                <rect key="frame" x="83" y="284.5" width="248" height="327"/>
+                                <rect key="frame" x="62" y="161.5" width="290" height="573"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="asg-fE-6f6">
-                                        <rect key="frame" x="0.0" y="0.0" width="248" height="327"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="asg-fE-6f6">
+                                        <rect key="frame" x="10" y="10" width="270" height="553"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="mWo-PM-TcE">
-                                                <rect key="frame" x="20" y="8" width="220" height="34.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="270" height="52.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C major" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJD-9e-xaL">
-                                                        <rect key="frame" x="0.0" y="0.0" width="73.5" height="34.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="135" height="52.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXx-Hg-Xgt" userLabel="Play_I">
-                                                        <rect key="frame" x="73.5" y="0.0" width="73" height="34.5"/>
-                                                        <state key="normal" image="play" catalog="system"/>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYg-Uw-JOl" userLabel="I">
-                                                        <rect key="frame" x="146.5" y="0.0" width="73.5" height="34.5"/>
-                                                        <state key="normal" image="plus" catalog="system"/>
-                                                        <connections>
-                                                            <action selector="diatonicButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="GYq-Mr-Z3r"/>
-                                                        </connections>
-                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WCA-b7-dW3">
+                                                        <rect key="frame" x="135" y="0.0" width="135" height="52.5"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXx-Hg-Xgt" userLabel="Play_I">
+                                                                <rect key="frame" x="0.0" y="0.0" width="67.5" height="52.5"/>
+                                                                <state key="normal" image="play" catalog="system"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYg-Uw-JOl" userLabel="I">
+                                                                <rect key="frame" x="67.5" y="0.0" width="67.5" height="52.5"/>
+                                                                <state key="normal" image="plus" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="diatonicButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="GYq-Mr-Z3r"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Z5Z-9p-4ue">
-                                                <rect key="frame" x="20" y="42.5" width="220" height="34.5"/>
+                                                <rect key="frame" x="0.0" y="62.5" width="270" height="52.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D minor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YO1-dR-QFA">
-                                                        <rect key="frame" x="0.0" y="0.0" width="73.5" height="34.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="135" height="52.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzy-Hd-KuA" userLabel="Play_II">
-                                                        <rect key="frame" x="73.5" y="0.0" width="73" height="34.5"/>
-                                                        <state key="normal" image="play" catalog="system"/>
-                                                    </button>
-                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffc-3z-R1I" userLabel="I">
-                                                        <rect key="frame" x="146.5" y="0.0" width="73.5" height="34.5"/>
-                                                        <state key="normal" image="plus" catalog="system"/>
-                                                        <connections>
-                                                            <action selector="diatonicButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="CBV-2g-xL9"/>
-                                                        </connections>
-                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Uz0-8E-zA9">
+                                                        <rect key="frame" x="135" y="0.0" width="135" height="52.5"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzy-Hd-KuA" userLabel="Play_II">
+                                                                <rect key="frame" x="0.0" y="0.0" width="67.5" height="52.5"/>
+                                                                <state key="normal" image="play" catalog="system"/>
+                                                            </button>
+                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffc-3z-R1I" userLabel="I">
+                                                                <rect key="frame" x="67.5" y="0.0" width="67.5" height="52.5"/>
+                                                                <state key="normal" image="plus" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="diatonicButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="CBV-2g-xL9"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="F30-eh-S8B">
-                                                <rect key="frame" x="20" y="77" width="220" height="34.5"/>
+                                                <rect key="frame" x="0.0" y="125" width="270" height="52.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E minor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9M-rI-yz2">
-                                                        <rect key="frame" x="0.0" y="0.0" width="73.5" height="34.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="135" height="52.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2n-YI-3u8" userLabel="Play_III">
-                                                        <rect key="frame" x="73.5" y="0.0" width="73" height="34.5"/>
-                                                        <state key="normal" image="play" catalog="system"/>
-                                                    </button>
-                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rs3-tL-itp" userLabel="I">
-                                                        <rect key="frame" x="146.5" y="0.0" width="73.5" height="34.5"/>
-                                                        <state key="normal" image="plus" catalog="system"/>
-                                                        <connections>
-                                                            <action selector="diatonicButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="zuX-6X-Tjj"/>
-                                                        </connections>
-                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bVg-Fs-NFh">
+                                                        <rect key="frame" x="135" y="0.0" width="135" height="52.5"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2n-YI-3u8" userLabel="Play_III">
+                                                                <rect key="frame" x="0.0" y="0.0" width="67.5" height="52.5"/>
+                                                                <state key="normal" image="play" catalog="system"/>
+                                                            </button>
+                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rs3-tL-itp" userLabel="I">
+                                                                <rect key="frame" x="67.5" y="0.0" width="67.5" height="52.5"/>
+                                                                <state key="normal" image="plus" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="diatonicButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="zuX-6X-Tjj"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="QJR-pe-Xcb">
-                                                <rect key="frame" x="20" y="111.5" width="220" height="34.5"/>
+                                                <rect key="frame" x="0.0" y="187.5" width="270" height="52.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F major" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xw-wN-Y2G">
-                                                        <rect key="frame" x="0.0" y="0.0" width="73.5" height="34.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="135" height="52.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oZ-mz-vLU" userLabel="Play_IV">
-                                                        <rect key="frame" x="73.5" y="0.0" width="73" height="34.5"/>
-                                                        <state key="normal" image="play" catalog="system"/>
-                                                    </button>
-                                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gGO-uK-hNq" userLabel="I">
-                                                        <rect key="frame" x="146.5" y="0.0" width="73.5" height="34.5"/>
-                                                        <state key="normal" image="plus" catalog="system"/>
-                                                        <connections>
-                                                            <action selector="diatonicButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="h6B-1d-Z9K"/>
-                                                        </connections>
-                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="85j-Tq-IqA">
+                                                        <rect key="frame" x="135" y="0.0" width="135" height="52.5"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oZ-mz-vLU" userLabel="Play_IV">
+                                                                <rect key="frame" x="0.0" y="0.0" width="67.5" height="52.5"/>
+                                                                <state key="normal" image="play" catalog="system"/>
+                                                            </button>
+                                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gGO-uK-hNq" userLabel="I">
+                                                                <rect key="frame" x="67.5" y="0.0" width="67.5" height="52.5"/>
+                                                                <state key="normal" image="plus" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="diatonicButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="h6B-1d-Z9K"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="nSC-ph-MAs">
-                                                <rect key="frame" x="20" y="146" width="220" height="35"/>
+                                                <rect key="frame" x="0.0" y="250" width="270" height="53"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="G major" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgO-kQ-FzR">
-                                                        <rect key="frame" x="0.0" y="0.0" width="73.5" height="35"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="135" height="53"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8P6-0a-Kbl" userLabel="Play_V">
-                                                        <rect key="frame" x="73.5" y="0.0" width="73" height="35"/>
-                                                        <state key="normal" image="play" catalog="system"/>
-                                                    </button>
-                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2V-45-fKb" userLabel="I">
-                                                        <rect key="frame" x="146.5" y="0.0" width="73.5" height="35"/>
-                                                        <state key="normal" image="plus" catalog="system"/>
-                                                        <connections>
-                                                            <action selector="diatonicButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="5p1-Fy-bsk"/>
-                                                        </connections>
-                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="nx6-fk-PCp">
+                                                        <rect key="frame" x="135" y="0.0" width="135" height="53"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8P6-0a-Kbl" userLabel="Play_V">
+                                                                <rect key="frame" x="0.0" y="0.0" width="67.5" height="53"/>
+                                                                <state key="normal" image="play" catalog="system"/>
+                                                            </button>
+                                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2V-45-fKb" userLabel="I">
+                                                                <rect key="frame" x="67.5" y="0.0" width="67.5" height="53"/>
+                                                                <state key="normal" image="plus" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="diatonicButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="5p1-Fy-bsk"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Ckj-yI-Vkq">
-                                                <rect key="frame" x="20" y="181" width="220" height="34.5"/>
+                                                <rect key="frame" x="0.0" y="313" width="270" height="52.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A minor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3d-g8-5Po">
-                                                        <rect key="frame" x="0.0" y="0.0" width="73.5" height="34.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="135" height="52.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xba-Iu-iSr" userLabel="Play_VI">
-                                                        <rect key="frame" x="73.5" y="0.0" width="73" height="34.5"/>
-                                                        <state key="normal" image="play" catalog="system"/>
-                                                    </button>
-                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6jY-Yo-QNe" userLabel="I">
-                                                        <rect key="frame" x="146.5" y="0.0" width="73.5" height="34.5"/>
-                                                        <state key="normal" image="plus" catalog="system"/>
-                                                        <connections>
-                                                            <action selector="diatonicButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="ZXS-0C-D9I"/>
-                                                        </connections>
-                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Tws-Yy-fPk">
+                                                        <rect key="frame" x="135" y="0.0" width="135" height="52.5"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xba-Iu-iSr" userLabel="Play_VI">
+                                                                <rect key="frame" x="0.0" y="0.0" width="67.5" height="52.5"/>
+                                                                <state key="normal" image="play" catalog="system"/>
+                                                            </button>
+                                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6jY-Yo-QNe" userLabel="I">
+                                                                <rect key="frame" x="67.5" y="0.0" width="67.5" height="52.5"/>
+                                                                <state key="normal" image="plus" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="diatonicButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="ZXS-0C-D9I"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="NTZ-gK-DZh">
-                                                <rect key="frame" x="20" y="215.5" width="220" height="34.5"/>
+                                                <rect key="frame" x="0.0" y="375.5" width="270" height="52.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B dim" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tf8-Wl-Q8J">
-                                                        <rect key="frame" x="0.0" y="0.0" width="73.5" height="34.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="135" height="52.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3B-7X-6Z7" userLabel="Play_VII">
-                                                        <rect key="frame" x="73.5" y="0.0" width="73" height="34.5"/>
-                                                        <state key="normal" image="play" catalog="system"/>
-                                                    </button>
-                                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLd-tt-mwJ" userLabel="I">
-                                                        <rect key="frame" x="146.5" y="0.0" width="73.5" height="34.5"/>
-                                                        <state key="normal" image="plus" catalog="system"/>
-                                                        <connections>
-                                                            <action selector="diatonicButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="ZdG-ao-FDv"/>
-                                                        </connections>
-                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="snP-pr-oNc">
+                                                        <rect key="frame" x="135" y="0.0" width="135" height="52.5"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3B-7X-6Z7" userLabel="Play_VII">
+                                                                <rect key="frame" x="0.0" y="0.0" width="67.5" height="52.5"/>
+                                                                <state key="normal" image="play" catalog="system"/>
+                                                            </button>
+                                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLd-tt-mwJ" userLabel="I">
+                                                                <rect key="frame" x="67.5" y="0.0" width="67.5" height="52.5"/>
+                                                                <state key="normal" image="plus" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="diatonicButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="ZdG-ao-FDv"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="GpI-KF-Imp">
-                                                <rect key="frame" x="20" y="250" width="220" height="34.5"/>
+                                                <rect key="frame" x="0.0" y="438" width="270" height="52.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzp-ks-FZo">
-                                                        <rect key="frame" x="0.0" y="0.0" width="220" height="34.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8P-uG-HHt">
+                                                        <rect key="frame" x="0.0" y="0.0" width="270" height="52.5"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVv-ez-uzw">
+                                                                <rect key="frame" x="0.0" y="0.0" width="52" height="52.5"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFv-Ji-I7B">
+                                                                        <rect key="frame" x="10" y="0.0" width="42" height="52.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="bottom" secondItem="XFv-Ji-I7B" secondAttribute="bottom" id="1O3-rO-dhO"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="XFv-Ji-I7B" secondAttribute="trailing" id="2UG-E3-2AI"/>
+                                                                    <constraint firstItem="XFv-Ji-I7B" firstAttribute="leading" secondItem="IVv-ez-uzw" secondAttribute="leading" constant="10" id="TLg-1d-WGI"/>
+                                                                    <constraint firstItem="XFv-Ji-I7B" firstAttribute="top" secondItem="IVv-ez-uzw" secondAttribute="top" id="Xj5-0k-NFI"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="IVv-ez-uzw" firstAttribute="leading" secondItem="jmm-CH-kPv" secondAttribute="leading" id="ZS8-DD-Gtr"/>
+                                                            <constraint firstItem="IVv-ez-uzw" firstAttribute="top" secondItem="jmm-CH-kPv" secondAttribute="top" id="acE-YY-1bA"/>
+                                                            <constraint firstItem="IVv-ez-uzw" firstAttribute="trailing" secondItem="jmm-CH-kPv" secondAttribute="trailing" id="kEu-vn-J0Y"/>
+                                                            <constraint firstItem="IVv-ez-uzw" firstAttribute="height" secondItem="lJQ-vG-xRO" secondAttribute="height" id="otF-Qn-hql"/>
+                                                            <constraint firstItem="IVv-ez-uzw" firstAttribute="bottom" secondItem="jmm-CH-kPv" secondAttribute="bottom" id="r7u-WY-r2O"/>
+                                                        </constraints>
+                                                        <viewLayoutGuide key="contentLayoutGuide" id="jmm-CH-kPv"/>
+                                                        <viewLayoutGuide key="frameLayoutGuide" id="lJQ-vG-xRO"/>
+                                                    </scrollView>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="Y8P-uG-HHt" secondAttribute="bottom" id="L2q-E1-dH4"/>
+                                                    <constraint firstItem="Y8P-uG-HHt" firstAttribute="leading" secondItem="GpI-KF-Imp" secondAttribute="leading" id="jCg-gD-Cjz"/>
+                                                    <constraint firstItem="Y8P-uG-HHt" firstAttribute="top" secondItem="GpI-KF-Imp" secondAttribute="top" id="rhs-jJ-kjC"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Y8P-uG-HHt" secondAttribute="trailing" id="xo5-CG-PCv"/>
+                                                </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wwO-u2-dgN">
-                                                <rect key="frame" x="20" y="284.5" width="220" height="34.5"/>
+                                                <rect key="frame" x="0.0" y="500.5" width="270" height="52.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uz7-Vv-1PL">
-                                                        <rect key="frame" x="0.0" y="0.0" width="110" height="34.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="135" height="52.5"/>
                                                         <state key="normal" title="Cancel"/>
                                                         <connections>
                                                             <action selector="cancelButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="QZY-dg-WGg"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oS-g8-maw">
-                                                        <rect key="frame" x="110" y="0.0" width="110" height="34.5"/>
+                                                        <rect key="frame" x="135" y="0.0" width="135" height="52.5"/>
                                                         <state key="normal" title="Add"/>
                                                         <connections>
                                                             <action selector="addButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="l6i-6X-g6g"/>
@@ -394,22 +461,21 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="20" bottom="8" trailing="8"/>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="asg-fE-6f6" firstAttribute="top" secondItem="8ot-4b-HC1" secondAttribute="top" id="0Wj-iw-sgX"/>
-                                    <constraint firstAttribute="trailing" secondItem="asg-fE-6f6" secondAttribute="trailing" id="5cX-yu-s3H"/>
-                                    <constraint firstAttribute="bottom" secondItem="asg-fE-6f6" secondAttribute="bottom" id="75t-FC-zmO"/>
-                                    <constraint firstItem="asg-fE-6f6" firstAttribute="leading" secondItem="8ot-4b-HC1" secondAttribute="leading" id="MCg-kj-HVR"/>
+                                    <constraint firstItem="asg-fE-6f6" firstAttribute="top" secondItem="8ot-4b-HC1" secondAttribute="top" constant="10" id="0Wj-iw-sgX"/>
+                                    <constraint firstAttribute="trailing" secondItem="asg-fE-6f6" secondAttribute="trailing" constant="10" id="5cX-yu-s3H"/>
+                                    <constraint firstAttribute="bottom" secondItem="asg-fE-6f6" secondAttribute="bottom" constant="10" id="75t-FC-zmO"/>
+                                    <constraint firstItem="asg-fE-6f6" firstAttribute="leading" secondItem="8ot-4b-HC1" secondAttribute="leading" constant="10" id="MCg-kj-HVR"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="jSz-qO-G6s" firstAttribute="top" secondItem="eyI-Zb-dbs" secondAttribute="top" id="0hF-aS-l8H"/>
-                            <constraint firstItem="8ot-4b-HC1" firstAttribute="width" secondItem="vxl-Ku-qfh" secondAttribute="width" multiplier="0.6" id="5NY-TY-d95"/>
-                            <constraint firstItem="8ot-4b-HC1" firstAttribute="height" secondItem="vxl-Ku-qfh" secondAttribute="height" multiplier="0.4" id="AhT-sy-vDv"/>
+                            <constraint firstItem="8ot-4b-HC1" firstAttribute="width" secondItem="vxl-Ku-qfh" secondAttribute="width" multiplier="0.7" id="5NY-TY-d95"/>
+                            <constraint firstItem="8ot-4b-HC1" firstAttribute="height" secondItem="vxl-Ku-qfh" secondAttribute="height" multiplier="0.7" id="AhT-sy-vDv"/>
                             <constraint firstItem="8ot-4b-HC1" firstAttribute="centerY" secondItem="eyI-Zb-dbs" secondAttribute="centerY" id="PKg-xx-xE3"/>
                             <constraint firstItem="8ot-4b-HC1" firstAttribute="centerX" secondItem="eyI-Zb-dbs" secondAttribute="centerX" id="T4T-7Z-IkM"/>
                             <constraint firstAttribute="bottom" secondItem="jSz-qO-G6s" secondAttribute="bottom" id="Z8J-Ls-awc"/>
@@ -420,12 +486,13 @@
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="jSz-qO-G6s" id="Kyv-Fb-4of"/>
-                        <outlet property="label" destination="wzp-ks-FZo" id="66b-bN-kZa"/>
+                        <outlet property="label" destination="XFv-Ji-I7B" id="bTm-IV-q42"/>
+                        <outlet property="scrollView" destination="Y8P-uG-HHt" id="QST-ks-qDW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NWj-FO-fZP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3422" y="865"/>
+            <point key="canvasLocation" x="3421.739130434783" y="864.50892857142856"/>
         </scene>
         <!--Chord Play View Controller-->
         <scene sceneID="Jkg-tY-pOv">

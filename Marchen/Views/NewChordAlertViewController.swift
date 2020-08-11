@@ -15,6 +15,7 @@ protocol UpdateDiatonicProgression {
 
 class NewChordAlertViewController: UIViewController {
     @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var diatonicProgression: [Diatonic] = []
     
@@ -26,6 +27,10 @@ class NewChordAlertViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        scrollView.backgroundColor = .clear
+        scrollView.layer.cornerRadius = 5
+        scrollView.layer.borderWidth = 1
+        scrollView.layer.borderColor = UIColor.black.cgColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,8 +43,8 @@ class NewChordAlertViewController: UIViewController {
     }
     
     @IBAction func diatonicButtonClicked(_ sender: UIButton) {
-        let text = sender.titleLabel!.text!
-        let diatonic = Utils.strToDiatonic(str: text)
+        let tag = sender.tag
+        let diatonic = Diatonic(rawValue: tag)!
         diatonicProgression.append(diatonic)
         
         var strArray: [String] = []
