@@ -19,9 +19,22 @@ class NewChordAlertViewController: UIViewController {
     
     var diatonicProgression: [Diatonic] = []
     
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var label_I: UILabel!
+    @IBOutlet weak var label_II: UILabel!
+    @IBOutlet weak var label_III: UILabel!
+    @IBOutlet weak var label_IV: UILabel!
+    @IBOutlet weak var label_V: UILabel!
+    @IBOutlet weak var label_VI: UILabel!
+    @IBOutlet weak var label_VII: UILabel!
+    
+    
+    @IBOutlet weak var chordProgressionLabel: UILabel!
     
     var delegate: UpdateDiatonicProgression?
+    
+    var selectdKey: Key?
+    
+    var songEngine = SongEngine()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +44,7 @@ class NewChordAlertViewController: UIViewController {
         scrollView.layer.cornerRadius = 5
         scrollView.layer.borderWidth = 1
         scrollView.layer.borderColor = UIColor.black.cgColor
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,7 +54,28 @@ class NewChordAlertViewController: UIViewController {
         UIView.animate(withDuration: 0.1, animations: {
             self.backgroundView.backgroundColor = UIColor.lightGray.withAlphaComponent(CGFloat(0.6))
         })
+        
+        guard let key = selectdKey else { fatalError("Key has not set yet.") }
+        displayDiatonicChords(of: key)
     }
+    
+    func displayDiatonicChords(of key: Key) {
+        // Diatonic (I II III ... VII) -> (Key) -> Name(C G AM) set.
+        label_I.text = "I: \(Utils.getChordNameString(key: selectdKey!, diatonic: Diatonic.I))"
+        label_II.text = "II: \(Utils.getChordNameString(key: selectdKey!, diatonic: Diatonic.II))"
+        label_III.text = "III: \(Utils.getChordNameString(key: selectdKey!, diatonic: Diatonic.III))"
+        label_IV.text = "IV: \(Utils.getChordNameString(key: selectdKey!, diatonic: Diatonic.IV))"
+        label_V.text = "V: \(Utils.getChordNameString(key: selectdKey!, diatonic: Diatonic.V))"
+        label_VI.text = "VI: \(Utils.getChordNameString(key: selectdKey!, diatonic: Diatonic.VI))"
+        label_VII.text = "VII: \(Utils.getChordNameString(key: selectdKey!, diatonic: Diatonic.VII))"
+    }
+    
+    @IBAction func playButtonClicked(_ sender: UIButton) {
+        let tag = sender.tag
+        
+        
+    }
+    
     
     @IBAction func diatonicButtonClicked(_ sender: UIButton) {
         let tag = sender.tag
@@ -59,7 +94,7 @@ class NewChordAlertViewController: UIViewController {
         
         let formattedString = String(format: format, arguments: strArray)
         
-        label.text = formattedString
+        chordProgressionLabel.text = formattedString
     }
     
     @IBAction func cancelButtonClicked(_ sender: UIButton) {

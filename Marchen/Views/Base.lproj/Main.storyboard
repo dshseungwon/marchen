@@ -224,6 +224,9 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXx-Hg-Xgt" userLabel="Play_I">
                                                                 <rect key="frame" x="0.0" y="0.0" width="67.5" height="52.5"/>
                                                                 <state key="normal" image="play" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="playButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="Eyf-bI-r17"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYg-Uw-JOl" userLabel="I">
                                                                 <rect key="frame" x="67.5" y="0.0" width="67.5" height="52.5"/>
@@ -248,9 +251,12 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Uz0-8E-zA9">
                                                         <rect key="frame" x="135" y="0.0" width="135" height="52.5"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzy-Hd-KuA" userLabel="Play_II">
+                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzy-Hd-KuA" userLabel="Play_II">
                                                                 <rect key="frame" x="0.0" y="0.0" width="67.5" height="52.5"/>
                                                                 <state key="normal" image="play" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="playButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="jQf-f7-HyO"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffc-3z-R1I" userLabel="I">
                                                                 <rect key="frame" x="67.5" y="0.0" width="67.5" height="52.5"/>
@@ -275,9 +281,12 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bVg-Fs-NFh">
                                                         <rect key="frame" x="135" y="0.0" width="135" height="52.5"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2n-YI-3u8" userLabel="Play_III">
+                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2n-YI-3u8" userLabel="Play_III">
                                                                 <rect key="frame" x="0.0" y="0.0" width="67.5" height="52.5"/>
                                                                 <state key="normal" image="play" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="playButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="1Uy-w8-KM3"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rs3-tL-itp" userLabel="I">
                                                                 <rect key="frame" x="67.5" y="0.0" width="67.5" height="52.5"/>
@@ -302,9 +311,12 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="85j-Tq-IqA">
                                                         <rect key="frame" x="135" y="0.0" width="135" height="52.5"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oZ-mz-vLU" userLabel="Play_IV">
+                                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oZ-mz-vLU" userLabel="Play_IV">
                                                                 <rect key="frame" x="0.0" y="0.0" width="67.5" height="52.5"/>
                                                                 <state key="normal" image="play" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="playButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="zhq-Cu-RN5"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gGO-uK-hNq" userLabel="I">
                                                                 <rect key="frame" x="67.5" y="0.0" width="67.5" height="52.5"/>
@@ -329,9 +341,12 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="nx6-fk-PCp">
                                                         <rect key="frame" x="135" y="0.0" width="135" height="53"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8P6-0a-Kbl" userLabel="Play_V">
+                                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8P6-0a-Kbl" userLabel="Play_V">
                                                                 <rect key="frame" x="0.0" y="0.0" width="67.5" height="53"/>
                                                                 <state key="normal" image="play" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="playButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="2qa-Hv-Vdx"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2V-45-fKb" userLabel="I">
                                                                 <rect key="frame" x="67.5" y="0.0" width="67.5" height="53"/>
@@ -356,9 +371,12 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Tws-Yy-fPk">
                                                         <rect key="frame" x="135" y="0.0" width="135" height="52.5"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xba-Iu-iSr" userLabel="Play_VI">
+                                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xba-Iu-iSr" userLabel="Play_VI">
                                                                 <rect key="frame" x="0.0" y="0.0" width="67.5" height="52.5"/>
                                                                 <state key="normal" image="play" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="playButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="E1t-fA-MX7"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6jY-Yo-QNe" userLabel="I">
                                                                 <rect key="frame" x="67.5" y="0.0" width="67.5" height="52.5"/>
@@ -383,9 +401,12 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="snP-pr-oNc">
                                                         <rect key="frame" x="135" y="0.0" width="135" height="52.5"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3B-7X-6Z7" userLabel="Play_VII">
+                                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3B-7X-6Z7" userLabel="Play_VII">
                                                                 <rect key="frame" x="0.0" y="0.0" width="67.5" height="52.5"/>
                                                                 <state key="normal" image="play" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="playButtonClicked:" destination="ZQQ-b7-XSE" eventType="touchUpInside" id="geC-Se-7q0"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jLd-tt-mwJ" userLabel="I">
                                                                 <rect key="frame" x="67.5" y="0.0" width="67.5" height="52.5"/>
@@ -486,7 +507,14 @@
                     </view>
                     <connections>
                         <outlet property="backgroundView" destination="jSz-qO-G6s" id="Kyv-Fb-4of"/>
-                        <outlet property="label" destination="XFv-Ji-I7B" id="bTm-IV-q42"/>
+                        <outlet property="chordProgressionLabel" destination="XFv-Ji-I7B" id="bTm-IV-q42"/>
+                        <outlet property="label_I" destination="bJD-9e-xaL" id="658-67-HUz"/>
+                        <outlet property="label_II" destination="YO1-dR-QFA" id="dDV-Ou-aMg"/>
+                        <outlet property="label_III" destination="D9M-rI-yz2" id="tti-US-0Wk"/>
+                        <outlet property="label_IV" destination="2xw-wN-Y2G" id="IxX-vh-6Y0"/>
+                        <outlet property="label_V" destination="CgO-kQ-FzR" id="uKN-hP-Lwf"/>
+                        <outlet property="label_VI" destination="I3d-g8-5Po" id="xmb-Ie-eyq"/>
+                        <outlet property="label_VII" destination="tf8-Wl-Q8J" id="vYc-MM-OMG"/>
                         <outlet property="scrollView" destination="Y8P-uG-HHt" id="QST-ks-qDW"/>
                     </connections>
                 </viewController>
