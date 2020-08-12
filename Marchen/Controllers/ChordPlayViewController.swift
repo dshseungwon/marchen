@@ -188,7 +188,7 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
     }
     
     @IBAction func shareButtonClicked(_ sender: UIBarButtonItem) {
-        var textFieldString: String?
+        var textField: UITextField!
         
         let alert = UIAlertController(title: "Save recording", message: "", preferredStyle: .alert)
         
@@ -197,31 +197,39 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
         let okAction = UIAlertAction(title: "OK", style: .default) {
             (action) in
             
-            guard let text = textFieldString else { fatalError("textFieldString is nil") }
-            self.songEngine.saveRecording(fileName: text) {
+            self.songEngine.saveRecording(fileName: textField.text!) { (url) in
+                
                 // Due to Realm thread-contained policy.
                 // Be careful not to update realm object on the UI Thread
                 // It causes 'Realm accessed from incorrect thread' error.
                 // In this case, as selectedLyric was Realm object, we shouldn't have accessed it on another thread.
-                
-                // DispatchQueue.main.async {
-                do {
-                    let realm = try! Realm()
-                    let newRecordedSong = RecordedSongModel()
-                    
-                    if let name = self.songName {
-                        newRecordedSong.songName = name
+                DispatchQueue.main.async {
+                    do {
+                        let realm = try! Realm()
+                        let newRecordedSong = RecordedSongModel()
+                        
+                        if let name = self.songName {
+                            newRecordedSong.songName = name
+                        }
+                        newRecordedSong.fileName = textField.text!
+                        newRecordedSong.dateOfCreation = Date()
+                        
+                        try realm.write {
+                            realm.add(newRecordedSong)
+                        }
+                        
+                        // Export Dialog
+                        let activity = UIActivityViewController(
+                            activityItems: [url!],
+                            applicationActivities: nil
+                        )
+                        activity.popoverPresentationController?.barButtonItem = sender
+                        self.present(activity, animated: true, completion: nil)
+                        
+                    } catch {
+                        print("Error saving song \(error)")
                     }
-                    newRecordedSong.fileName = text
-                    newRecordedSong.dateOfCreation = Date()
-                    
-                    try realm.write {
-                        realm.add(newRecordedSong)
-                    }
-                } catch {
-                    print("Error saving song \(error)")
                 }
-                // }
             }
             
         }
@@ -232,23 +240,11 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
         
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "그대에게"
-            textFieldString = alertTextField.text
+            textField = alertTextField
         }
         
         present(alert, animated: true, completion: nil)
         
-    }
-    
-    private func saveSong(savedSong: RecordedSongModel) {
-        do {
-            let realm = try! Realm()
-            try realm.write {
-                //guard let song = realm.resolve(savedSong) else { fatalError("Song has deleted?!") }
-                realm.add(savedSong)
-            }
-        } catch {
-            print("Error saving song \(error)")
-        }
     }
     
 }

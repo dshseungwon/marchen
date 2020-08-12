@@ -256,10 +256,9 @@ class SongEngine {
         }
     }
     
-    func saveRecording(fileName: String, callBack: @escaping () -> ()) {
+    func saveRecording(fileName: String, callBack: @escaping (URL?) -> ()) {
         recorder?.audioFile?.exportAsynchronously(name: fileName, baseDir: .documents, exportFormat: .caf) { (audioFile, error) in
-            print("Successfully saved!")
-            callBack()
+            callBack(audioFile?.url)
         }
     }
     
