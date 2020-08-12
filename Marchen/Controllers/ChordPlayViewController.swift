@@ -11,7 +11,13 @@ import AudioKit
 import AudioKitUI
 import RealmSwift
 
-class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObserver {
+class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObserver, RecordedSongHasFinished {
+    
+    func update(_ notifyValue: Bool) {
+        isPlayingRecorded = false
+        playRecordedButton.image = UIImage(systemName: "play.circle")
+    }
+    
     
     func updateNextChordKeys(nextChordKeys: Set<MIDINoteNumber>) {
         var newSet = Set<MIDINoteNumber>()
@@ -83,6 +89,7 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
     
     private var isPlaying = false
     private var isRecording = false
+    private var isPlayingRecorded = false
     
     private var songName: String?
     
@@ -100,6 +107,7 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
         title = songName
         // Solve possible timing problem.
         songEngine.attachChordKeyObserver(self)
+        songEngine.attachRecordedSongObserver(self)
     }
     
     private func setupUI() {
@@ -193,6 +201,13 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
         isRecording = false
         recordButton.image = UIImage(systemName: "recordingtape")
         
+        if isPlayingRecorded {
+            isPlayingRecorded = false
+            playRecordedButton.image = UIImage(systemName: "play.circle")
+        } else {
+            isPlayingRecorded = true
+            playRecordedButton.image = UIImage(systemName: "stop.circle")
+        }
         songEngine.playRecording()
     }
     

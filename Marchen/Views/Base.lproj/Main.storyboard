@@ -751,7 +751,7 @@
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="248-Bu-UIP">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="play" id="ZkJ-z9-v4g">
+                            <barButtonItem image="play.circle" catalog="system" id="ZkJ-z9-v4g">
                                 <connections>
                                     <action selector="playRecordedButtonClicked:" destination="H7e-w4-wKg" id="9LJ-oY-U5V"/>
                                 </connections>
@@ -785,6 +785,7 @@
     </scenes>
     <resources>
         <image name="play" catalog="system" width="120" height="128"/>
+        <image name="play.circle" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="recordingtape" catalog="system" width="128" height="60"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>

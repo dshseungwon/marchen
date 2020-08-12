@@ -66,7 +66,7 @@ class NewSongViewController: UIViewController {
         super.viewWillAppear(true)
         
         songEngine = SongEngine()
-        songEngine?.attachObserver(self)
+        songEngine?.attachSongObserver(self)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

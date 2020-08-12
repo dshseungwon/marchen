@@ -18,6 +18,10 @@ protocol ChordKeyObserver {
     func updateNextChordKeys(nextChordKeys: Set<MIDINoteNumber>)
 }
 
+protocol RecordedSongHasFinished {
+    func update(_ notifyValue: Bool)
+}
+
 class SongEngine {
     
     var _diatonicProgression: [Diatonic]?
@@ -79,11 +83,11 @@ class SongEngine {
     }
     
     // Variables for Observer Pattern
-    private var observers: [SongHasFinished] = [SongHasFinished]()
+    private var songObservers: [SongHasFinished] = [SongHasFinished]()
     var isStopPublished: Bool {
         set {
             isStop = newValue
-            notify()
+            notifySongHasFinished()
         }
         get {
             return isStop
@@ -91,6 +95,8 @@ class SongEngine {
     }
     
     private var chordKeyObservers: [ChordKeyObserver] = [ChordKeyObserver]()
+    
+    private var recordedSongObservers: [RecordedSongHasFinished] = [RecordedSongHasFinished]()
     
     // Variables for Initialize AudioKit
     private var sampler = AKSampler()
@@ -246,7 +252,7 @@ class SongEngine {
                 AKLog("Couldn't reload file.")
             }
             if plyr.audioFile.duration > 0.0 {
-                plyr.completionHandler = nil
+                plyr.completionHandler = notifyRecordedSongHasFinished
                 plyr.play()
             } else {
                 print("AudioFile is empty")
@@ -469,16 +475,20 @@ class SongEngine {
 //MARK: - Observer Pattern Methods
 extension SongEngine {
     // Methods for Observer pattern
-    func attachObserver(_ observer: SongHasFinished) {
-        observers.append(observer)
+    func attachSongObserver(_ observer: SongHasFinished) {
+        songObservers.append(observer)
     }
     
     func attachChordKeyObserver(_ observer: ChordKeyObserver) {
         chordKeyObservers.append(observer)
     }
     
-    func notify() {
-        for observer in observers {
+    func attachRecordedSongObserver(_ observer: RecordedSongHasFinished) {
+        recordedSongObservers.append(observer)
+    }
+    
+    func notifySongHasFinished() {
+        for observer in songObservers {
             observer.update(isStopPublished)
         }
     }
@@ -492,6 +502,12 @@ extension SongEngine {
     func showNextChordKeys(nextChordKeys: Set<MIDINoteNumber>) {
         for observer in chordKeyObservers {
             observer.updateNextChordKeys(nextChordKeys: nextChordKeys)
+        }
+    }
+    
+    func notifyRecordedSongHasFinished() {
+        for observer in recordedSongObservers {
+            observer.update(true)
         }
     }
 }
