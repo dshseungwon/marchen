@@ -752,7 +752,7 @@
                             </barButtonItem>
                             <barButtonItem image="recordingtape" catalog="system" id="fh7-6M-QS0">
                                 <connections>
-                                    <action selector="recordButtonClicked:" destination="H7e-w4-wKg" id="AK0-aS-cXa"/>
+                                    <action selector="recordButtonClicked:" destination="H7e-w4-wKg" id="JVC-RR-lNK"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -760,6 +760,7 @@
                     <connections>
                         <outlet property="bpmLabel" destination="JOT-lP-feQ" id="R2f-Vq-SZP"/>
                         <outlet property="playButton" destination="m2N-NG-697" id="RAo-ZS-MOi"/>
+                        <outlet property="recordButton" destination="fh7-6M-QS0" id="Gdm-yx-Aw6"/>
                         <outlet property="stackView" destination="S8p-qt-flY" id="EDv-i1-K0h"/>
                         <outlet property="stepperUI" destination="qHn-pY-a79" id="kth-sC-dck"/>
                     </connections>

@@ -11,7 +11,7 @@ import AudioKit
 import AudioKitUI
 
 class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObserver {
-
+    
     func updateNextChordKeys(nextChordKeys: Set<MIDINoteNumber>) {
         var newSet = Set<MIDINoteNumber>()
         for note in nextChordKeys {
@@ -40,6 +40,8 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
         keyboardView.nextChordKeys.removeAll()
         keyboardView.setNeedsDisplay()
     }
+    
+    @IBOutlet weak var recordButton: UIBarButtonItem!
     
     @IBOutlet weak var playButton: UIButton!
     
@@ -159,7 +161,7 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
             isRecording = false
             
             // Button Image Change
-            
+            recordButton.image = UIImage(systemName: "recordingtape")
         } else {
             // RESET THE PREVIOUS RECORD
             songEngine.resetRecording()
@@ -169,13 +171,16 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
             isRecording = true
             
             // Button Image Change
-            
+            recordButton.image = UIImage(systemName: "stop.fill")
         }
         
     }
     
     
     @IBAction func playRecordedButtonClicked(_ sender: UIBarButtonItem) {
+        isRecording = false
+        recordButton.image = UIImage(systemName: "recordingtape")
+        
         songEngine.playRecording()
     }
     
