@@ -55,12 +55,12 @@ class SongEngine {
             filteredSampler.cutoffFrequency = 2000 // B6 = 1975.5Hz, C7 = 2093.0
             filteredSampler.resonance = 0 // dB
             
-            let format = AVAudioFormat(commonFormat: .pcmFormatFloat64, sampleRate: 44100, channels: 2, interleaved: true)!
             // Use .caf extension as default.
             // If you want to change the extension, Use AKAudioFile(forWriting:)
+            let format = AVAudioFormat(commonFormat: .pcmFormatFloat64, sampleRate: 44100, channels: 2, interleaved: true)!
             let audioFile = try AKAudioFile(writeIn: .documents, name: songName, settings: format.settings)
-            player = try AKAudioPlayer(file: audioFile)
             
+            player = try AKAudioPlayer(file: audioFile)
             let mixer = AKMixer(filteredSampler, player)
             let booster = AKBooster(mixer)
             
@@ -211,6 +211,18 @@ class SongEngine {
         }
     }
     
+    func resetRecording() {
+        if let rec = recorder {
+            do {
+                if rec.recordedDuration > 0.0 {
+                    try self.recorder?.reset()
+                }
+            } catch {
+                AKLog("Couldn't reset the recorder")
+            }
+        }
+    }
+    
     func startRecording() {
         do {
             try recorder?.record()
@@ -221,11 +233,12 @@ class SongEngine {
     
     func stopRecording() {
         recorder?.stop()
-        // If you want to export to another file,
-        // Use recoder?.audioFile?.exportAsynchronously
     }
     
     func playRecording() {
+        // Stop Recording if was recording.
+        stopRecording()
+        
         if let plyr = player {
             do {
                 try plyr.reloadFile()
@@ -240,6 +253,12 @@ class SongEngine {
             }
         } else {
             print("Nothing has recorded yet")
+        }
+    }
+    
+    func saveRecording(fileName: String) {
+        recorder?.audioFile?.exportAsynchronously(name: fileName, baseDir: .documents, exportFormat: .caf) { (audioFile, error) in
+            print("Successfully saved!")
         }
     }
     

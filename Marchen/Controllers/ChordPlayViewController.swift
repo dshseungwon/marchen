@@ -75,6 +75,7 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
     private let keyboardView = MyKeyboardView()
     
     private var isPlaying = false
+    private var isRecording = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,13 +124,7 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
             songEngine.setIsRepeat(as: true)
             songEngine.setKeyAndDiatonicProgression(key: key, diatonicProgression: progression)
             songEngine.play()
-            
-            // START RECORDING
-            songEngine.startRecording()
         } else {
-            // END RECORDING
-            songEngine.stopRecording()
-            
             sender.setTitle("Play", for: .normal)
             songEngine.reset()
         }
@@ -156,6 +151,29 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
     func noteOff(note: MIDINoteNumber) {
         songEngine.stop(note: note)
     }
+    
+    @IBAction func recordButtonClicked(_ sender: UIBarButtonItem) {
+        if isRecording {
+            // END RECORDING
+            songEngine.stopRecording()
+            isRecording = false
+            
+            // Button Image Change
+            
+        } else {
+            // RESET THE PREVIOUS RECORD
+            songEngine.resetRecording()
+            
+            // START RECORDING
+            songEngine.startRecording()
+            isRecording = true
+            
+            // Button Image Change
+            
+        }
+        
+    }
+    
     
     @IBAction func playRecordedButtonClicked(_ sender: UIBarButtonItem) {
         songEngine.playRecording()
