@@ -9,6 +9,7 @@
 import UIKit
 import AudioKit
 import AudioKitUI
+import RealmSwift
 
 class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObserver {
     
@@ -79,6 +80,8 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
     private var isPlaying = false
     private var isRecording = false
     
+    private var songName: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.isIdleTimerDisabled = true
@@ -89,7 +92,8 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
     }
     
     private func loadLyric() {
-        title = selectedLyric?.title
+        songName = selectedLyric?.title
+        title = songName
         // Solve possible timing problem.
         songEngine.attachChordKeyObserver(self)
     }
@@ -176,12 +180,75 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
         
     }
     
-    
     @IBAction func playRecordedButtonClicked(_ sender: UIBarButtonItem) {
         isRecording = false
         recordButton.image = UIImage(systemName: "recordingtape")
         
         songEngine.playRecording()
+    }
+    
+    @IBAction func shareButtonClicked(_ sender: UIBarButtonItem) {
+        var textFieldString: String?
+        
+        let alert = UIAlertController(title: "Save recording", message: "", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default) {
+            (action) in
+            
+            guard let text = textFieldString else { fatalError("textFieldString is nil") }
+            self.songEngine.saveRecording(fileName: text) {
+                // Due to Realm thread-contained policy.
+                // Be careful not to update realm object on the UI Thread
+                // It causes 'Realm accessed from incorrect thread' error.
+                // In this case, as selectedLyric was Realm object, we shouldn't have accessed it on another thread.
+                
+                // DispatchQueue.main.async {
+                do {
+                    let realm = try! Realm()
+                    let newRecordedSong = RecordedSongModel()
+                    
+                    if let name = self.songName {
+                        newRecordedSong.songName = name
+                    }
+                    newRecordedSong.fileName = text
+                    newRecordedSong.dateOfCreation = Date()
+                    
+                    try realm.write {
+                        realm.add(newRecordedSong)
+                    }
+                } catch {
+                    print("Error saving song \(error)")
+                }
+                // }
+            }
+            
+        }
+        
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "그대에게"
+            textFieldString = alertTextField.text
+        }
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    private func saveSong(savedSong: RecordedSongModel) {
+        do {
+            let realm = try! Realm()
+            try realm.write {
+                //guard let song = realm.resolve(savedSong) else { fatalError("Song has deleted?!") }
+                realm.add(savedSong)
+            }
+        } catch {
+            print("Error saving song \(error)")
+        }
     }
     
 }

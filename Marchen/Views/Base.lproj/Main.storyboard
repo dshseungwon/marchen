@@ -755,6 +755,11 @@
                                     <action selector="recordButtonClicked:" destination="H7e-w4-wKg" id="JVC-RR-lNK"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem image="square.and.arrow.up" catalog="system" id="mvm-ct-xb9">
+                                <connections>
+                                    <action selector="shareButtonClicked:" destination="H7e-w4-wKg" id="HEh-bk-ypy"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -774,5 +779,6 @@
         <image name="play" catalog="system" width="120" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="recordingtape" catalog="system" width="128" height="60"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
     </resources>
 </document>
