@@ -66,7 +66,11 @@ import AudioKit
         }
     }
 
-    let baseMIDINote = 24 // MIDINote 24 is C0
+    var baseMIDINote = 24 // MIDINote 24 is C0
+    
+    func setBaseMIDINote(as value: Int = 24) {
+        baseMIDINote = value
+    }
 
     let naturalNotes = ["C", "D", "E", "F", "G", "A", "B"]
     let notesWithSharps = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]

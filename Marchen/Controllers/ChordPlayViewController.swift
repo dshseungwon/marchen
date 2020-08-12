@@ -246,5 +246,14 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
         present(alert, animated: true, completion: nil)
         
     }
+    @IBAction func keyboardModeSwitch(_ sender: UISwitch) {
+        if sender.isOn == true {
+            if let keyOffset = selectedKey?.rawValue {
+                keyboardView.setBaseMIDINote(as: 24 + keyOffset)
+            }
+        } else {
+            keyboardView.setBaseMIDINote() // default = 24
+        }
+    }
     
 }

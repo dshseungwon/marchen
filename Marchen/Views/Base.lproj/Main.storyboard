@@ -185,10 +185,10 @@
                             <mask key="constraints">
                                 <exclude reference="SXm-EC-2hU"/>
                                 <exclude reference="qCY-KB-W0R"/>
-                                <exclude reference="bk0-xC-pNv"/>
                                 <exclude reference="3vR-dZ-Bm2"/>
                                 <exclude reference="5YY-y6-UkB"/>
                                 <exclude reference="Ik9-v8-WSb"/>
+                                <exclude reference="bk0-xC-pNv"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -199,13 +199,13 @@
                                 <exclude reference="ePD-vC-QAv"/>
                                 <exclude reference="a69-l4-Kro"/>
                                 <include reference="qCY-KB-W0R"/>
-                                <exclude reference="OvY-YD-drC"/>
-                                <include reference="bk0-xC-pNv"/>
                                 <include reference="3vR-dZ-Bm2"/>
                                 <exclude reference="5YY-y6-UkB"/>
                                 <exclude reference="7Bh-fD-Lgl"/>
                                 <exclude reference="H0o-QK-yDr"/>
                                 <include reference="Ik9-v8-WSb"/>
+                                <exclude reference="OvY-YD-drC"/>
+                                <include reference="bk0-xC-pNv"/>
                             </mask>
                         </variation>
                     </view>
@@ -611,26 +611,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8jj-g7-qod" userLabel="Setting Stack View">
-                                <rect key="frame" x="10" y="93" width="394" height="106"/>
+                                <rect key="frame" x="10" y="93" width="394" height="103"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="or2-jN-5AB" userLabel="Menu Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="32"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="31"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2N-NG-697">
-                                                <rect key="frame" x="0.0" y="0.0" width="124.5" height="32"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="91" height="31"/>
                                                 <state key="normal" title="Play"/>
                                                 <connections>
                                                     <action selector="playButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="4wp-dv-mrz"/>
                                                 </connections>
                                             </button>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="left" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="b7d-B8-3HG">
+                                                <rect key="frame" x="101" y="0.0" width="93" height="31"/>
+                                                <connections>
+                                                    <action selector="keyboardModeSwitch:" destination="H7e-w4-wKg" eventType="valueChanged" id="xv8-YQ-qID"/>
+                                                </connections>
+                                            </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BPM: 120" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOT-lP-feQ">
-                                                <rect key="frame" x="134.5" y="0.0" width="125" height="32"/>
+                                                <rect key="frame" x="202" y="0.0" width="91" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="120" minimumValue="1" maximumValue="280" translatesAutoresizingMaskIntoConstraints="NO" id="qHn-pY-a79">
-                                                <rect key="frame" x="269.5" y="0.0" width="124.5" height="32"/>
+                                                <rect key="frame" x="303" y="0.0" width="91" height="31"/>
                                                 <connections>
                                                     <action selector="stepperValueChanged:" destination="H7e-w4-wKg" eventType="valueChanged" id="NFd-xQ-dqo"/>
                                                 </connections>
@@ -638,40 +644,40 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6sb-L8-TuK" userLabel="RepetitionOfAChord Stack View">
-                                        <rect key="frame" x="0.0" y="37" width="394" height="32"/>
+                                        <rect key="frame" x="0.0" y="36" width="394" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of repeats of a chord" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZl-yK-HX6">
-                                                <rect key="frame" x="0.0" y="0.0" width="194.5" height="32"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="194.5" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="LHh-FQ-AcV">
-                                                <rect key="frame" x="199.5" y="0.0" width="194.5" height="32"/>
+                                                <rect key="frame" x="199.5" y="0.0" width="194.5" height="31"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2P-Nm-O9V">
-                                                        <rect key="frame" x="0.0" y="0.0" width="48.5" height="32"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="48.5" height="31"/>
                                                         <state key="normal" title="1"/>
                                                         <connections>
                                                             <action selector="repeatsOfAChordButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="od2-r9-o7J"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5h-sZ-QDN">
-                                                        <rect key="frame" x="48.5" y="0.0" width="49" height="32"/>
+                                                        <rect key="frame" x="48.5" y="0.0" width="49" height="31"/>
                                                         <state key="normal" title="2"/>
                                                         <connections>
                                                             <action selector="repeatsOfAChordButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="jPr-IH-Lpt"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xW1-nv-J1I">
-                                                        <rect key="frame" x="97.5" y="0.0" width="48.5" height="32"/>
+                                                        <rect key="frame" x="97.5" y="0.0" width="48.5" height="31"/>
                                                         <state key="normal" title="3"/>
                                                         <connections>
                                                             <action selector="repeatsOfAChordButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="L0g-XE-zac"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GK8-m5-p3J">
-                                                        <rect key="frame" x="146" y="0.0" width="48.5" height="32"/>
+                                                        <rect key="frame" x="146" y="0.0" width="48.5" height="31"/>
                                                         <state key="normal" title="4"/>
                                                         <connections>
                                                             <action selector="repeatsOfAChordButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="hbe-jQ-MzX"/>
@@ -682,40 +688,40 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4Ce-Qz-qjE" userLabel="ChordShiftInABar Stack View">
-                                        <rect key="frame" x="0.0" y="74" width="394" height="32"/>
+                                        <rect key="frame" x="0.0" y="72" width="394" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of chord shifts in a bar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0n-vo-zD8">
-                                                <rect key="frame" x="0.0" y="0.0" width="194.5" height="32"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="194.5" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="C40-xT-XXg">
-                                                <rect key="frame" x="199.5" y="0.0" width="194.5" height="32"/>
+                                                <rect key="frame" x="199.5" y="0.0" width="194.5" height="31"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bar-TZ-C9k">
-                                                        <rect key="frame" x="0.0" y="0.0" width="48.5" height="32"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="48.5" height="31"/>
                                                         <state key="normal" title="1"/>
                                                         <connections>
                                                             <action selector="chordShiftsInABarButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="K2F-lc-ZfD"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CR1-7I-kdj">
-                                                        <rect key="frame" x="48.5" y="0.0" width="49" height="32"/>
+                                                        <rect key="frame" x="48.5" y="0.0" width="49" height="31"/>
                                                         <state key="normal" title="2"/>
                                                         <connections>
                                                             <action selector="chordShiftsInABarButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="pgr-dT-7Tp"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OaJ-Ly-MGu">
-                                                        <rect key="frame" x="97.5" y="0.0" width="48.5" height="32"/>
+                                                        <rect key="frame" x="97.5" y="0.0" width="48.5" height="31"/>
                                                         <state key="normal" title="3"/>
                                                         <connections>
                                                             <action selector="chordShiftsInABarButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="oD3-Ku-bSG"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCL-RS-mgH">
-                                                        <rect key="frame" x="146" y="0.0" width="48.5" height="32"/>
+                                                        <rect key="frame" x="146" y="0.0" width="48.5" height="31"/>
                                                         <state key="normal" title="4"/>
                                                         <connections>
                                                             <action selector="chordShiftsInABarButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="vmq-4h-x3K"/>
@@ -728,7 +734,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="S8p-qt-flY" userLabel="Keyboard Stack View">
-                                <rect key="frame" x="20" y="209" width="374" height="653"/>
+                                <rect key="frame" x="20" y="206" width="374" height="656"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
