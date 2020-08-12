@@ -42,6 +42,8 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
         keyboardView.setNeedsDisplay()
     }
     
+    @IBOutlet weak var shareButton: UIBarButtonItem!
+    
     @IBOutlet weak var recordButton: UIBarButtonItem!
     
     @IBOutlet weak var playButton: UIButton!
@@ -110,6 +112,8 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
         keyboardView.polyphonicMode = true
         stackView.addArrangedSubview(keyboardView)
         
+        shareButton.isEnabled = false
+        playButton.isEnabled = false
     }
     
     private func changeUIWhenStop() {
@@ -166,6 +170,9 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
             
             // Button Image Change
             recordButton.image = UIImage(systemName: "recordingtape")
+            
+            shareButton.isEnabled = true
+            playButton.isEnabled = true
         } else {
             // RESET THE PREVIOUS RECORD
             songEngine.resetRecording()
