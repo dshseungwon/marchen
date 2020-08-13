@@ -339,6 +339,38 @@ class SongEngine {
         loadSamples(byIndex: currentSamplerSound)
     }
     
+    func playIChordForNext() {
+        // Make songDiatonic of next as I
+        // for chord repeats. (not Now)
+        let chordIndexOfCurrentTick = self.getChordIndexOfCurrentTick()
+        
+        // SET NEXT DIATONIC
+        var nextDiatonic: Diatonic?
+        
+        /// check whether is is the last diatonic of the song
+        if chordIndexOfCurrentTick + 1 < self.songDiatonics.count {
+            self.songDiatonics[chordIndexOfCurrentTick + 1].0 = Diatonic.I
+            nextDiatonic = self.songDiatonics[chordIndexOfCurrentTick + 1].0
+        } else {
+            self.songDiatonics[0].0 = Diatonic.I
+            nextDiatonic = self.songDiatonics[0].0
+        }
+        
+        // Notify next chord to play, which is I
+        if let nextTickDiatonic = nextDiatonic {
+            let nextChordNotes = Utils.getChordNotesToPlay(key: self.key!, diatonic: nextTickDiatonic)
+            
+            // GET NEXT DIATONIC AND MAKE A SET
+            var nextChordKeys = Set<MIDINoteNumber>()
+            
+            for note in nextChordNotes {
+                nextChordKeys.insert(MIDINoteNumber(note))
+            }
+            
+            self.showNextChordKeys(nextChordKeys: nextChordKeys)
+        }
+    }
+    
     //MARK: - Private Methods
     private func setupSampler() {
         loadSamples(byIndex: currentSamplerSound)

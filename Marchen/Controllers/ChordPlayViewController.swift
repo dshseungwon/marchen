@@ -315,6 +315,6 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
     }
     
     @IBAction func playIChordForNextButtonClicked(_ sender: UIButton) {
-        
+        songEngine.playIChordForNext()
     }
 }
