@@ -142,6 +142,9 @@ class SongEngine {
     // $.3: Int -> Index
     private var songDiatonics: [(Diatonic, Double, Double, Int)] = []
     
+    // DATA STRUCTURE FOR MELODY
+    private var songMelodies: [(MIDINoteNumber, Double, Double, Int)] = []
+    private var melodyNoteStartTimeDictionary: [MIDINoteNumber: Double] = [:]
     
     // Varaibles to Control the Flow of Playing
     private var currentTick: Double = 0.0
@@ -159,6 +162,8 @@ class SongEngine {
     private var autoResetTickWhenStop = false
     
     private var isRepeat = false
+    
+    private var isRecording = false
     
     //MARK: - Internal Methods.
     func setBPM(as bpm: Int) {
@@ -232,6 +237,15 @@ class SongEngine {
     func startRecording() {
         do {
             try recorder?.record()
+            isRecording = true
+            // Recording started, make a new score
+            // Current tick + note -> register
+            // 1. currentTick = self.currentTick
+            // 2. note = start when play function is called, end when stop funcion is called.
+            // 3. Register = newScore Datastucture
+            
+            // A note cannot be pressed before user stop pressing the note.
+            // Not note-wise, but time-wise.
         } catch {
             AKLog("Couldn't record")
         }
@@ -239,6 +253,7 @@ class SongEngine {
     
     func stopRecording() {
         recorder?.stop()
+        isRecording = false
     }
     
     func playRecording() {
@@ -288,10 +303,28 @@ class SongEngine {
     
     func play(note: MIDINoteNumber, velocity: MIDIVelocity = 127) {
         sampler.play(noteNumber: note, velocity: velocity)
+        
+        // 1) When play function is called
+        
+        // 2) Insert into note-startTime dictionary
+        if isRecording {
+            melodyNoteStartTimeDictionary.updateValue(currentTick, forKey: note)
+        }
     }
     
     func stop(note: MIDINoteNumber) {
         sampler.stop(noteNumber: note)
+        
+        // 3) When stop function is called
+        
+        // 4) Pop startTime form the dictionary using the key of note
+        // 5) Insert into melodies: [(note, Double < popped startTime, Double < currentTick, Int)]
+        if isRecording {
+            let startTimeOfTheNote = melodyNoteStartTimeDictionary[note]
+            guard let startTime = startTimeOfTheNote else { fatalError("Error while getting start time of the note from dictionary") }
+            songMelodies.append((note, startTime, currentTick, songMelodies.count))
+            melodyNoteStartTimeDictionary.removeValue(forKey: note)
+        }
     }
     
     //MARK: - Private Methods
