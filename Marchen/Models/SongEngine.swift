@@ -142,7 +142,7 @@ class SongEngine {
     // $.3: Int -> Index
     private var songDiatonics: [(Diatonic, Double, Double, Int)] = []
     
-    // DATA STRUCTURE FOR MELODY
+    // DATA STRUCTURE FOR SCORE (RECORDED)
     private var songMelodies: [(MIDINoteNumber, Double, Double, Int)] = []
     private var melodyNoteStartTimeDictionary: [MIDINoteNumber: Double] = [:]
     
@@ -151,6 +151,7 @@ class SongEngine {
     private var currentDiatonic: Diatonic!
     
     private var tickTimer: Timer?
+    private var recordingTickTimer: Timer?
     
     private var currentProgress: Float {
         return Float(self.currentTick / self.songPlayTime)
@@ -164,6 +165,7 @@ class SongEngine {
     private var isRepeat = false
     
     private var isRecording = false
+    private var recordingTick: Double = 0.0
     
     //MARK: - Internal Methods.
     func setBPM(as bpm: Int) {
@@ -238,6 +240,7 @@ class SongEngine {
         do {
             try recorder?.record()
             isRecording = true
+            updateRecordingTick()
             // Recording started, make a new score
             // Current tick + note -> register
             // 1. currentTick = self.currentTick
@@ -254,6 +257,7 @@ class SongEngine {
     func stopRecording() {
         recorder?.stop()
         isRecording = false
+        resetRecordingTick()
     }
     
     func playRecording() {
@@ -305,10 +309,9 @@ class SongEngine {
         sampler.play(noteNumber: note, velocity: velocity)
         
         // 1) When play function is called
-        
         // 2) Insert into note-startTime dictionary
         if isRecording {
-            melodyNoteStartTimeDictionary.updateValue(currentTick, forKey: note)
+            melodyNoteStartTimeDictionary.updateValue(recordingTick, forKey: note)
         }
     }
     
@@ -322,7 +325,7 @@ class SongEngine {
         if isRecording {
             let startTimeOfTheNote = melodyNoteStartTimeDictionary[note]
             guard let startTime = startTimeOfTheNote else { fatalError("Error while getting start time of the note from dictionary") }
-            songMelodies.append((note, startTime, currentTick, songMelodies.count))
+            songMelodies.append((note, startTime, recordingTick, songMelodies.count))
             melodyNoteStartTimeDictionary.removeValue(forKey: note)
         }
     }
@@ -503,6 +506,27 @@ class SongEngine {
         }
     }
     
+    private func updateRecordingTick() {
+           if recordingTickTimer == nil {
+               recordingTickTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { (timerObj) in
+                   self.recordingTick += 0.01
+               }
+           } else {
+               print("Timer already exists.")
+           }
+       }
+    
+    private func stopRecordingTick() {
+        recordingTickTimer?.invalidate()
+        recordingTickTimer = nil
+    }
+    
+    private func resetRecordingTick() {
+        recordingTickTimer?.invalidate()
+        recordingTickTimer = nil
+        
+        recordingTick = 0.0
+    }
 }
 
 //MARK: - Observer Pattern Methods
