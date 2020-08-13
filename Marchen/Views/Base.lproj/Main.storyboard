@@ -734,7 +734,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="pcl-L0-q5r" userLabel="Lyric Stack View">
                                         <rect key="frame" x="0.0" y="111" width="394" height="32"/>
                                         <subviews>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKE-C4-K7c">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKE-C4-K7c">
                                                 <rect key="frame" x="0.0" y="0.0" width="394" height="32"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJF-B3-Pxh">
@@ -807,12 +807,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bpmLabel" destination="JOT-lP-feQ" id="R2f-Vq-SZP"/>
+                        <outlet property="keyboardStackView" destination="S8p-qt-flY" id="EDv-i1-K0h"/>
                         <outlet property="lyricLabel" destination="Ohq-2K-KIG" id="OxI-jm-0TY"/>
+                        <outlet property="lyricScrollView" destination="eKE-C4-K7c" id="81J-6Q-o2Y"/>
                         <outlet property="playButton" destination="m2N-NG-697" id="RAo-ZS-MOi"/>
                         <outlet property="playRecordedButton" destination="ZkJ-z9-v4g" id="NSe-Gr-TAG"/>
                         <outlet property="recordButton" destination="fh7-6M-QS0" id="Gdm-yx-Aw6"/>
                         <outlet property="shareButton" destination="mvm-ct-xb9" id="Urd-JQ-Stx"/>
-                        <outlet property="stackView" destination="S8p-qt-flY" id="EDv-i1-K0h"/>
                         <outlet property="stepperUI" destination="qHn-pY-a79" id="kth-sC-dck"/>
                     </connections>
                 </viewController>

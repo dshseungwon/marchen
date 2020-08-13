@@ -60,9 +60,10 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
     
     @IBOutlet weak var stepperUI: UIStepper!
     
+    @IBOutlet weak var lyricScrollView: UIScrollView!
     @IBOutlet weak var lyricLabel: UILabel!
     
-    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var keyboardStackView: UIStackView!
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
         changeUIWhenStop()
@@ -87,6 +88,7 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
         return SongEngine(songName: selectedLyric!.title)
     }()
     
+    private var scrollViewHasFlashed = false
     private let keyboardView = MyKeyboardView()
     
     private var isPlaying = false
@@ -124,13 +126,18 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
         
         keyboardView.delegate = self
         keyboardView.polyphonicMode = true
-        stackView.addArrangedSubview(keyboardView)
+        keyboardStackView.addArrangedSubview(keyboardView)
         
         shareButton.isEnabled = false
         playRecordedButton.isEnabled = false
         
+        lyricScrollView.backgroundColor = .clear
+        lyricScrollView.layer.cornerRadius = 5
+        lyricScrollView.layer.borderWidth = 1
+        lyricScrollView.layer.borderColor = UIColor.label.cgColor
+        
         guard let lyric = selectedLyric else { fatalError("selectedLyric is nil") }
-        var lyricText = ""
+        var lyricText = " "
         for line in lyric.lines {
             lyricText += "\(line) "
         }
@@ -177,6 +184,18 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
     
     func noteOn(note: MIDINoteNumber) {
         songEngine.play(note: note)
+        
+        // Scroll lyricLabel to right
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.5) {
+                self.lyricScrollView.contentOffset.x += 15
+            }
+            if !self.scrollViewHasFlashed {
+                self.lyricScrollView.flashScrollIndicators()
+                self.scrollViewHasFlashed = true
+            }
+        }
+        
     }
     
     func noteOff(note: MIDINoteNumber) {
