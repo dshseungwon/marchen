@@ -311,7 +311,7 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
     }
     
     @IBAction func changeSoundButtonClicked(_ sender: UIButton) {
-        
+        songEngine.changeSamplerSound()
     }
     
     @IBAction func playIChordForNextButtonClicked(_ sender: UIButton) {

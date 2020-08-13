@@ -100,6 +100,7 @@ class SongEngine {
     
     // Variables for Initialize AudioKit
     private var sampler = AKSampler()
+    private var currentSamplerSound = 0
     private var midiChannelIn: MIDIChannel = 0
     private var currentVolume = 1.0
     private var recorder: AKNodeRecorder?
@@ -332,17 +333,38 @@ class SongEngine {
         }
     }
     
+    func changeSamplerSound() {
+        currentSamplerSound += 1
+        currentSamplerSound %= 5
+        loadSamples(byIndex: currentSamplerSound)
+    }
+    
     //MARK: - Private Methods
     private func setupSampler() {
-        let soundsFolder = Bundle.main.bundleURL.appendingPathComponent("Sounds/sfz").path
-        sampler.unloadAllSamples()
-        sampler.loadSFZ(path: soundsFolder, fileName: "Piano.sfz")
+        loadSamples(byIndex: currentSamplerSound)
         sampler.masterVolume = currentVolume
         
-        sampler.attackDuration = 0.01
-        sampler.decayDuration = 0.1
-        sampler.sustainLevel = 0.8
-        sampler.releaseDuration = 0.5
+        sampler.attackDuration = 0
+        sampler.decayDuration = 0
+        sampler.sustainLevel = 1
+        sampler.releaseDuration = 2
+        
+//        Previous Sampler Settings
+//        sampler.attackDuration = 0.01
+//        sampler.decayDuration = 0.1
+//        sampler.sustainLevel = 0.8
+//        sampler.releaseDuration = 0.5
+    }
+    
+    private func loadSamples(byIndex: Int) {
+        if byIndex < 0 || byIndex > 4 { return }
+        
+        sampler.stopAllVoices()
+        sampler.unloadAllSamples()
+        
+        let soundsFolder = Bundle.main.bundleURL.appendingPathComponent("Sounds/sfz").path
+        let sfzFiles = ["Piano.sfz", "TX Brass.sfz", "TX LoTine81z.sfz", "TX Metalimba.sfz", "TX Pluck Bass.sfz"]
+        sampler.loadSFZ(path: soundsFolder, fileName: sfzFiles[byIndex])
     }
     
     private func isAvailable() -> Bool {
