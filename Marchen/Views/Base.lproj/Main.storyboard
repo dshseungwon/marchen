@@ -611,32 +611,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8jj-g7-qod" userLabel="Setting Stack View">
-                                <rect key="frame" x="10" y="93" width="394" height="103"/>
+                                <rect key="frame" x="10" y="93" width="394" height="143"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="or2-jN-5AB" userLabel="Menu Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="32"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2N-NG-697">
-                                                <rect key="frame" x="0.0" y="0.0" width="91" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="91" height="32"/>
                                                 <state key="normal" title="Play"/>
                                                 <connections>
                                                     <action selector="playButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="4wp-dv-mrz"/>
                                                 </connections>
                                             </button>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="left" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="b7d-B8-3HG">
-                                                <rect key="frame" x="101" y="0.0" width="93" height="31"/>
+                                                <rect key="frame" x="101" y="0.0" width="93" height="32"/>
                                                 <connections>
                                                     <action selector="keyboardModeSwitch:" destination="H7e-w4-wKg" eventType="valueChanged" id="xv8-YQ-qID"/>
                                                 </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BPM: 120" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOT-lP-feQ">
-                                                <rect key="frame" x="202" y="0.0" width="91" height="31"/>
+                                                <rect key="frame" x="202" y="0.0" width="91" height="32"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="120" minimumValue="1" maximumValue="280" translatesAutoresizingMaskIntoConstraints="NO" id="qHn-pY-a79">
-                                                <rect key="frame" x="303" y="0.0" width="91" height="31"/>
+                                                <rect key="frame" x="303" y="0.0" width="91" height="32"/>
                                                 <connections>
                                                     <action selector="stepperValueChanged:" destination="H7e-w4-wKg" eventType="valueChanged" id="NFd-xQ-dqo"/>
                                                 </connections>
@@ -644,40 +644,40 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6sb-L8-TuK" userLabel="RepetitionOfAChord Stack View">
-                                        <rect key="frame" x="0.0" y="36" width="394" height="31"/>
+                                        <rect key="frame" x="0.0" y="37" width="394" height="32"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of repeats of a chord" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZl-yK-HX6">
-                                                <rect key="frame" x="0.0" y="0.0" width="194.5" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="194.5" height="32"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="LHh-FQ-AcV">
-                                                <rect key="frame" x="199.5" y="0.0" width="194.5" height="31"/>
+                                                <rect key="frame" x="199.5" y="0.0" width="194.5" height="32"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2P-Nm-O9V">
-                                                        <rect key="frame" x="0.0" y="0.0" width="48.5" height="31"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="48.5" height="32"/>
                                                         <state key="normal" title="1"/>
                                                         <connections>
                                                             <action selector="repeatsOfAChordButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="od2-r9-o7J"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5h-sZ-QDN">
-                                                        <rect key="frame" x="48.5" y="0.0" width="49" height="31"/>
+                                                        <rect key="frame" x="48.5" y="0.0" width="49" height="32"/>
                                                         <state key="normal" title="2"/>
                                                         <connections>
                                                             <action selector="repeatsOfAChordButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="jPr-IH-Lpt"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xW1-nv-J1I">
-                                                        <rect key="frame" x="97.5" y="0.0" width="48.5" height="31"/>
+                                                        <rect key="frame" x="97.5" y="0.0" width="48.5" height="32"/>
                                                         <state key="normal" title="3"/>
                                                         <connections>
                                                             <action selector="repeatsOfAChordButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="L0g-XE-zac"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GK8-m5-p3J">
-                                                        <rect key="frame" x="146" y="0.0" width="48.5" height="31"/>
+                                                        <rect key="frame" x="146" y="0.0" width="48.5" height="32"/>
                                                         <state key="normal" title="4"/>
                                                         <connections>
                                                             <action selector="repeatsOfAChordButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="hbe-jQ-MzX"/>
@@ -688,40 +688,40 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4Ce-Qz-qjE" userLabel="ChordShiftInABar Stack View">
-                                        <rect key="frame" x="0.0" y="72" width="394" height="31"/>
+                                        <rect key="frame" x="0.0" y="74" width="394" height="32"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of chord shifts in a bar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0n-vo-zD8">
-                                                <rect key="frame" x="0.0" y="0.0" width="194.5" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="194.5" height="32"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="C40-xT-XXg">
-                                                <rect key="frame" x="199.5" y="0.0" width="194.5" height="31"/>
+                                                <rect key="frame" x="199.5" y="0.0" width="194.5" height="32"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bar-TZ-C9k">
-                                                        <rect key="frame" x="0.0" y="0.0" width="48.5" height="31"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="48.5" height="32"/>
                                                         <state key="normal" title="1"/>
                                                         <connections>
                                                             <action selector="chordShiftsInABarButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="K2F-lc-ZfD"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CR1-7I-kdj">
-                                                        <rect key="frame" x="48.5" y="0.0" width="49" height="31"/>
+                                                        <rect key="frame" x="48.5" y="0.0" width="49" height="32"/>
                                                         <state key="normal" title="2"/>
                                                         <connections>
                                                             <action selector="chordShiftsInABarButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="pgr-dT-7Tp"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OaJ-Ly-MGu">
-                                                        <rect key="frame" x="97.5" y="0.0" width="48.5" height="31"/>
+                                                        <rect key="frame" x="97.5" y="0.0" width="48.5" height="32"/>
                                                         <state key="normal" title="3"/>
                                                         <connections>
                                                             <action selector="chordShiftsInABarButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="oD3-Ku-bSG"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jCL-RS-mgH">
-                                                        <rect key="frame" x="146" y="0.0" width="48.5" height="31"/>
+                                                        <rect key="frame" x="146" y="0.0" width="48.5" height="32"/>
                                                         <state key="normal" title="4"/>
                                                         <connections>
                                                             <action selector="chordShiftsInABarButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="vmq-4h-x3K"/>
@@ -731,10 +731,47 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="pcl-L0-q5r" userLabel="Lyric Stack View">
+                                        <rect key="frame" x="0.0" y="111" width="394" height="32"/>
+                                        <subviews>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKE-C4-K7c">
+                                                <rect key="frame" x="0.0" y="0.0" width="394" height="32"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJF-B3-Pxh">
+                                                        <rect key="frame" x="0.0" y="0.0" width="422.5" height="32"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ohq-2K-KIG" userLabel="LyricLabel">
+                                                                <rect key="frame" x="0.0" y="0.0" width="422.5" height="32"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="Ohq-2K-KIG" firstAttribute="top" secondItem="JJF-B3-Pxh" secondAttribute="top" id="09A-k2-EqU"/>
+                                                            <constraint firstItem="Ohq-2K-KIG" firstAttribute="leading" secondItem="JJF-B3-Pxh" secondAttribute="leading" id="8Uj-zE-3Va"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Ohq-2K-KIG" secondAttribute="bottom" id="9A9-dD-he1"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Ohq-2K-KIG" secondAttribute="trailing" id="OqV-lc-YpO"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="JJF-B3-Pxh" firstAttribute="trailing" secondItem="d8J-eX-Fan" secondAttribute="trailing" id="66t-Pq-heG"/>
+                                                    <constraint firstItem="d8J-eX-Fan" firstAttribute="top" secondItem="JJF-B3-Pxh" secondAttribute="top" id="7c6-Zd-YA5"/>
+                                                    <constraint firstItem="JJF-B3-Pxh" firstAttribute="height" secondItem="d4i-d2-Kbx" secondAttribute="height" id="CCe-Gj-eCY"/>
+                                                    <constraint firstItem="JJF-B3-Pxh" firstAttribute="bottom" secondItem="d8J-eX-Fan" secondAttribute="bottom" id="Nae-ws-W8R"/>
+                                                    <constraint firstItem="JJF-B3-Pxh" firstAttribute="leading" secondItem="d8J-eX-Fan" secondAttribute="leading" id="bEd-fJ-rZe"/>
+                                                </constraints>
+                                                <viewLayoutGuide key="contentLayoutGuide" id="d8J-eX-Fan"/>
+                                                <viewLayoutGuide key="frameLayoutGuide" id="d4i-d2-Kbx"/>
+                                            </scrollView>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="S8p-qt-flY" userLabel="Keyboard Stack View">
-                                <rect key="frame" x="20" y="206" width="374" height="656"/>
+                                <rect key="frame" x="20" y="246" width="374" height="616"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -770,6 +807,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bpmLabel" destination="JOT-lP-feQ" id="R2f-Vq-SZP"/>
+                        <outlet property="lyricLabel" destination="Ohq-2K-KIG" id="OxI-jm-0TY"/>
                         <outlet property="playButton" destination="m2N-NG-697" id="RAo-ZS-MOi"/>
                         <outlet property="playRecordedButton" destination="ZkJ-z9-v4g" id="NSe-Gr-TAG"/>
                         <outlet property="recordButton" destination="fh7-6M-QS0" id="Gdm-yx-Aw6"/>

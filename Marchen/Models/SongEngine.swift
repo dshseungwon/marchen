@@ -305,6 +305,7 @@ class SongEngine {
         }
     }
     
+    // Called when play melody
     func play(note: MIDINoteNumber, velocity: MIDIVelocity = 127) {
         sampler.play(noteNumber: note, velocity: velocity)
         
@@ -315,6 +316,7 @@ class SongEngine {
         }
     }
     
+    // Called when stop melody
     func stop(note: MIDINoteNumber) {
         sampler.stop(noteNumber: note)
         
@@ -467,10 +469,12 @@ class SongEngine {
         currentTick = 0.0
     }
     
+    // Called when play diatonic (chord)
     private func playNote(note: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
         sampler.play(noteNumber: note, velocity: velocity)
     }
     
+    // Called when stop diatonic (chord)
     private func stopNote(note: MIDINoteNumber, channel: MIDIChannel) {
         sampler.stop(noteNumber: note)
     }

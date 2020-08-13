@@ -60,6 +60,8 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
     
     @IBOutlet weak var stepperUI: UIStepper!
     
+    @IBOutlet weak var lyricLabel: UILabel!
+    
     @IBOutlet weak var stackView: UIStackView!
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
@@ -102,9 +104,11 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
     override func viewDidDisappear(_ animated: Bool) {
     }
     
+    // This method is called before ViewDidLoad
     private func loadLyric() {
         songName = selectedLyric?.title
         title = songName
+        
         // Solve possible timing problem.
         songEngine.attachChordKeyObserver(self)
         songEngine.attachRecordedSongObserver(self)
@@ -124,6 +128,13 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
         
         shareButton.isEnabled = false
         playRecordedButton.isEnabled = false
+        
+        guard let lyric = selectedLyric else { fatalError("selectedLyric is nil") }
+        var lyricText = ""
+        for line in lyric.lines {
+            lyricText += "\(line) "
+        }
+        lyricLabel.text = lyricText
     }
     
     private func changeUIWhenStop() {
