@@ -310,4 +310,11 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
         }
     }
     
+    @IBAction func changeSoundButtonClicked(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func playIChordForNextButtonClicked(_ sender: UIButton) {
+        
+    }
 }

@@ -611,7 +611,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8jj-g7-qod" userLabel="Setting Stack View">
-                                <rect key="frame" x="10" y="93" width="394" height="143"/>
+                                <rect key="frame" x="10" y="93" width="394" height="180"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="or2-jN-5AB" userLabel="Menu Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="32"/>
@@ -731,8 +731,27 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="pcl-L0-q5r" userLabel="Lyric Stack View">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="F8V-Fj-xSb" userLabel="ChangeSound Stack View">
                                         <rect key="frame" x="0.0" y="111" width="394" height="32"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wn2-Pa-6JR" userLabel="ChangeSound">
+                                                <rect key="frame" x="0.0" y="0.0" width="197" height="32"/>
+                                                <state key="normal" title="Change Sound"/>
+                                                <connections>
+                                                    <action selector="changeSoundButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="vfm-HE-iCg"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHP-4Q-fVC" userLabel="Finish Chord">
+                                                <rect key="frame" x="197" y="0.0" width="197" height="32"/>
+                                                <state key="normal" title="Play I Chord For Next"/>
+                                                <connections>
+                                                    <action selector="playIChordForNextButtonClicked:" destination="H7e-w4-wKg" eventType="touchUpInside" id="4DU-2B-lZX"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="pcl-L0-q5r" userLabel="Lyric Stack View">
+                                        <rect key="frame" x="0.0" y="148" width="394" height="32"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKE-C4-K7c">
                                                 <rect key="frame" x="0.0" y="0.0" width="394" height="32"/>
@@ -771,7 +790,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="S8p-qt-flY" userLabel="Keyboard Stack View">
-                                <rect key="frame" x="20" y="246" width="374" height="616"/>
+                                <rect key="frame" x="20" y="283" width="374" height="579"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
