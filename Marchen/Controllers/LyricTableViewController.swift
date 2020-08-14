@@ -9,7 +9,34 @@
 import UIKit
 import RealmSwift
 
-class LyricTableViewController: UITableViewController, UITextFieldDelegate, MyTextFieldDelegate {
+protocol AppendNewCellDelegate {
+    func appendNewCellWithText(text: String)
+}
+
+class LyricTableViewController: UITableViewController, UITextFieldDelegate, MyTextFieldDelegate, AppendNewCellDelegate {
+    
+    func appendNewCellWithText(text: String) {
+        guard let lyric = selectedLyric else {
+            fatalError("addButtonClicked: selectedLyric doesn't exist.")
+        }
+        
+        try! realm.write {
+            if let editingLineNum = currentEditingLine {
+                lyric.lines.insert(text, at: editingLineNum + 1)
+                
+                indexOfLineToFocus = editingLineNum + 1
+            } else {
+                lyric.lines.append(text)
+                
+                indexOfLineToFocus = lyric.lines.count - 1
+            }
+        }
+        
+        focusToNewCell = true
+        tableView.reloadData()
+        tableView.scrollToRow(at: IndexPath(row: indexOfLineToFocus ?? lyric.lines.count - 1, section: 0), at: .none, animated: true)
+    }
+    
     
     lazy var realm : Realm = {
         return try! Realm()
@@ -103,6 +130,7 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate, MyTe
         cell.underlineView.frame = cell.frame
         cell.underlineView.layer.addBorder([.bottom], color: UIColor.label, width: 1.5)
         
+        cell.delegate = self
         cell.lyricTextField.myDelegate = self
         
         return cell
