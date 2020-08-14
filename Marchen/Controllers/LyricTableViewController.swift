@@ -152,26 +152,7 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate, MyTe
     
     //MARK: - Add Button Clicked
     @IBAction func addButtonClicked(_ sender: UIBarButtonItem) {
-        
-        guard let lyric = selectedLyric else {
-            fatalError("addButtonClicked: selectedLyric doesn't exist.")
-        }
-        
-        try! realm.write {
-            if let editingLineNum = currentEditingLine {
-                lyric.lines.insert("", at: editingLineNum + 1)
-                
-                indexOfLineToFocus = editingLineNum + 1
-            } else {
-                lyric.lines.append("")
-                
-                indexOfLineToFocus = lyric.lines.count - 1
-            }
-        }
-        
-        focusToNewCell = true
-        tableView.reloadData()
-        tableView.scrollToRow(at: IndexPath(row: indexOfLineToFocus ?? lyric.lines.count - 1, section: 0), at: .none, animated: true)
+        appendNewCellWithText(text: "")
     }
     
     
