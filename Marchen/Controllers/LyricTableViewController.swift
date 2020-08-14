@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class LyricTableViewController: UITableViewController, UITextFieldDelegate {
+class LyricTableViewController: UITableViewController, UITextFieldDelegate, MyTextFieldDelegate {
     
     lazy var realm : Realm = {
         return try! Realm()
@@ -39,7 +39,7 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
         tapGesture.cancelsTouchesInView = true
         
         tableView.keyboardDismissMode = .onDrag
-       
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -90,8 +90,9 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
         if numOfLines != 0 {
             cell.lyricTextField.placeholder = nil
             cell.lyricTextField.text = selectedLyric?.lines[indexPath.row]
-            cell.lyricTextField.tag = indexPath.row
         }
+        
+        cell.lyricTextField.tag = indexPath.row
         
         cell.lyricTextField.addTarget(self, action: #selector(didChangeText(textField:)), for: .editingChanged)
         
@@ -101,6 +102,8 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
         cell.lyricTextField.frame = cell.frame
         cell.underlineView.frame = cell.frame
         cell.underlineView.layer.addBorder([.bottom], color: UIColor.label, width: 1.5)
+        
+        cell.lyricTextField.myDelegate = self
         
         return cell
     }
@@ -157,7 +160,6 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         currentEditingLine = textField.tag
-        
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -167,6 +169,34 @@ class LyricTableViewController: UITableViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func deleteLine() {
+        if let lineToDelete = currentEditingLine {
+            do {
+                try self.realm.write {
+                    selectedLyric?.lines.remove(at: lineToDelete)
+                }
+            } catch {
+                print("Error in deleting the lyric line \(error)")
+            }
+            
+            // If the deleted row was the first line of the lyric
+            if lineToDelete <= 0 {
+                currentEditingLine = nil
+                indexOfLineToFocus = currentEditingLine
+                tableView.reloadData()
+            } else {
+                currentEditingLine = lineToDelete - 1
+                indexOfLineToFocus = currentEditingLine
+                focusToNewCell = true
+                
+                // Using this method causes tag-indexpath.row mismatch problem.
+                // tableView.deleteRows(at: [IndexPath(row: lineToDelete, section: 0)], with: .automatic)
+                // When to use this method, should manually focus to the above cell using code
+                tableView.reloadData()
+            }
+        }
     }
     
     //MARK: - New Song Button Clicked

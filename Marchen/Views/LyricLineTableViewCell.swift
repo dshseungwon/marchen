@@ -10,7 +10,7 @@ import UIKit
 
 class LyricLineTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var lyricTextField: UITextField!
+    @IBOutlet weak var lyricTextField: MyTextField!
     @IBOutlet weak var underlineView: UIView!
     
     
