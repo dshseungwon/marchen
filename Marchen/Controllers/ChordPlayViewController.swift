@@ -188,7 +188,7 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
         // Scroll lyricLabel to right
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.5) {
-                self.lyricScrollView.contentOffset.x += 15
+                self.lyricScrollView.contentOffset.x += 10
             }
             if !self.scrollViewHasFlashed {
                 self.lyricScrollView.flashScrollIndicators()
