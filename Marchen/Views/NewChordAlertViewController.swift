@@ -116,6 +116,16 @@ class NewChordAlertViewController: UIViewController {
         let formattedString = String(format: format, arguments: strArray)
         
         chordProgressionLabel.text = formattedString
+        
+        // Automatically scroll to right
+        let scrollViewContentWidth = scrollView.contentSize.width
+        let scrollViewBoundsWidth = scrollView.bounds.size.width
+        
+        if scrollViewContentWidth > scrollViewBoundsWidth {
+            let rightOffset = CGPoint(x: scrollViewContentWidth - scrollViewBoundsWidth, y: 0)
+            scrollView.setContentOffset(rightOffset, animated: true)
+        }
+        
     }
     
     @IBAction func cancelButtonClicked(_ sender: UIButton) {
