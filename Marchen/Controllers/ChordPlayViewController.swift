@@ -97,13 +97,36 @@ class ChordPlayViewController: UIViewController, MyKeyboardDelegate, ChordKeyObs
     
     private var songName: String?
     
+    
+//    override var shouldAutorotate: Bool {
+//        return true
+//    }
+//
+//    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+//        return .landscape
+//    }
+//
+//    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+//        return .landscapeRight
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        UIView.setAnimationsEnabled(false)
+//        UIDevice.current.setValue(UIInterfaceOrientation.landscapeRight.rawValue, forKey: "orientation")
+//        UIView.setAnimationsEnabled(true)
+        
         UIApplication.shared.isIdleTimerDisabled = true
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         setupUI()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        // Doesn't work... lol
+        // navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     // This method is called before ViewDidLoad

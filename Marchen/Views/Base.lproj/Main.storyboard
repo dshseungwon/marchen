@@ -185,10 +185,10 @@
                             <mask key="constraints">
                                 <exclude reference="SXm-EC-2hU"/>
                                 <exclude reference="qCY-KB-W0R"/>
+                                <exclude reference="bk0-xC-pNv"/>
                                 <exclude reference="3vR-dZ-Bm2"/>
                                 <exclude reference="5YY-y6-UkB"/>
                                 <exclude reference="Ik9-v8-WSb"/>
-                                <exclude reference="bk0-xC-pNv"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -199,13 +199,13 @@
                                 <exclude reference="ePD-vC-QAv"/>
                                 <exclude reference="a69-l4-Kro"/>
                                 <include reference="qCY-KB-W0R"/>
+                                <exclude reference="OvY-YD-drC"/>
+                                <include reference="bk0-xC-pNv"/>
                                 <include reference="3vR-dZ-Bm2"/>
                                 <exclude reference="5YY-y6-UkB"/>
                                 <exclude reference="7Bh-fD-Lgl"/>
                                 <exclude reference="H0o-QK-yDr"/>
                                 <include reference="Ik9-v8-WSb"/>
-                                <exclude reference="OvY-YD-drC"/>
-                                <include reference="bk0-xC-pNv"/>
                             </mask>
                         </variation>
                     </view>
