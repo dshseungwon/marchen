@@ -42,6 +42,7 @@
 		E3BB255E24D806D80008DB34 /* PaddedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BB255D24D806D80008DB34 /* PaddedLabel.swift */; };
 		E3BB256024D8097D0008DB34 /* SongEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BB255F24D8097D0008DB34 /* SongEngine.swift */; };
 		E3BE283724E67D3400127797 /* MyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE283624E67D3400127797 /* MyTextField.swift */; };
+		E3D231EE24EFB85300B31745 /* ChordEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D231ED24EFB85300B31745 /* ChordEditView.swift */; };
 		E3FDF0BB24E2AFC400851F62 /* CALayer+addBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FDF0BA24E2AFC400851F62 /* CALayer+addBorder.swift */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +124,7 @@
 		E3BB255F24D8097D0008DB34 /* SongEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongEngine.swift; sourceTree = "<group>"; };
 		E3BE283624E67D3400127797 /* MyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTextField.swift; sourceTree = "<group>"; };
 		E3C58BD1F71E32FC0AE9A2C5 /* Pods-MarchenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarchenTests.debug.xcconfig"; path = "Target Support Files/Pods-MarchenTests/Pods-MarchenTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E3D231ED24EFB85300B31745 /* ChordEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordEditView.swift; sourceTree = "<group>"; };
 		E3FDF0BA24E2AFC400851F62 /* CALayer+addBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+addBorder.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -203,6 +205,7 @@
 				E31EDE2A24DC6E64003D98DA /* MyKeyboardView.swift */,
 				E31EDE2C24E018CA003D98DA /* NewChordAlertViewController.swift */,
 				E3FDF0BA24E2AFC400851F62 /* CALayer+addBorder.swift */,
+				E3D231ED24EFB85300B31745 /* ChordEditView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -529,6 +532,7 @@
 				E30C02C524D2A18D00EBEEB1 /* Key.swift in Sources */,
 				E355808324C5A24400DCA763 /* AppDelegate.swift in Sources */,
 				E3BB255C24D2C4B50008DB34 /* ChordProgressionModel.swift in Sources */,
+				E3D231EE24EFB85300B31745 /* ChordEditView.swift in Sources */,
 				E355808524C5A24400DCA763 /* SceneDelegate.swift in Sources */,
 				E39C7A3224E3DD080094028C /* RecordedSongModel.swift in Sources */,
 				E30C02C924D2A1FE00EBEEB1 /* Utils.swift in Sources */,
