@@ -850,13 +850,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Pkd-za-etJ" userLabel="Screen Stack View">
-                                <rect key="frame" x="44" y="44" width="852" height="370"/>
+                                <rect key="frame" x="44" y="44" width="808" height="370"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8X3-Xb-Pt9" userLabel="Melody Lyric Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="852" height="185"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="808" height="185"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4c-v2-7Ne" userLabel="Melody Scroll View">
-                                                <rect key="frame" x="0.0" y="0.0" width="852" height="92.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="808" height="92.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVJ-CF-xHe" userLabel="Melody View">
                                                         <rect key="frame" x="0.0" y="0.0" width="230" height="34"/>
@@ -888,7 +888,7 @@
                                                 <viewLayoutGuide key="frameLayoutGuide" id="wy5-5z-kdD"/>
                                             </scrollView>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5C0-5G-TZH" userLabel="Lyric Scroll View">
-                                                <rect key="frame" x="0.0" y="92.5" width="852" height="92.5"/>
+                                                <rect key="frame" x="0.0" y="92.5" width="808" height="92.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DPN-JP-G3V" userLabel="Lyric View">
                                                         <rect key="frame" x="0.0" y="0.0" width="36" height="34"/>
@@ -921,19 +921,38 @@
                                             </scrollView>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bha-tS-pLo" userLabel="Chord Edit View">
-                                        <rect key="frame" x="0.0" y="185" width="852" height="185"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bha-tS-pLo" userLabel="Container View">
+                                        <rect key="frame" x="0.0" y="185" width="808" height="185"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="n1W-LN-Eet" userLabel="Keyboard Stack View">
+                                                <rect key="frame" x="0.0" y="0.0" width="808" height="185"/>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ws1-8p-ww0" userLabel="Chord Progression Vertical Scroll View">
+                                                <rect key="frame" x="0.0" y="0.0" width="808" height="185"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            </view>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="n1W-LN-Eet" secondAttribute="trailing" id="0SB-lm-J4G"/>
+                                            <constraint firstItem="n1W-LN-Eet" firstAttribute="top" secondItem="Bha-tS-pLo" secondAttribute="top" id="CXX-e6-3j5"/>
+                                            <constraint firstItem="ws1-8p-ww0" firstAttribute="top" secondItem="Bha-tS-pLo" secondAttribute="top" id="DII-Xg-pVZ"/>
+                                            <constraint firstItem="n1W-LN-Eet" firstAttribute="leading" secondItem="Bha-tS-pLo" secondAttribute="leading" id="agF-ES-8CW"/>
+                                            <constraint firstAttribute="bottom" secondItem="ws1-8p-ww0" secondAttribute="bottom" id="fu2-SN-DnJ"/>
+                                            <constraint firstAttribute="bottom" secondItem="n1W-LN-Eet" secondAttribute="bottom" id="lcG-ed-cjZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="ws1-8p-ww0" secondAttribute="trailing" id="wsf-qu-121"/>
+                                            <constraint firstItem="ws1-8p-ww0" firstAttribute="leading" secondItem="Bha-tS-pLo" secondAttribute="leading" id="zSc-Z9-rjm"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Pkd-za-etJ" secondAttribute="trailing" id="1ML-UN-ans"/>
-                            <constraint firstItem="Pkd-za-etJ" firstAttribute="leading" secondItem="5Up-JQ-PMy" secondAttribute="leading" id="LBA-VM-Bco"/>
-                            <constraint firstAttribute="bottom" secondItem="Pkd-za-etJ" secondAttribute="bottom" id="gUC-Wc-zMX"/>
-                            <constraint firstItem="Pkd-za-etJ" firstAttribute="top" secondItem="5Up-JQ-PMy" secondAttribute="top" id="tIM-E1-4oG"/>
+                            <constraint firstItem="Pkd-za-etJ" firstAttribute="trailing" secondItem="5Up-JQ-PMy" secondAttribute="trailing" id="VP1-F9-q2h"/>
+                            <constraint firstAttribute="bottom" secondItem="Pkd-za-etJ" secondAttribute="bottom" id="aem-dA-1rn"/>
+                            <constraint firstItem="Pkd-za-etJ" firstAttribute="leading" secondItem="5Up-JQ-PMy" secondAttribute="leading" id="gXS-CP-WCk"/>
+                            <constraint firstItem="Pkd-za-etJ" firstAttribute="top" secondItem="5Up-JQ-PMy" secondAttribute="top" id="n4B-WH-Hhm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5Up-JQ-PMy"/>
                     </view>
@@ -945,13 +964,23 @@
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Share" image="square.and.arrow.up" catalog="system" id="S1O-kP-mUv"/>
-                            <barButtonItem title="MelodyChord" image="music.note" catalog="system" id="18O-V5-MCj"/>
+                            <barButtonItem title="MelodyChord" image="music.note" catalog="system" id="18O-V5-MCj">
+                                <connections>
+                                    <action selector="ContainerViewTransition:" destination="t3W-t4-LH0" id="em0-9P-wgb"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem title="AddNewChordProgression" image="text.badge.plus" catalog="system" id="xay-Ha-cxA"/>
                             <barButtonItem title="RecordStop" image="largecircle.fill.circle" catalog="system" id="nEg-Ke-5A5"/>
                             <barButtonItem title="PlayStop" image="play.fill" catalog="system" id="5li-X2-aiW"/>
                             <barButtonItem title="Rewind" image="backward.end.fill" catalog="system" id="3in-eg-Hlu"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="chordProgressionView" destination="ws1-8p-ww0" id="wpn-I5-Pik"/>
+                        <outlet property="containerView" destination="Bha-tS-pLo" id="paw-sN-sdk"/>
+                        <outlet property="containerViewTransitionButton" destination="18O-V5-MCj" id="GcF-DF-ahr"/>
+                        <outlet property="keyboardView" destination="n1W-LN-Eet" id="Vvu-F1-F5E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ja4-ND-wzp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
