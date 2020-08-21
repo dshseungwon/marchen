@@ -265,7 +265,21 @@ extension NewSongViewController {
 //        destinationVC.selectedDiatonicProgression = selectedChordProgression
 //        destinationVC.selectedLyric = selectedLyric
 //
-//    }
+    //    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let destinationVC = segue.destination as! SongEditViewController
+        
+        guard let lyric = selectedLyric else { fatalError("selectedLyric is nil") }
+        var lyricText = " "
+        for line in lyric.lines {
+            lyricText += "\(line) "
+        }
+        destinationVC.songTitle = lyric.title
+        destinationVC.songLyric = lyricText
+        
+    }
 }
 
 

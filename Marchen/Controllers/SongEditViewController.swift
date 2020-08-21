@@ -9,8 +9,11 @@
 import UIKit
 import AudioKit
 
-class SongEditViewController: UIViewController, MyKeyboardDelegate {
+class SongEditViewController: UIViewController {
 
+    @IBOutlet weak var lyricScrollView: UIScrollView!
+    @IBOutlet weak var lyricLabel: UILabel!
+    
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var chordProgressionView: UIView!
     @IBOutlet weak var keyboardView: UIStackView!
@@ -19,12 +22,31 @@ class SongEditViewController: UIViewController, MyKeyboardDelegate {
     
     private let myKeyboardView = MyKeyboardView()
     
-    var isKeyboardViewShowing = false
+    private var isKeyboardViewShowing = false
+    
+    // Internal Variables
+    var songTitle: String?
+    var songLyric: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupUI()
+    }
+    
+    private func setupUI() {
+        
+        // Lyric Scroll View
+        lyricScrollView.backgroundColor = .clear
+        lyricScrollView.layer.cornerRadius = 5
+        lyricScrollView.layer.borderWidth = 1
+        lyricScrollView.layer.borderColor = UIColor.label.cgColor
+        
+        // Lyric Label
+        lyricLabel.text = songLyric
+        
+        // Keyboard View
         myKeyboardView.delegate = self
         myKeyboardView.polyphonicMode = true
         keyboardView.addArrangedSubview(myKeyboardView)
@@ -65,6 +87,11 @@ class SongEditViewController: UIViewController, MyKeyboardDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
+
+}
+
+extension SongEditViewController: MyKeyboardDelegate {
     
     func noteOn(note: MIDINoteNumber) {
         
