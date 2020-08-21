@@ -221,6 +221,7 @@
                         <outlet property="pickerView" destination="yRR-X5-4ao" id="Sk3-WH-qbn"/>
                         <outlet property="tableView" destination="0EP-gU-kIi" id="7p5-FB-RuY"/>
                         <segue destination="H7e-w4-wKg" kind="show" identifier="NewSongToChordPlay" id="9ei-XJ-yTf"/>
+                        <segue destination="t3W-t4-LH0" kind="show" identifier="NewSongToSongEdit" id="D51-Lf-70O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="upU-ym-kfC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -600,7 +601,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NWj-FO-fZP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3421.739130434783" y="864.50892857142856"/>
+            <point key="canvasLocation" x="3421" y="1193"/>
         </scene>
         <!--Chord Play View Controller-->
         <scene sceneID="Jkg-tY-pOv">
@@ -840,10 +841,182 @@
             </objects>
             <point key="canvasLocation" x="4532" y="155"/>
         </scene>
+        <!--Song Edit View Controller-->
+        <scene sceneID="lYF-bC-wgC">
+            <objects>
+                <viewController id="t3W-t4-LH0" userLabel="Song Edit View Controller" customClass="SongEditViewController" customModule="Marchen" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DOf-OJ-QHV">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="5Up-JQ-PMy"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Bhs-NI-iOP">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Ellipsis" image="ellipsis" catalog="system" id="Vu7-wz-zQp">
+                                <connections>
+                                    <segue destination="93B-Vx-Bjs" kind="popoverPresentation" identifier="SegueToSongSettings" popoverAnchorBarButtonItem="Vu7-wz-zQp" id="roD-Sk-Qhl">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Share" image="square.and.arrow.up" catalog="system" id="S1O-kP-mUv"/>
+                            <barButtonItem title="Melody" image="music.note" catalog="system" id="18O-V5-MCj"/>
+                            <barButtonItem title="Chord" image="music.note.list" catalog="system" id="xay-Ha-cxA"/>
+                            <barButtonItem title="Record" image="largecircle.fill.circle" catalog="system" id="nEg-Ke-5A5"/>
+                            <barButtonItem title="PlayStop" image="play.fill" catalog="system" id="5li-X2-aiW"/>
+                            <barButtonItem title="Rewind" image="backward.end.fill" catalog="system" id="3in-eg-Hlu"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ja4-ND-wzp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4531" y="1028"/>
+        </scene>
+        <!--Pop Up Song Settings View Controller-->
+        <scene sceneID="nEQ-fd-SB4">
+            <objects>
+                <viewController id="93B-Vx-Bjs" customClass="PopUpSongSettingsViewController" customModule="Marchen" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mNf-hX-4FW">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrF-R1-djB">
+                                <rect key="frame" x="44" y="0.0" width="808" height="393"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6sv-iO-4QQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="808" height="189"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9gZ-G3-1OO" userLabel="Setting Stack View">
+                                                <rect key="frame" x="0.0" y="20" width="808" height="169"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="906-us-VXf" userLabel="KeyboardMode Stack View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="808" height="31"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keyboard Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aV4-6Q-feE" userLabel="Keyboard Mode">
+                                                                <rect key="frame" x="0.0" y="0.0" width="404" height="31"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Bjj-LF-HdP">
+                                                                <rect key="frame" x="404" y="0.0" width="404" height="32"/>
+                                                                <segments>
+                                                                    <segment title="Absolute"/>
+                                                                    <segment title="Relative"/>
+                                                                </segments>
+                                                            </segmentedControl>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="A4V-q6-yCl" userLabel="Tempo Stack View">
+                                                        <rect key="frame" x="0.0" y="46" width="808" height="31"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tempo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GP1-uI-fJp" userLabel="Tempo">
+                                                                <rect key="frame" x="0.0" y="0.0" width="404" height="31"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="ngJ-dk-bcX">
+                                                                <rect key="frame" x="404" y="0.0" width="404" height="32"/>
+                                                                <segments>
+                                                                    <segment title="Adagio"/>
+                                                                    <segment title="Andante"/>
+                                                                    <segment title="Moderato"/>
+                                                                    <segment title="Allegro"/>
+                                                                    <segment title="Vivace"/>
+                                                                </segments>
+                                                            </segmentedControl>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YzW-2V-vOy" userLabel="RepetitionOfAChord Stack View">
+                                                        <rect key="frame" x="0.0" y="92" width="808" height="31"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of repeats of a chord" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wht-DB-dq2">
+                                                                <rect key="frame" x="0.0" y="0.0" width="404" height="31"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="D8S-rt-NLA">
+                                                                <rect key="frame" x="404" y="0.0" width="404" height="32"/>
+                                                                <segments>
+                                                                    <segment title="1"/>
+                                                                    <segment title="2"/>
+                                                                    <segment title="3"/>
+                                                                    <segment title="4"/>
+                                                                </segments>
+                                                            </segmentedControl>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="LOm-h6-LMu" userLabel="ChordShiftInABar Stack View">
+                                                        <rect key="frame" x="0.0" y="138" width="808" height="31"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of chord shifts in a bar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UnS-D0-kzG">
+                                                                <rect key="frame" x="0.0" y="0.0" width="404" height="31"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="009-cB-wnn">
+                                                                <rect key="frame" x="404" y="0.0" width="404" height="32"/>
+                                                                <segments>
+                                                                    <segment title="1"/>
+                                                                    <segment title="2"/>
+                                                                    <segment title="3"/>
+                                                                    <segment title="4"/>
+                                                                </segments>
+                                                            </segmentedControl>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="9gZ-G3-1OO" firstAttribute="leading" secondItem="6sv-iO-4QQ" secondAttribute="leading" id="0kz-uF-NLX"/>
+                                            <constraint firstAttribute="bottom" secondItem="9gZ-G3-1OO" secondAttribute="bottom" id="7e8-lz-Fub"/>
+                                            <constraint firstItem="9gZ-G3-1OO" firstAttribute="top" secondItem="6sv-iO-4QQ" secondAttribute="top" constant="20" id="Nyd-63-eOO"/>
+                                            <constraint firstAttribute="trailing" secondItem="9gZ-G3-1OO" secondAttribute="trailing" id="V6U-Ps-Nu0"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="6sv-iO-4QQ" firstAttribute="bottom" secondItem="Qx7-wB-UCa" secondAttribute="bottom" id="67j-Gd-IDa"/>
+                                    <constraint firstItem="6sv-iO-4QQ" firstAttribute="trailing" secondItem="Qx7-wB-UCa" secondAttribute="trailing" id="HfN-3K-doF"/>
+                                    <constraint firstItem="6sv-iO-4QQ" firstAttribute="width" secondItem="mAG-Ai-g8d" secondAttribute="width" id="XtO-hE-TRx"/>
+                                    <constraint firstItem="6sv-iO-4QQ" firstAttribute="leading" secondItem="Qx7-wB-UCa" secondAttribute="leading" id="cD7-Rq-4Wp"/>
+                                    <constraint firstItem="6sv-iO-4QQ" firstAttribute="top" secondItem="Qx7-wB-UCa" secondAttribute="top" id="ef5-Ln-mtQ"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Qx7-wB-UCa"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="mAG-Ai-g8d"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="wrF-R1-djB" firstAttribute="trailing" secondItem="oVC-dQ-MOk" secondAttribute="trailing" id="8ZR-ky-jOP"/>
+                            <constraint firstItem="wrF-R1-djB" firstAttribute="leading" secondItem="oVC-dQ-MOk" secondAttribute="leading" id="Nkj-Wf-MIf"/>
+                            <constraint firstItem="wrF-R1-djB" firstAttribute="top" secondItem="oVC-dQ-MOk" secondAttribute="top" id="qaO-JR-2No"/>
+                            <constraint firstItem="oVC-dQ-MOk" firstAttribute="bottom" secondItem="wrF-R1-djB" secondAttribute="bottom" id="y3O-rx-SZo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oVC-dQ-MOk"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bWj-1j-nVg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4827.4553571428569" y="2053.6231884057975"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="backward.end.fill" catalog="system" width="128" height="102"/>
+        <image name="ellipsis" catalog="system" width="128" height="37"/>
+        <image name="largecircle.fill.circle" catalog="system" width="128" height="121"/>
+        <image name="music.note" catalog="system" width="97" height="128"/>
+        <image name="music.note.list" catalog="system" width="128" height="113"/>
         <image name="play" catalog="system" width="120" height="128"/>
         <image name="play.circle" catalog="system" width="128" height="121"/>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="recordingtape" catalog="system" width="128" height="60"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		7A7340DA51F031F3A2B34699 /* Pods_MarchenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1361F3B7FA612FDADFAFF881 /* Pods_MarchenTests.framework */; };
 		8A6ECBBE631628371CAA5AF8 /* Pods_Marchen_MarchenUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B10657B90B7B00968E444D3 /* Pods_Marchen_MarchenUITests.framework */; };
-		C4BA142DA7CD41230E4AFD64 /* Pods_Marchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 115306C7598C6B75F3B55117 /* Pods_Marchen.framework */; };
 		E30C029D24CEE80B00EBEEB1 /* MyRepoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C029C24CEE80B00EBEEB1 /* MyRepoTableViewController.swift */; };
 		E30C02A124CEE8FE00EBEEB1 /* LyricModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02A024CEE8FE00EBEEB1 /* LyricModel.swift */; };
 		E30C02A924CEF16200EBEEB1 /* LyricTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30C02A724CEF16200EBEEB1 /* LyricTableViewController.swift */; };
@@ -27,6 +26,10 @@
 		E31EDE2924DC1B2E003D98DA /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = E31EDE2824DC1B2E003D98DA /* Sounds */; };
 		E31EDE2B24DC6E64003D98DA /* MyKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31EDE2A24DC6E64003D98DA /* MyKeyboardView.swift */; };
 		E31EDE2D24E018CA003D98DA /* NewChordAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31EDE2C24E018CA003D98DA /* NewChordAlertViewController.swift */; };
+		E33824AE24EF996A00DC7844 /* SongEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33824AD24EF996A00DC7844 /* SongEditViewController.swift */; };
+		E33824B024EF9DF800DC7844 /* PopUpSongSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33824AF24EF9DF800DC7844 /* PopUpSongSettingsViewController.swift */; };
+		E33AD21224EAE20E0036C8EE /* Pods_Marchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 115306C7598C6B75F3B55117 /* Pods_Marchen.framework */; };
+		E33AD21324EAE20E0036C8EE /* Pods_Marchen.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 115306C7598C6B75F3B55117 /* Pods_Marchen.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E355808324C5A24400DCA763 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355808224C5A24400DCA763 /* AppDelegate.swift */; };
 		E355808524C5A24400DCA763 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355808424C5A24400DCA763 /* SceneDelegate.swift */; };
 		E355808A24C5A24400DCA763 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E355808824C5A24400DCA763 /* Main.storyboard */; };
@@ -59,6 +62,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		E33AD21424EAE20E0036C8EE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E33AD21324EAE20E0036C8EE /* Pods_Marchen.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		115306C7598C6B75F3B55117 /* Pods_Marchen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Marchen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1361F3B7FA612FDADFAFF881 /* Pods_MarchenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarchenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +102,8 @@
 		E31EDE2824DC1B2E003D98DA /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 		E31EDE2A24DC6E64003D98DA /* MyKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKeyboardView.swift; sourceTree = "<group>"; };
 		E31EDE2C24E018CA003D98DA /* NewChordAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChordAlertViewController.swift; sourceTree = "<group>"; };
+		E33824AD24EF996A00DC7844 /* SongEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongEditViewController.swift; sourceTree = "<group>"; };
+		E33824AF24EF9DF800DC7844 /* PopUpSongSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpSongSettingsViewController.swift; sourceTree = "<group>"; };
 		E355807F24C5A24400DCA763 /* Marchen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Marchen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E355808224C5A24400DCA763 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E355808424C5A24400DCA763 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,7 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4BA142DA7CD41230E4AFD64 /* Pods_Marchen.framework in Frameworks */,
+				E33AD21224EAE20E0036C8EE /* Pods_Marchen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +184,8 @@
 				E30C02A724CEF16200EBEEB1 /* LyricTableViewController.swift */,
 				E30C02B324D1703D00EBEEB1 /* NewSongViewController.swift */,
 				E30C02C224D26A3600EBEEB1 /* ChordPlayViewController.swift */,
+				E33824AD24EF996A00DC7844 /* SongEditViewController.swift */,
+				E33824AF24EF9DF800DC7844 /* PopUpSongSettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -270,6 +291,7 @@
 				E355807C24C5A24400DCA763 /* Frameworks */,
 				E355807D24C5A24400DCA763 /* Resources */,
 				9F2C1C48E7C859A0EB21E99B /* [CP] Embed Pods Frameworks */,
+				E33AD21424EAE20E0036C8EE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -503,6 +525,7 @@
 				E30C029D24CEE80B00EBEEB1 /* MyRepoTableViewController.swift in Sources */,
 				E30C02B724D1729C00EBEEB1 /* ChordTableViewCell.swift in Sources */,
 				E3BB256024D8097D0008DB34 /* SongEngine.swift in Sources */,
+				E33824B024EF9DF800DC7844 /* PopUpSongSettingsViewController.swift in Sources */,
 				E30C02C524D2A18D00EBEEB1 /* Key.swift in Sources */,
 				E355808324C5A24400DCA763 /* AppDelegate.swift in Sources */,
 				E3BB255C24D2C4B50008DB34 /* ChordProgressionModel.swift in Sources */,
@@ -519,6 +542,7 @@
 				E30C02C724D2A1AA00EBEEB1 /* Diatonic.swift in Sources */,
 				E31EDE2B24DC6E64003D98DA /* MyKeyboardView.swift in Sources */,
 				E30C02C324D26A3600EBEEB1 /* ChordPlayViewController.swift in Sources */,
+				E33824AE24EF996A00DC7844 /* SongEditViewController.swift in Sources */,
 				E30C02B424D1703D00EBEEB1 /* NewSongViewController.swift in Sources */,
 				E3BB255E24D806D80008DB34 /* PaddedLabel.swift in Sources */,
 				E30C02B024CEF89D00EBEEB1 /* Constants.swift in Sources */,
