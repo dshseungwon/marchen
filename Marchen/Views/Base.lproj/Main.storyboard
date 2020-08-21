@@ -839,7 +839,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5W8-59-bXJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4532" y="155"/>
+            <point key="canvasLocation" x="4538" y="23"/>
         </scene>
         <!--Song Edit View Controller-->
         <scene sceneID="lYF-bC-wgC">
@@ -848,16 +848,100 @@
                     <view key="view" contentMode="scaleToFill" id="DOf-OJ-QHV">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Pkd-za-etJ" userLabel="Screen Stack View">
+                                <rect key="frame" x="44" y="44" width="852" height="370"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8X3-Xb-Pt9" userLabel="Melody Lyric Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="852" height="185"/>
+                                        <subviews>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4c-v2-7Ne" userLabel="Melody Scroll View">
+                                                <rect key="frame" x="0.0" y="0.0" width="852" height="92.5"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVJ-CF-xHe" userLabel="Melody View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="230" height="34"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Melody View Temporary Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaL-vi-qZz">
+                                                                <rect key="frame" x="0.0" y="0.0" width="230" height="34"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="aaL-vi-qZz" firstAttribute="leading" secondItem="EVJ-CF-xHe" secondAttribute="leading" id="26P-dk-Is3"/>
+                                                            <constraint firstAttribute="trailing" secondItem="aaL-vi-qZz" secondAttribute="trailing" id="EqO-Ix-oej"/>
+                                                            <constraint firstAttribute="bottom" secondItem="aaL-vi-qZz" secondAttribute="bottom" id="Rmz-Eu-K5O"/>
+                                                            <constraint firstItem="aaL-vi-qZz" firstAttribute="top" secondItem="EVJ-CF-xHe" secondAttribute="top" id="uXj-kc-3tE"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="EVJ-CF-xHe" firstAttribute="leading" secondItem="ha8-cj-V88" secondAttribute="leading" id="P38-QI-xTq"/>
+                                                    <constraint firstItem="EVJ-CF-xHe" firstAttribute="bottom" secondItem="ha8-cj-V88" secondAttribute="bottom" id="Vst-eA-qTs"/>
+                                                    <constraint firstItem="EVJ-CF-xHe" firstAttribute="height" secondItem="wy5-5z-kdD" secondAttribute="height" multiplier="0.366762" id="jKu-TR-GeM"/>
+                                                    <constraint firstItem="EVJ-CF-xHe" firstAttribute="top" secondItem="ha8-cj-V88" secondAttribute="top" id="lR6-4Q-4hw"/>
+                                                    <constraint firstItem="EVJ-CF-xHe" firstAttribute="trailing" secondItem="ha8-cj-V88" secondAttribute="trailing" id="xOf-X0-sPt"/>
+                                                </constraints>
+                                                <viewLayoutGuide key="contentLayoutGuide" id="ha8-cj-V88"/>
+                                                <viewLayoutGuide key="frameLayoutGuide" id="wy5-5z-kdD"/>
+                                            </scrollView>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5C0-5G-TZH" userLabel="Lyric Scroll View">
+                                                <rect key="frame" x="0.0" y="92.5" width="852" height="92.5"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DPN-JP-G3V" userLabel="Lyric View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="36" height="34"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lyric" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AjD-qO-Fri" userLabel="Lyric View Temporary Label">
+                                                                <rect key="frame" x="0.0" y="0.0" width="36" height="34"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="AjD-qO-Fri" secondAttribute="bottom" id="1zj-Kt-5gY"/>
+                                                            <constraint firstAttribute="trailing" secondItem="AjD-qO-Fri" secondAttribute="trailing" id="3IQ-ZA-w9S"/>
+                                                            <constraint firstItem="AjD-qO-Fri" firstAttribute="top" secondItem="DPN-JP-G3V" secondAttribute="top" id="bef-DH-gWS"/>
+                                                            <constraint firstItem="AjD-qO-Fri" firstAttribute="leading" secondItem="DPN-JP-G3V" secondAttribute="leading" id="hdt-vf-NxP"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="DPN-JP-G3V" firstAttribute="top" secondItem="kcT-RS-tvF" secondAttribute="top" id="AIy-un-YTm"/>
+                                                    <constraint firstItem="DPN-JP-G3V" firstAttribute="trailing" secondItem="kcT-RS-tvF" secondAttribute="trailing" id="Ge6-ew-WAR"/>
+                                                    <constraint firstItem="DPN-JP-G3V" firstAttribute="bottom" secondItem="kcT-RS-tvF" secondAttribute="bottom" id="Vl4-5D-vLV"/>
+                                                    <constraint firstItem="DPN-JP-G3V" firstAttribute="height" secondItem="0Im-Fa-Bcq" secondAttribute="height" multiplier="0.366762" id="hVW-1l-eaP"/>
+                                                    <constraint firstItem="DPN-JP-G3V" firstAttribute="leading" secondItem="kcT-RS-tvF" secondAttribute="leading" id="wUp-C6-9Rt"/>
+                                                </constraints>
+                                                <viewLayoutGuide key="contentLayoutGuide" id="kcT-RS-tvF"/>
+                                                <viewLayoutGuide key="frameLayoutGuide" id="0Im-Fa-Bcq"/>
+                                            </scrollView>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bha-tS-pLo" userLabel="Chord Edit View">
+                                        <rect key="frame" x="0.0" y="185" width="852" height="185"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Pkd-za-etJ" secondAttribute="trailing" id="1ML-UN-ans"/>
+                            <constraint firstItem="Pkd-za-etJ" firstAttribute="leading" secondItem="5Up-JQ-PMy" secondAttribute="leading" id="LBA-VM-Bco"/>
+                            <constraint firstAttribute="bottom" secondItem="Pkd-za-etJ" secondAttribute="bottom" id="gUC-Wc-zMX"/>
+                            <constraint firstItem="Pkd-za-etJ" firstAttribute="top" secondItem="5Up-JQ-PMy" secondAttribute="top" id="tIM-E1-4oG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5Up-JQ-PMy"/>
                     </view>
                     <navigationItem key="navigationItem" id="Bhs-NI-iOP">
                         <rightBarButtonItems>
                             <barButtonItem title="Ellipsis" image="ellipsis" catalog="system" id="Vu7-wz-zQp">
                                 <connections>
-                                    <segue destination="93B-Vx-Bjs" kind="popoverPresentation" identifier="SegueToSongSettings" popoverAnchorBarButtonItem="Vu7-wz-zQp" id="roD-Sk-Qhl">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <segue destination="93B-Vx-Bjs" kind="show" id="Vdb-eo-2T0"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Share" image="square.and.arrow.up" catalog="system" id="S1O-kP-mUv"/>
@@ -873,7 +957,7 @@
             </objects>
             <point key="canvasLocation" x="4531" y="1028"/>
         </scene>
-        <!--Pop Up Song Settings View Controller-->
+        <!--Settings-->
         <scene sceneID="nEQ-fd-SB4">
             <objects>
                 <viewController id="93B-Vx-Bjs" customClass="PopUpSongSettingsViewController" customModule="Marchen" customModuleProvider="target" sceneMemberID="viewController">
@@ -882,9 +966,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrF-R1-djB">
-                                <rect key="frame" x="44" y="0.0" width="808" height="393"/>
+                                <rect key="frame" x="44" y="44" width="808" height="349"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6sv-iO-4QQ">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6sv-iO-4QQ" userLabel="Setting View">
                                         <rect key="frame" x="0.0" y="0.0" width="808" height="189"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9gZ-G3-1OO" userLabel="Setting Stack View">
@@ -1001,11 +1085,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oVC-dQ-MOk"/>
                     </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <navigationItem key="navigationItem" title="Settings" id="AXM-5C-UC8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWj-1j-nVg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4827.4553571428569" y="2053.6231884057975"/>
+            <point key="canvasLocation" x="4531" y="1929"/>
         </scene>
     </scenes>
     <resources>
