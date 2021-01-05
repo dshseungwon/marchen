@@ -51,7 +51,7 @@ class SongEngine {
     //MARK: - INIT METHODS
     init(songName: String) {
         do {
-            if AudioKit.engine.isRunning {
+            if AKManager.engine.isRunning {
                 invalidate()
             }
             
@@ -70,8 +70,8 @@ class SongEngine {
             
             recorder = try AKNodeRecorder(node: mixer, file: audioFile)
             
-            AudioKit.output = booster
-            try AudioKit.start()
+            AKManager.output = booster
+            try AKManager.start()
             setupSampler()
         } catch {
             print("Error while initializing SongEngine: \(error)")
@@ -99,7 +99,7 @@ class SongEngine {
     private var recordedSongObservers: [RecordedSongHasFinished] = [RecordedSongHasFinished]()
     
     // Variables for Initialize AudioKit
-    private var sampler = AKSampler()
+    private var sampler = AKSampler(masterVolume: 1.0)
     private var currentSamplerSound = 0
     private var midiChannelIn: MIDIChannel = 0
     private var currentVolume = 1.0
@@ -301,8 +301,8 @@ class SongEngine {
     }
     
     func invalidate() {
-        if AudioKit.engine.isRunning {
-            try! AudioKit.stop()
+        if AKManager.engine.isRunning {
+            try! AKManager.stop()
         }
     }
     
