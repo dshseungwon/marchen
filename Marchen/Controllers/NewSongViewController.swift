@@ -253,19 +253,19 @@ extension NewSongViewController: UIPickerViewDelegate {
 extension NewSongViewController {
     
     @IBAction func generateButtonClicked(_ sender: UIBarButtonItem) {
-//        performSegue(withIdentifier: "NewSongToChordPlay", sender: self)
-        performSegue(withIdentifier: "NewSongToSongEdit", sender: self)
+        performSegue(withIdentifier: "NewSongToChordPlay", sender: self)
+//        performSegue(withIdentifier: "NewSongToSongEdit", sender: self)
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        let destinationVC = segue.destination as! ChordPlayViewController
-//
-//        destinationVC.selectedKey = selectedKey
-//        destinationVC.selectedDiatonicProgression = selectedChordProgression
-//        destinationVC.selectedLyric = selectedLyric
-//
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        let destinationVC = segue.destination as! ChordPlayViewController
+
+        destinationVC.selectedKey = selectedKey
+        destinationVC.selectedDiatonicProgression = selectedChordProgression
+        destinationVC.selectedLyric = selectedLyric
+
+    }
 }
 
 
